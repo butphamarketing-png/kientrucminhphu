@@ -301,8 +301,8 @@ div.search_mobi input:-moz-placeholder { color: #333; }
 .marquee {
     width: 100%;
     overflow: hidden;
-    background: #111;
-    padding: 12px 0;
+    background: transparent;
+    padding: 0;
 }
 
 .marquee-text {

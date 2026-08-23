@@ -531,13 +531,18 @@ img {
   }
 }
 
-/* Header marquee — always brand blue (avoid black from broken CSS vars) */
+/* Header marquee — always brand blue (override original.css .marquee #111) */
 #header {
   color: #fff !important;
   background-color: #1198dc !important;
   padding: 5px 0;
   font-weight: 500;
   overflow: hidden;
+}
+
+#header .marquee {
+  background: transparent !important;
+  padding: 0 !important;
 }
 
 /* Header marquee */
