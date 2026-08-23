@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Transparent background — MP house mark -->
+  <g transform="translate(256 256)">
+    <path d="M-162 -64 L0 -146 L162 -64 L162 86 L0 154 L-162 86 Z" fill="none" stroke="#1198DC" stroke-width="18" stroke-linejoin="miter"/>
+    <path d="M-162 -64 L0 -146 L162 -64 Z" fill="#1198DC"/>
+    <rect x="-132" y="-4" width="24" height="94" fill="#1198DC"/>
+    <rect x="-93" y="-30" width="24" height="120" fill="#1198DC"/>
+    <rect x="-54" y="-56" width="24" height="146" fill="#1198DC"/>
+    <rect x="26" y="-56" width="24" height="146" fill="#1198DC"/>
+    <rect x="50" y="-56" width="72" height="72" rx="6" fill="#1198DC"/>
+  </g>
+</svg>

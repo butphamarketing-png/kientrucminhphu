@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <rect width="1080" height="1080" fill="#000000"/>
+  <g transform="translate(540 540)">
+    <!-- House / hexagon frame -->
+    <path
+      d="M0 -250 L217 -125 L217 125 L0 250 L-217 125 L-217 -125 Z"
+      fill="none"
+      stroke="#00AEEF"
+      stroke-width="28"
+      stroke-linejoin="miter"/>
+    <!-- Roof -->
+    <path d="M-217 -125 L0 -250 L217 -125 Z" fill="#00AEEF"/>
+    <!-- M: 3 bars -->
+    <rect x="-165" y="-20" width="32" height="155" fill="#00AEEF"/>
+    <rect x="-115" y="-55" width="32" height="190" fill="#00AEEF"/>
+    <rect x="-65" y="-90" width="32" height="225" fill="#00AEEF"/>
+    <!-- P -->
+    <rect x="35" y="-90" width="32" height="225" fill="#00AEEF"/>
+    <rect x="67" y="-90" width="95" height="100" rx="10" fill="#00AEEF"/>
+  </g>
+</svg>
