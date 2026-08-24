@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
 import { pricingCards, site } from "@/data/site";
+import { pageMeta } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -10,6 +11,7 @@ const items = pricingCards.map((p) => ({
   slug: p.href.replace("/bang-bao-gia/", ""),
   title: p.title,
   image: p.image,
+  href: p.href,
 }));
 
 export async function generateStaticParams() {
@@ -19,7 +21,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const item = items.find((i) => i.slug === slug);
-  return { title: item?.title ?? "Báo giá" };
+  if (!item) return { title: "Báo giá" };
+  return pageMeta({
+    title: item.title,
+    description: `Báo giá ${item.title} tại ${site.shortName}. Liên hệ hotline ${site.phone} để nhận tư vấn chi tiết.`,
+    path: item.href,
+    image: item.image,
+  });
 }
 
 export default async function BaoGiaDetailPage({ params }: Props) {

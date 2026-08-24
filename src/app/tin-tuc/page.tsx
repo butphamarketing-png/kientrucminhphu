@@ -1,10 +1,15 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { news } from "@/data/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Tin tức" };
+export const metadata = pageMeta({
+  title: "Tin tức",
+  description:
+    "Tin tức xu hướng thiết kế, thi công và cải tạo nhà phố tại TP.HCM từ Kiến trúc Minh Phú.",
+  path: "/tin-tuc",
+});
 
 export default function TinTucPage() {
   return (

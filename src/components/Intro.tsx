@@ -8,7 +8,7 @@ export function Intro() {
       <div className="center d-flex flex-wrap justify-content-between align-items-center">
         <div className="intro-left">
           <p className="intro-short">Welcome to</p>
-          <h2 className="intro-title">{intro.title}</h2>
+          <h1 className="intro-title">{intro.title}</h1>
           <div className="intro-desc">
             {intro.paragraphs.map((p, i) => (
               <span key={p.slice(0, 32)}>

@@ -4,7 +4,16 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingCta } from "@/components/FloatingCta";
+import { JsonLd } from "@/components/JsonLd";
 import { site } from "@/data/site";
+import {
+  SITE_URL,
+  DEFAULT_OG_IMAGE,
+  defaultDescription,
+  absUrl,
+  localBusinessJsonLd,
+  websiteJsonLd,
+} from "@/lib/seo";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -13,11 +22,44 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: site.name,
+    default: `${site.name} | Thiết kế thi công nhà phố TP.HCM`,
     template: `%s | ${site.shortName}`,
   },
-  description: site.tagline,
+  description: defaultDescription,
+  keywords: [
+    "kiến trúc Minh Phú",
+    "thiết kế nhà phố",
+    "thi công nhà phố",
+    "cải tạo nhà TP.HCM",
+    "xây nhà trọn gói",
+    "Minh Phú Building",
+  ],
+  authors: [{ name: site.name, url: SITE_URL }],
+  creator: site.name,
+  publisher: site.name,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
+  alternates: { canonical: SITE_URL },
+  openGraph: {
+    type: "website",
+    locale: "vi_VN",
+    url: SITE_URL,
+    siteName: site.name,
+    title: `${site.name} | Thiết kế thi công nhà phố TP.HCM`,
+    description: defaultDescription,
+    images: [{ url: absUrl(DEFAULT_OG_IMAGE), width: 1200, height: 630, alt: site.shortName }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} | Thiết kế thi công nhà phố TP.HCM`,
+    description: defaultDescription,
+    images: [absUrl(DEFAULT_OG_IMAGE)],
+  },
   icons: {
     icon: [
       { url: "/brand/favicon.jpg", type: "image/jpeg", sizes: "512x512" },
@@ -52,6 +94,7 @@ export default function RootLayout({
         <link href="/brand/favicon.jpg" rel="shortcut icon" type="image/x-icon" />
       </head>
       <body className={`${montserrat.variable} antialiased`}>
+        <JsonLd data={[localBusinessJsonLd(), websiteJsonLd()]} />
         <Header />
         <main>{children}</main>
         <Footer />

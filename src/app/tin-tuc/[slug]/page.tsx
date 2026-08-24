@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
-import { news } from "@/data/site";
+import { JsonLd } from "@/components/JsonLd";
+import { news, site } from "@/data/site";
+import { pageMeta, absUrl } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -13,7 +15,14 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const item = news.find((n) => n.href.endsWith(`/${slug}`));
-  return { title: item?.title ?? "Tin tức" };
+  if (!item) return { title: "Tin tức" };
+  return pageMeta({
+    title: item.title,
+    description: item.excerpt,
+    path: item.href,
+    image: item.image,
+    type: "article",
+  });
 }
 
 export default async function NewsDetailPage({ params }: Props) {
@@ -23,6 +32,19 @@ export default async function NewsDetailPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: item.title,
+          description: item.excerpt,
+          image: absUrl(item.image),
+          url: absUrl(item.href),
+          datePublished: item.date,
+          author: { "@type": "Organization", name: site.name },
+          publisher: { "@type": "Organization", name: site.name },
+        }}
+      />
       <PageHero
         title={item.title}
         crumbs={[{ label: "Tin tức", href: "/tin-tuc" }, { label: item.title }]}
@@ -37,14 +59,12 @@ export default async function NewsDetailPage({ params }: Props) {
             {item.title}
           </h1>
           <div className="text-[15px] leading-7 text-[#444] space-y-4">
+            <p>{item.excerpt}</p>
             <p>
               Minh Phú Building chia sẻ thông tin hữu ích về thiết kế, thi công và cải tạo
-              nhà phố tại TP.HCM. Nội dung nhằm giúp gia chủ nắm rõ xu hướng, quy trình và
-              giải pháp tối ưu công năng – chi phí cho từng công trình.
-            </p>
-            <p>
-              Nếu bạn đang tìm đơn vị đồng hành từ khảo sát, thiết kế đến thi công hoàn thiện,
-              hãy liên hệ hotline để được tư vấn phương án phù hợp hiện trạng thực tế.
+              nhà phố tại TP.HCM. Nếu bạn đang tìm đơn vị đồng hành từ khảo sát, thiết kế đến
+              thi công hoàn thiện, hãy liên hệ hotline để được tư vấn phương án phù hợp hiện
+              trạng thực tế.
             </p>
           </div>
         </div>

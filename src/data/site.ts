@@ -70,14 +70,38 @@ export const nav = [
 const m = (path: string) => `/media/${path}`;
 
 export const slides = [
-  m("thumbs/1920x843x1/upload/photo/chatgpt-image-000149-26-thg-4-2026-18660.png.webp"),
-  m("thumbs/1920x843x1/upload/photo/02tret-02view02-15260.jpg.webp"),
-  m("thumbs/1920x843x1/upload/photo/cong-ty-tnhh-thiet-ke-thi-cong-minh-phu-2-2757.png.webp"),
-  m("thumbs/1920x843x1/upload/photo/cong-ty-tnhh-thiet-ke-thi-cong-minh-phu-3-9969.png.webp"),
-  m("thumbs/1920x843x1/upload/photo/chatgpt-image-000856-26-thg-4-2026-5730.png.webp"),
-  m("thumbs/1920x843x1/upload/photo/slide-1425.jpg.webp"),
-  m("thumbs/1920x843x1/upload/photo/26-thu-phong-view-02-48112.jpg.webp"),
-  m("thumbs/1920x843x1/upload/photo/32-san-thuong-view-02-47391.jpg.webp"),
+  {
+    src: m("thumbs/1920x843x1/upload/photo/chatgpt-image-000149-26-thg-4-2026-18660.png.webp"),
+    alt: "Mẫu nhà phố hiện đại 3 tầng – Kiến trúc Minh Phú",
+  },
+  {
+    src: m("thumbs/1920x843x1/upload/photo/02tret-02view02-15260.jpg.webp"),
+    alt: "Không gian tầng trệt nhà phố do Minh Phú thiết kế",
+  },
+  {
+    src: m("thumbs/1920x843x1/upload/photo/cong-ty-tnhh-thiet-ke-thi-cong-minh-phu-2-2757.png.webp"),
+    alt: "Công trình thiết kế thi công của Công ty TNHH Kiến trúc Minh Phú",
+  },
+  {
+    src: m("thumbs/1920x843x1/upload/photo/cong-ty-tnhh-thiet-ke-thi-cong-minh-phu-3-9969.png.webp"),
+    alt: "Phối cảnh ngoại thất nhà phố Minh Phú Building",
+  },
+  {
+    src: m("thumbs/1920x843x1/upload/photo/chatgpt-image-000856-26-thg-4-2026-5730.png.webp"),
+    alt: "Mẫu nhà phố sang trọng thiết kế bởi Minh Phú",
+  },
+  {
+    src: m("thumbs/1920x843x1/upload/photo/slide-1425.jpg.webp"),
+    alt: "Biệt thự và nhà phố do Kiến trúc Minh Phú thực hiện",
+  },
+  {
+    src: m("thumbs/1920x843x1/upload/photo/26-thu-phong-view-02-48112.jpg.webp"),
+    alt: "Thiết kế nội thất phòng khách nhà phố Minh Phú",
+  },
+  {
+    src: m("thumbs/1920x843x1/upload/photo/32-san-thuong-view-02-47391.jpg.webp"),
+    alt: "Sân thượng nhà phố thiết kế bởi Minh Phú Building",
+  },
 ];
 
 export const intro = {

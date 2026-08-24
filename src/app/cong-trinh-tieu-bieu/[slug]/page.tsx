@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
-import { projects } from "@/data/site";
+import { JsonLd } from "@/components/JsonLd";
+import { projects, site } from "@/data/site";
+import { pageMeta, absUrl } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -15,7 +17,14 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const item = projects.find((p) => p.href.endsWith(`/${slug}`));
-  return { title: item?.title ?? "Công trình" };
+  if (!item) return { title: "Công trình" };
+  const desc = `Công trình ${item.title} — chủ đầu tư ${item.owner}, ${item.location}. Thiết kế thi công bởi ${site.shortName}.`;
+  return pageMeta({
+    title: item.title,
+    description: desc,
+    path: item.href,
+    image: item.image,
+  });
 }
 
 export default async function ProjectDetailPage({ params }: Props) {
@@ -23,8 +32,21 @@ export default async function ProjectDetailPage({ params }: Props) {
   const item = projects.find((p) => p.href.endsWith(`/${slug}`));
   if (!item) notFound();
 
+  const desc = `Công trình ${item.title} do ${site.shortName} thiết kế và thi công tại ${item.location}.`;
+
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          name: item.title,
+          description: desc,
+          image: absUrl(item.image),
+          url: absUrl(item.href),
+          creator: { "@type": "Organization", name: site.name },
+        }}
+      />
       <PageHero
         title={item.title}
         crumbs={[

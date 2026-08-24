@@ -1,8 +1,12 @@
-import type { Metadata } from "next";
 import { SimpleContentPage } from "@/components/SimpleContentPage";
 import { site } from "@/data/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Tuyển dụng" };
+export const metadata = pageMeta({
+  title: "Tuyển dụng",
+  description: `Tuyển dụng tại ${site.shortName}: vị trí quản lý khối thi công xây dựng. Ứng tuyển qua ${site.email} hoặc hotline ${site.phone}.`,
+  path: "/tuyen-dung",
+});
 
 export default function Page() {
   return (
@@ -23,9 +27,7 @@ export default function Page() {
         <li>Đảm bảo chất lượng, an toàn lao động và bàn giao đúng cam kết.</li>
       </ul>
 
-      <h3 className="text-[18px] font-bold text-[#3498db] mt-8">
-        Cách thức ứng tuyển
-      </h3>
+      <h3 className="text-[18px] font-bold text-[#3498db] mt-8">Cách thức ứng tuyển</h3>
       <p>
         Ứng viên gửi hồ sơ về email{" "}
         <a className="text-[var(--color-main)] font-semibold" href={`mailto:${site.email}`}>

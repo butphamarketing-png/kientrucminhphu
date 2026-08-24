@@ -1,9 +1,14 @@
-import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { ContentCardGrid } from "@/components/ContentCardGrid";
 import { architectureList } from "@/data/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Kiến trúc" };
+export const metadata = pageMeta({
+  title: "Kiến trúc",
+  description:
+    "Mẫu thiết kế kiến trúc nhà phố, biệt thự, nội thất đẹp do Kiến trúc Minh Phú thực hiện tại TP.HCM.",
+  path: "/kien-truc",
+});
 
 export default function KienTrucPage() {
   return (

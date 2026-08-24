@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
-import { serviceList, servicesDetail } from "@/data/site";
+import { serviceList, servicesDetail, site } from "@/data/site";
+import { pageMeta } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -30,7 +31,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const item = allServices.find((s) => s.slug === slug);
-  return { title: item?.title ?? "Dịch vụ" };
+  if (!item) return { title: "Dịch vụ" };
+  return pageMeta({
+    title: item.title,
+    description: item.summary,
+    path: `/dich-vu/${slug}`,
+    image: item.image,
+  });
 }
 
 export default async function DichVuDetailPage({ params }: Props) {
@@ -58,7 +65,7 @@ export default async function DichVuDetailPage({ params }: Props) {
             </h2>
             <p className="text-[15px] leading-7 text-[#444]">{item.summary}</p>
             <p className="text-[15px] leading-7 text-[#444] text-justify">
-              Minh Phú Building đồng hành cùng khách hàng từ khảo sát hiện trạng, tư vấn
+              {site.shortName} đồng hành cùng khách hàng từ khảo sát hiện trạng, tư vấn
               phương án, thiết kế chi tiết đến thi công hoàn thiện. Chúng tôi ưu tiên giải
               pháp thực tế, tối ưu công năng – chi phí và kiểm soát tiến độ rõ ràng.
             </p>

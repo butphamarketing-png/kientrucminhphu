@@ -1,12 +1,15 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { projects } from "@/data/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Công trình tiêu biểu",
-};
+  description:
+    "Danh mục công trình tiêu biểu của Kiến trúc Minh Phú: nhà phố, biệt thự, cải tạo tại TP.HCM và các tỉnh thành.",
+  path: "/cong-trinh-tieu-bieu",
+});
 
 export default function CongTrinhPage() {
   return (
@@ -22,24 +25,13 @@ export default function CongTrinhPage() {
                   alt={p.title}
                   fill
                   className="object-cover"
-                  sizes="(max-width:768px) 50vw, 25vw"
+                  sizes="(max-width: 640px) 100vw, 25vw"
                 />
               </div>
-              <div className="news-desc mt-3">
+              <div className="mt-3">
                 <h2 className="m-0 text-[14px] md:text-[16px] font-semibold uppercase text-center text-[#1c1c1c] leading-[1.3] text-split-2 px-1 group-hover:text-[var(--color-main)]">
                   {p.title}
                 </h2>
-                <div className="contruction-info mt-3 px-1 text-[12px] md:text-[13px] text-[#555] leading-[1.45] text-center space-y-0.5">
-                  <p className="m-0">
-                    <b>Chủ đầu tư:</b> {p.owner}
-                  </p>
-                  <p className="m-0">
-                    <b>Địa điểm:</b> {p.location}
-                  </p>
-                  <p className="m-0">
-                    <b>Quy mô:</b> {p.scale}
-                  </p>
-                </div>
               </div>
             </Link>
           ))}

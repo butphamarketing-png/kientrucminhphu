@@ -1,7 +1,12 @@
-import type { Metadata } from "next";
 import { SimpleContentPage } from "@/components/SimpleContentPage";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Sứ mệnh" };
+export const metadata = pageMeta({
+  title: "Sứ mệnh",
+  description:
+    "Sứ mệnh của Minh Phú Building: thiết kế & thi công nhà phố uy tín, lấy con người làm trung tâm, cam kết chất lượng – tiến độ – chi phí minh bạch.",
+  path: "/su-menh",
+});
 
 export default function Page() {
   return (

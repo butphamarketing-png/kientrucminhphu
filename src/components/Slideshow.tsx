@@ -19,17 +19,17 @@ export function Slideshow() {
   return (
     <div className="slideshow">
       <div className="relative w-full aspect-[1920/843] min-h-[180px] overflow-hidden">
-        {slides.map((src, i) => (
+        {slides.map((slide, i) => (
           <div
-            key={src}
+            key={slide.src}
             className={`absolute inset-0 transition-opacity duration-700 ${
               i === index ? "opacity-100 z-[1]" : "opacity-0 z-0"
             }`}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={src}
-              alt={`Slideshow ${i + 1}`}
+              src={slide.src}
+              alt={slide.alt}
               decoding={i === 0 ? "sync" : "async"}
               fetchPriority={i === 0 ? "high" : "auto"}
             />

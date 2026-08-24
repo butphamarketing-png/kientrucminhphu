@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
 import { architectureList, houseDesigns } from "@/data/site";
+import { pageMeta } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -26,7 +27,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const item = items.find((i) => i.slug === slug);
-  return { title: item?.title ?? "Kiến trúc" };
+  if (!item) return { title: "Kiến trúc" };
+  return pageMeta({
+    title: item.title,
+    description: `Mẫu thiết kế ${item.title} — kiến trúc nhà phố, biệt thự tại Kiến trúc Minh Phú.`,
+    path: `/kien-truc/${slug}`,
+    image: item.image,
+  });
 }
 
 export default async function KienTrucDetailPage({ params }: Props) {

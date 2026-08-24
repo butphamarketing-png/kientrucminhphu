@@ -1,9 +1,14 @@
-import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { ContentCardGrid } from "@/components/ContentCardGrid";
 import { pricingCards } from "@/data/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Bảng báo giá" };
+export const metadata = pageMeta({
+  title: "Bảng báo giá",
+  description:
+    "Bảng báo giá thiết kế nhà, thi công trọn gói, phần thô và sửa chữa cải tạo tại Kiến trúc Minh Phú.",
+  path: "/bang-bao-gia",
+});
 
 export default function BaoGiaPage() {
   return (

@@ -1,11 +1,14 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { PageHero } from "@/components/PageHero";
 import { intro, site } from "@/data/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Giới thiệu",
-};
+  description:
+    "Giới thiệu Công ty TNHH Kiến trúc Minh Phú — đơn vị thiết kế, thi công và cải tạo nhà phố tại TP.HCM với quy trình bài bản, báo giá minh bạch.",
+  path: "/gioi-thieu",
+});
 
 export default function GioiThieuPage() {
   return (
