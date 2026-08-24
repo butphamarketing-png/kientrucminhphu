@@ -80,6 +80,7 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <head>
+        <meta name="google-site-verification" content="5O_vcQp19XoYLMLTzewxW4q7vlNqFWG6-vCcqyC-Wy0" />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
