@@ -16,6 +16,7 @@ export const site = {
     "Tầng 27 Tháp A Tòa nhà Viettel, Số 285 CMT8, P. Hòa Hưng, TP.HCM",
   zalo: "https://zalo.me/0912166079",
   facebook: "https://www.facebook.com/congtyxaydungtrongoi",
+  messenger: "https://m.me/congtyxaydungtrongoi",
 };
 
 export const nav = [

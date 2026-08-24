@@ -36,7 +36,7 @@ const items = [
   },
   {
     id: "chatfb",
-    href: site.facebook,
+    href: site.messenger,
     label: "Chat facebook",
     icon: "/media/assets/images/fp-mess.png",
     external: true,
@@ -62,19 +62,51 @@ export function FloatingCta() {
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       />
 
-      {/* Desktop pulse phone — right side */}
-      <a
-        href={`tel:${site.phoneRaw}`}
-        className="btn-phone-float"
-        data-phone={site.phone}
-        aria-label={`Gọi ${site.phone}`}
-      >
-        <span className="btn-phone-pulse" />
-        <span className="btn-phone-pulse delay" />
-        <span className="btn-phone-core">
-          <i className="fa fa-phone" style={{ transform: "rotate(90deg)" }} aria-hidden />
-        </span>
-      </a>
+      {/* Desktop: Zalo / Messenger / Facebook + pulse phone — right side */}
+      <div className="float-cta-right">
+        <a
+          className="float-social-btn float-social-zalo"
+          href={site.zalo}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Chat Zalo"
+          title="Zalo"
+        >
+          <Image src="/media/assets/images/fp-zalo.png" alt="Zalo" width={28} height={28} />
+        </a>
+        <a
+          className="float-social-btn float-social-mess"
+          href={site.messenger}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Chat Messenger"
+          title="Messenger"
+        >
+          <Image src="/media/assets/images/fp-mess.png" alt="Messenger" width={28} height={28} />
+        </a>
+        <a
+          className="float-social-btn float-social-fb"
+          href={site.facebook}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Facebook"
+          title="Facebook"
+        >
+          <i className="fab fa-facebook-f" aria-hidden />
+        </a>
+        <a
+          href={`tel:${site.phoneRaw}`}
+          className="btn-phone-float"
+          data-phone={site.phone}
+          aria-label={`Gọi ${site.phone}`}
+        >
+          <span className="btn-phone-pulse" />
+          <span className="btn-phone-pulse delay" />
+          <span className="btn-phone-core">
+            <i className="fa fa-phone" style={{ transform: "rotate(90deg)" }} aria-hidden />
+          </span>
+        </a>
+      </div>
 
       {/* Mobile bottom toolbar ≤767px */}
       <div className="fix-toolbar">

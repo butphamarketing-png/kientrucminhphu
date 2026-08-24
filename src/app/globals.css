@@ -427,6 +427,7 @@ img {
   .fix-toolbar {
     display: block !important;
   }
+  .float-cta-right,
   .btn-phone-float {
     display: none !important;
   }
@@ -463,11 +464,58 @@ img {
   display: none !important;
 }
 
+/* Desktop social + pulse phone — right column */
+.float-cta-right {
+  position: fixed;
+  right: 18px;
+  bottom: 90px;
+  z-index: 85;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.float-social-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease;
+}
+
+.float-social-btn:hover {
+  transform: scale(1.08);
+}
+
+.float-social-btn img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.float-social-zalo {
+  background: #0068ff;
+}
+
+.float-social-mess {
+  background: #0084ff;
+}
+
+.float-social-fb {
+  background: #1877f2;
+  color: #fff;
+  font-size: 22px;
+}
+
 /* Desktop pulse phone - right side like original iconphoneright */
 .btn-phone-float {
-  position: fixed;
-  right: 24px;
-  bottom: 120px;
+  position: relative;
+  right: auto;
+  bottom: auto;
   z-index: 85;
   width: 50px;
   height: 50px;
