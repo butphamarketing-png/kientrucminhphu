@@ -65,40 +65,56 @@ export function FloatingCta() {
       {/* Desktop: Zalo / Messenger / Facebook + pulse phone — right side */}
       <div className="float-cta-right">
         <a
-          className="float-social-btn float-social-zalo"
+          className="float-social-btn float-social-zalo float-bob"
           href={site.zalo}
           target="_blank"
           rel="noreferrer"
           aria-label="Chat Zalo"
           title="Zalo"
+          style={{ animationDelay: "0s" }}
         >
-          <Image src="/media/assets/images/fp-zalo.png" alt="Zalo" width={28} height={28} />
+          <span className="float-social-pulse" />
+          <span className="float-social-pulse delay" />
+          <span className="float-social-core">
+            <Image src="/media/assets/images/fp-zalo.png" alt="Zalo" width={28} height={28} />
+          </span>
         </a>
         <a
-          className="float-social-btn float-social-mess"
+          className="float-social-btn float-social-mess float-bob"
           href={site.messenger}
           target="_blank"
           rel="noreferrer"
           aria-label="Chat Messenger"
           title="Messenger"
+          style={{ animationDelay: "0.35s" }}
         >
-          <Image src="/media/assets/images/fp-mess.png" alt="Messenger" width={28} height={28} />
+          <span className="float-social-pulse" />
+          <span className="float-social-pulse delay" />
+          <span className="float-social-core">
+            <Image src="/media/assets/images/fp-mess.png" alt="Messenger" width={28} height={28} />
+          </span>
         </a>
         <a
-          className="float-social-btn float-social-fb"
+          className="float-social-btn float-social-fb float-bob"
           href={site.facebook}
           target="_blank"
           rel="noreferrer"
           aria-label="Facebook"
           title="Facebook"
+          style={{ animationDelay: "0.7s" }}
         >
-          <i className="fab fa-facebook-f" aria-hidden />
+          <span className="float-social-pulse" />
+          <span className="float-social-pulse delay" />
+          <span className="float-social-core">
+            <i className="fab fa-facebook-f" aria-hidden />
+          </span>
         </a>
         <a
           href={`tel:${site.phoneRaw}`}
-          className="btn-phone-float"
+          className="btn-phone-float float-bob"
           data-phone={site.phone}
           aria-label={`Gọi ${site.phone}`}
+          style={{ animationDelay: "1.05s" }}
         >
           <span className="btn-phone-pulse" />
           <span className="btn-phone-pulse delay" />

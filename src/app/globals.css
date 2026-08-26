@@ -493,6 +493,7 @@ img {
 }
 
 .float-social-btn {
+  position: relative;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -500,11 +501,18 @@ img {
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
-  transition: transform 0.2s ease;
 }
 
-.float-social-btn:hover {
-  transform: scale(1.08);
+.float-social-core {
+  position: relative;
+  z-index: 2;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: inherit;
 }
 
 .float-social-btn img {
@@ -513,18 +521,66 @@ img {
   object-fit: contain;
 }
 
+.float-social-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0.7;
+  animation: phonePulse 1.5s ease-out infinite;
+  pointer-events: none;
+}
+
+.float-social-pulse.delay {
+  animation-delay: 0.45s;
+}
+
 .float-social-zalo {
   background: #0068ff;
+  color: #0068ff;
 }
 
 .float-social-mess {
   background: #0084ff;
+  color: #0084ff;
 }
 
 .float-social-fb {
   background: #1877f2;
-  color: #fff;
+  color: #1877f2;
   font-size: 22px;
+}
+
+.float-social-fb .float-social-core {
+  color: #fff;
+}
+
+/* Nhấp nhô liên tục, lệch pha giữa các nút */
+.float-bob {
+  animation: floatBob 1.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+.float-bob:hover {
+  animation-play-state: paused;
+}
+
+@keyframes floatBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-bob,
+  .float-social-pulse,
+  .btn-phone-pulse {
+    animation: none !important;
+  }
 }
 
 /* Desktop pulse phone - right side like original iconphoneright */
