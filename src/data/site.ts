@@ -504,7 +504,9 @@ export const pricingCards = [
   {
     title: "BÁO GIÁ TRỌN GÓI",
     href: "/bang-bao-gia/bao-gia-tron-goi",
-    image: m("thumbs/468x447x1/upload/news/image2026-01-28103708610-7789.png.webp"),
+    image: m(
+      "watermark/product/614x702x1/upload/product/6003611331221046915531666811713918399919109964n-2143.jpg.webp",
+    ),
     summary:
       "Gói thi công nhà phố trọn gói từ móng đến hoàn thiện. Báo giá minh bạch theo hạng mục, vật tư và phạm vi thi công thực tế.",
     highlights: [
@@ -517,7 +519,9 @@ export const pricingCards = [
   {
     title: "SỬA CHỮA TRỌN GÓI",
     href: "/bang-bao-gia/sua-chua-tron-goi",
-    image: thumb("chatgpt-image-085634-29-thg-1-2026-8827.png.webp"),
+    image: m(
+      "watermark/product/614x702x1/upload/product/5986342301221018009271666815368426326397992069n-6206.jpg.webp",
+    ),
     summary:
       "Dịch vụ sửa chữa – cải tạo nhà phố trọn gói: nâng tầng, cải tạo công năng, hoàn thiện nội – ngoại thất theo ngân sách.",
     highlights: [
@@ -530,7 +534,9 @@ export const pricingCards = [
   {
     title: "THIẾT KẾ NHÀ",
     href: "/bang-bao-gia/thiet-ke-nha",
-    image: thumb("chatgpt-image-085623-29-thg-1-2026-1861.png.webp"),
+    image: m(
+      "watermark/product/614x702x1/upload/product/z75974407313861a35d1a219a7bb997ebd7dbfd5d595f4-2274.jpg.webp",
+    ),
     summary:
       "Thiết kế nhà phố, biệt thự phong cách hiện đại & tân cổ điển. Hồ sơ bản vẽ đầy đủ, dễ triển khai thi công.",
     highlights: [
@@ -543,7 +549,9 @@ export const pricingCards = [
   {
     title: "BÁO GIÁ PHẦN THÔ",
     href: "/bang-bao-gia/bao-gia-phan-tho",
-    image: m("thumbs/468x447x1/upload/news/6193621581221115304311666815576124427485979009n-5934.jpg.webp"),
+    image: m(
+      "watermark/product/614x702x1/upload/product/5997998431221019832791666815709527543347360857n-9508.jpg.webp",
+    ),
     summary:
       "Báo giá phần thô rõ ràng theo m² và hạng mục: móng, khung, sàn, tường, mái — giúp kiểm soát chi phí giai đoạn đầu.",
     highlights: [
@@ -556,7 +564,9 @@ export const pricingCards = [
   {
     title: "KHUYẾN MẠI",
     href: "/bang-bao-gia/khuyen-mai",
-    image: thumb("chatgpt-image-114017-3-thg-2-2026-2706.png.webp"),
+    image: m(
+      "watermark/product/614x702x1/upload/product/lau-dai-chau-au-3-tang-9272-1140x768-8026.jpg.webp",
+    ),
     summary:
       "Ưu đãi thiết kế – thi công theo từng giai đoạn. Liên hệ hotline để nhận chương trình khuyến mại mới nhất.",
     highlights: [
