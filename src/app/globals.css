@@ -1017,13 +1017,22 @@ img {
 
 .pricing-detail-media {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4 / 5;
+  max-height: 560px;
   overflow: hidden;
   background: linear-gradient(145deg, #e8f4fb 0%, #f4f8fb 55%, #eef3f7 100%);
 }
 
+@media (min-width: 992px) {
+  .pricing-detail-media {
+    aspect-ratio: 3 / 4;
+    max-height: 620px;
+  }
+}
+
 .pricing-detail-media img {
   object-fit: cover;
+  object-position: center top;
 }
 
 .pricing-detail-body {
