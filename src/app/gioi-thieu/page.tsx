@@ -13,7 +13,7 @@ export const metadata = pageMeta({
 export default function GioiThieuPage() {
   return (
     <>
-      <PageHero title="Kiến trúc Minh Phú" crumbs={[{ label: "Giới thiệu" }]} />
+      <PageHero title="Giới thiệu" crumbs={[{ label: "Giới thiệu", href: "/gioi-thieu" }]} />
       <section className="pb-12 md:pb-16 pt-4">
         <div className="container-mp grid lg:grid-cols-2 gap-10 items-start">
           <div className="content text-[15px] leading-7 text-[#444]">

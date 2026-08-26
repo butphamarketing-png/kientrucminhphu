@@ -13,7 +13,7 @@ export const metadata = pageMeta({
 export default function LienHePage() {
   return (
     <>
-      <PageHero title="Liên hệ" />
+      <PageHero title="Liên hệ" canonicalPath="/lien-he" />
       <section className="pb-12 md:pb-16 pt-6">
         <div className="container-mp grid lg:grid-cols-2 gap-10">
           <div>

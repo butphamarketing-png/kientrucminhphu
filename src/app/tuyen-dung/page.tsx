@@ -10,7 +10,7 @@ export const metadata = pageMeta({
 
 export default function Page() {
   return (
-    <SimpleContentPage title="Tuyển dụng">
+    <SimpleContentPage title="Tuyển dụng" path="/tuyen-dung">
       <h3 className="text-[18px] font-bold text-[#3498db]">
         1. VỊ TRÍ: GIÁM ĐỐC / QUẢN LÝ KHỐI THI CÔNG XÂY DỰNG
       </h3>

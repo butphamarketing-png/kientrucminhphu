@@ -51,7 +51,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         title={item.title}
         crumbs={[
           { label: "Công trình tiêu biểu", href: "/cong-trinh-tieu-bieu" },
-          { label: item.title },
+          { label: item.title, href: item.href },
         ]}
       />
       <section className="py-12 md:py-16">
@@ -59,9 +59,11 @@ export default async function ProjectDetailPage({ params }: Props) {
           <div className="relative aspect-[4/5] sm:aspect-[4/3] mb-8 bg-[#eee]">
             <Image src={item.image} alt={item.title} fill className="object-cover" sizes="100vw" priority />
           </div>
-          <h2 className="mt-0 text-[24px] font-bold uppercase text-[var(--color-main)]">
-            {item.title}
-          </h2>
+          <p className="mt-0 mb-4 text-[15px] leading-7 text-[#666]">
+            Chủ đầu tư: {item.owner}
+            {item.location ? ` · ${item.location}` : ""}
+            {item.scale ? ` · ${item.scale}` : ""}
+          </p>
           <p className="text-[15px] leading-7 text-[#444] text-justify">
             Công trình được Minh Phú Building thiết kế và thi công với định hướng tối ưu
             công năng, thẩm mỹ và chi phí đầu tư. Từ khảo sát hiện trạng đến bàn giao, mọi

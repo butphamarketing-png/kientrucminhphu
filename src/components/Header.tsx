@@ -41,12 +41,12 @@ export function Header() {
       </div>
 
       <div id="menu" className={scrolled ? "shadow-md" : ""}>
-        <div className="center menu-top">
+        <nav className="center menu-top" aria-label="Menu chính">
           <div className="logo-menu">
             <Link href="/">
               <Image
                 src="/brand/logo-menu-lg.png.webp"
-                alt={site.shortName}
+                alt="Kiến trúc Minh Phú - Trang chủ"
                 width={58}
                 height={60}
                 priority
@@ -92,20 +92,22 @@ export function Header() {
               </a>
               {searchOpen ? (
                 <div className="search-drop">
-                  <input
-                    value={keyword}
-                    onChange={(e) => setKeyword(e.target.value)}
-                    placeholder="Nhập từ khóa cần tìm..."
-                    autoFocus
-                  />
+                  <form action="/tin-tuc" method="get">
+                    <input
+                      name="q"
+                      value={keyword}
+                      onChange={(e) => setKeyword(e.target.value)}
+                      placeholder="Nhập từ khóa cần tìm..."
+                      aria-label="Tìm kiếm"
+                      autoFocus
+                    />
+                  </form>
                 </div>
               ) : null}
             </li>
           </ul>
-        </div>
+        </nav>
       </div>
-
-      {/* Origin markup: hamburger | logo | search */}
       <div id="menu-mobile" className={scrolled ? "shadow-md" : ""}>
         <div className="menu-bar-res">
           <div className="menu-mobile-width">
@@ -125,7 +127,7 @@ export function Header() {
             <Link href="/">
               <Image
                 src="/brand/logo-menu-lg.png.webp"
-                alt={site.shortName}
+                alt="Kiến trúc Minh Phú - Trang chủ"
                 width={58}
                 height={60}
                 priority
@@ -148,13 +150,17 @@ export function Header() {
               {searchOpen ? (
                 <div className="search_box_hide open">
                   <div className="box_input_search">
-                    <input
-                      type="text"
-                      placeholder="Nhập từ khóa cần tìm..."
-                      value={keyword}
-                      onChange={(e) => setKeyword(e.target.value)}
-                      autoFocus
-                    />
+                    <form action="/tin-tuc" method="get">
+                      <input
+                        type="text"
+                        name="q"
+                        placeholder="Nhập từ khóa cần tìm..."
+                        value={keyword}
+                        onChange={(e) => setKeyword(e.target.value)}
+                        aria-label="Tìm kiếm"
+                        autoFocus
+                      />
+                    </form>
                   </div>
                 </div>
               ) : null}
@@ -170,7 +176,7 @@ export function Header() {
       />
       <nav id="mmenu" className={open ? "open" : ""} aria-hidden={!open}>
         <div className="mmenu-head">
-          <Image src="/brand/logo-menu-lg.png.webp" alt="logo" width={48} height={48} />
+          <Image src="/brand/logo-menu-lg.png.webp" alt="Kiến trúc Minh Phú" width={48} height={48} />
           <button type="button" className="mmenu-close" onClick={() => setOpen(false)} aria-label="Đóng">
             <i className="fa fa-times" aria-hidden />
           </button>

@@ -10,7 +10,7 @@ export const metadata = pageMeta({
 
 export default function Page() {
   return (
-    <SimpleContentPage title="Sứ mệnh">
+    <SimpleContentPage title="Sứ mệnh" path="/su-menh">
       <p>
         Trong bối cảnh đô thị ngày càng phát triển, nhu cầu về nhà ở không chỉ dừng lại ở
         việc “xây một ngôi nhà” mà còn là{" "}

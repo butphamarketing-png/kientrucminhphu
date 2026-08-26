@@ -8,5 +8,5 @@ export const metadata = pageMeta({
 });
 
 export default function Page() {
-  return <SimpleContentPage title="Chính sách hỗ trợ" />;
+  return <SimpleContentPage title="Chính sách hỗ trợ" path="/ho-tro-dat-hang" />;
 }

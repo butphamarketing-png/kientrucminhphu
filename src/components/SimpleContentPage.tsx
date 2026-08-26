@@ -3,14 +3,16 @@ import { site } from "@/data/site";
 
 export function SimpleContentPage({
   title,
+  path,
   children,
 }: {
   title: string;
+  path?: string;
   children?: React.ReactNode;
 }) {
   return (
     <>
-      <PageHero title={title} />
+      <PageHero title={title} canonicalPath={path} />
       <section className="pb-12 md:pb-16 pt-4">
         <div className="container-mp max-w-3xl text-[15px] leading-7 text-[#444]">
           {children ?? (

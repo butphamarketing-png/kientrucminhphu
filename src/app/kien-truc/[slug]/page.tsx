@@ -47,7 +47,7 @@ export default async function KienTrucDetailPage({ params }: Props) {
         title={item.title}
         crumbs={[
           { label: "Kiến trúc", href: "/kien-truc" },
-          { label: item.title },
+          { label: item.title, href: `/kien-truc/${slug}` },
         ]}
       />
       <section className="pb-12 md:pb-16 pt-4">
@@ -55,9 +55,6 @@ export default async function KienTrucDetailPage({ params }: Props) {
           <div className="relative aspect-[354/424] sm:aspect-[4/3] mb-8 bg-[#eee] overflow-hidden btn-hover-img scale-img">
             <Image src={item.image} alt={item.title} fill className="object-cover" sizes="100vw" priority />
           </div>
-          <h2 className="mt-0 text-[22px] font-bold uppercase text-[var(--color-main)]">
-            {item.title}
-          </h2>
           <p className="text-[15px] leading-7 text-[#444] text-justify">
             Mẫu thiết kế thuộc danh mục kiến trúc của Minh Phú Building, tập trung tối ưu
             công năng, thẩm mỹ và chi phí đầu tư cho nhà phố – biệt thự tại TP.HCM và các

@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
+import { JsonLd } from "@/components/JsonLd";
 import { serviceList, servicesDetail, site } from "@/data/site";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, serviceJsonLd } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -47,11 +48,12 @@ export default async function DichVuDetailPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd data={serviceJsonLd({ ...item, slug })} />
       <PageHero
         title={item.title}
         crumbs={[
           { label: "Dịch vụ", href: "/dich-vu" },
-          { label: item.title },
+          { label: item.title, href: `/dich-vu/${slug}` },
         ]}
       />
       <section className="pb-12 md:pb-16 pt-4">
@@ -60,9 +62,6 @@ export default async function DichVuDetailPage({ params }: Props) {
             <Image src={item.image} alt={item.title} fill className="object-cover" sizes="50vw" />
           </div>
           <div>
-            <h2 className="mt-0 text-[22px] font-bold text-[var(--color-main)] uppercase">
-              {item.title}
-            </h2>
             <p className="text-[15px] leading-7 text-[#444]">{item.summary}</p>
             <p className="text-[15px] leading-7 text-[#444] text-justify">
               {site.shortName} đồng hành cùng khách hàng từ khảo sát hiện trạng, tư vấn

@@ -13,7 +13,7 @@ export const metadata = pageMeta({
 export default function BaoGiaPage() {
   return (
     <>
-      <PageHero title="Bảng báo giá" />
+      <PageHero title="Bảng báo giá" canonicalPath="/bang-bao-gia" />
       <section className="pb-12 md:pb-16 pt-6">
         <div className="container-mp">
           <ContentCardGrid items={pricingCards} />

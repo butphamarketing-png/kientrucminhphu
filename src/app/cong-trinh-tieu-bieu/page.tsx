@@ -14,7 +14,7 @@ export const metadata = pageMeta({
 export default function CongTrinhPage() {
   return (
     <>
-      <PageHero title="Công trình tiêu biểu" />
+      <PageHero title="Công trình tiêu biểu" canonicalPath="/cong-trinh-tieu-bieu" />
       <section className="pb-12 md:pb-16 pt-6">
         <div className="container-mp grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {projects.map((p) => (

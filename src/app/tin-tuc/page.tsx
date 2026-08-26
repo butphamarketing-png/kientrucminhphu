@@ -1,23 +1,48 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { news } from "@/data/site";
 import { pageMeta } from "@/lib/seo";
 
-export const metadata = pageMeta({
-  title: "Tin tức",
-  description:
-    "Tin tức xu hướng thiết kế, thi công và cải tạo nhà phố tại TP.HCM từ Kiến trúc Minh Phú.",
-  path: "/tin-tuc",
-});
+type Props = { searchParams: Promise<{ q?: string }> };
 
-export default function TinTucPage() {
+export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+  const { q } = await searchParams;
+  const base = pageMeta({
+    title: "Tin tức",
+    description:
+      "Tin tức xu hướng thiết kế, thi công và cải tạo nhà phố tại TP.HCM từ Kiến trúc Minh Phú.",
+    path: "/tin-tuc",
+  });
+  if (q?.trim()) {
+    return { ...base, robots: { index: false, follow: true } };
+  }
+  return base;
+}
+
+export default async function TinTucPage({ searchParams }: Props) {
+  const { q } = await searchParams;
+  const query = q?.trim() ?? "";
+  const list = query
+    ? news.filter(
+        (n) =>
+          n.title.toLowerCase().includes(query.toLowerCase()) ||
+          n.excerpt.toLowerCase().includes(query.toLowerCase()),
+      )
+    : news;
+
   return (
     <>
-      <PageHero title="Tin tức" />
+      <PageHero title="Tin tức" canonicalPath="/tin-tuc" />
       <section className="pb-12 md:pb-16 pt-6">
         <div className="container-mp grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {news.map((n) => (
+          {list.length === 0 ? (
+            <p className="col-span-full text-[15px] text-[#555]">
+              Không tìm thấy bài viết phù hợp với “{query}”.
+            </p>
+          ) : null}
+          {list.map((n) => (
             <Link
               key={n.href}
               href={n.href}

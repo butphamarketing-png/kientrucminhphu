@@ -13,7 +13,7 @@ export const metadata = pageMeta({
 export default function DichVuPage() {
   return (
     <>
-      <PageHero title="Dịch vụ" />
+      <PageHero title="Dịch vụ" canonicalPath="/dich-vu" />
       <section className="pb-12 md:pb-16 pt-6">
         <div className="container-mp">
           <ContentCardGrid items={serviceList} />

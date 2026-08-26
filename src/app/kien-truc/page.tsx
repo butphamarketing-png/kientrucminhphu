@@ -13,7 +13,7 @@ export const metadata = pageMeta({
 export default function KienTrucPage() {
   return (
     <>
-      <PageHero title="Kiến trúc" />
+      <PageHero title="Kiến trúc" canonicalPath="/kien-truc" />
       <section className="pb-12 md:pb-16 pt-6">
         <div className="container-mp">
           <ContentCardGrid items={architectureList} />

@@ -1,19 +1,32 @@
 import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 export function PageHero({
   title,
   crumbs,
+  showHeading = true,
+  canonicalPath,
 }: {
   title: string;
   crumbs?: { label: string; href?: string }[];
+  showHeading?: boolean;
+  /** Đường dẫn trang hiện tại cho schema breadcrumb */
+  canonicalPath?: string;
 }) {
-  const items = crumbs ?? [{ label: title }];
+  const items = crumbs ?? [{ label: title, href: canonicalPath }];
+
+  const jsonCrumbs = items.map((c) => ({
+    name: c.label,
+    path: c.href,
+  }));
 
   return (
     <>
-      <div className="breadCrumbs">
+      <JsonLd data={breadcrumbJsonLd(jsonCrumbs)} />
+      <nav className="breadCrumbs" aria-label="Đường dẫn">
         <div className="center">
-          <ul className="breadcrumb">
+          <ol className="breadcrumb">
             <li className="breadcrumb-item">
               <Link href="/">Trang chủ</Link>
             </li>
@@ -21,7 +34,7 @@ export function PageHero({
               const isLast = idx === items.length - 1;
               return (
                 <li
-                  key={c.label}
+                  key={`${c.label}-${idx}`}
                   className={`breadcrumb-item${isLast ? " active" : ""}`}
                 >
                   {c.href && !isLast ? (
@@ -32,14 +45,16 @@ export function PageHero({
                 </li>
               );
             })}
-          </ul>
+          </ol>
         </div>
-      </div>
-      <div className="center" style={{ paddingTop: 32, paddingBottom: 8 }}>
-        <div className="title-main" style={{ marginBottom: 0 }}>
-          <h1>{title}</h1>
+      </nav>
+      {showHeading ? (
+        <div className="center" style={{ paddingTop: 32, paddingBottom: 8 }}>
+          <div className="title-main" style={{ marginBottom: 0 }}>
+            <h1>{title}</h1>
+          </div>
         </div>
-      </div>
+      ) : null}
     </>
   );
 }

@@ -13,7 +13,7 @@ export const metadata = pageMeta({
 export default function ThuVienPage() {
   return (
     <>
-      <PageHero title="Thư viện" />
+      <PageHero title="Thư viện" canonicalPath="/thu-vien" />
       <section className="pb-12 md:pb-16 pt-6">
         <div className="container-mp">
           <ContentCardGrid items={galleryAlbums} />

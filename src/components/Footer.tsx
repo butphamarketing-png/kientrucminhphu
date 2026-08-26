@@ -12,14 +12,14 @@ export function Footer() {
               <Link href="/">
                 <Image
                   src="/brand/logo-menu-lg.png.webp"
-                  alt="logo"
+                  alt={`${site.shortName} - Trang chủ`}
                   width={93}
                   height={96}
                 />
               </Link>
             </div>
             <p className="footer-tit">{site.name}</p>
-            <div className="footer-content">
+            <address className="footer-content" style={{ fontStyle: "normal" }}>
               <p>
                 <strong>{site.address1Label}:</strong> {site.address1}
               </p>
@@ -44,7 +44,7 @@ export function Footer() {
                   {site.website}
                 </a>
               </p>
-            </div>
+            </address>
           </div>
 
           <div className="footer-2">

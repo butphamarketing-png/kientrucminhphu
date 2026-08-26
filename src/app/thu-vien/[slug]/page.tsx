@@ -41,7 +41,7 @@ export default async function ThuVienAlbumPage({ params }: Props) {
         title={item.title}
         crumbs={[
           { label: "Thư viện", href: "/thu-vien" },
-          { label: item.title },
+          { label: item.title, href: item.href },
         ]}
       />
       <section className="pb-12 md:pb-16 pt-6">

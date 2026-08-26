@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
@@ -13,13 +13,21 @@ import {
   absUrl,
   localBusinessJsonLd,
   websiteJsonLd,
+  GOOGLE_SITE_VERIFICATION,
 } from "@/lib/seo";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin", "vietnamese"],
   weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
+
+export const viewport: Viewport = {
+  themeColor: "#1198dc",
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -28,23 +36,28 @@ export const metadata: Metadata = {
     template: `%s | ${site.shortName}`,
   },
   description: defaultDescription,
+  applicationName: site.shortName,
+  category: "architecture",
   keywords: [
     "kiến trúc Minh Phú",
-    "thiết kế nhà phố",
-    "thi công nhà phố",
-    "cải tạo nhà TP.HCM",
+    "thiết kế nhà phố TP.HCM",
+    "thi công nhà phố trọn gói",
+    "cải tạo nhà Hồ Chí Minh",
     "xây nhà trọn gói",
     "Minh Phú Building",
+    "thiết kế thi công nội thất",
   ],
   authors: [{ name: site.name, url: SITE_URL }],
   creator: site.name,
   publisher: site.name,
+  formatDetection: { telephone: true, email: true, address: true },
+  verification: { google: GOOGLE_SITE_VERIFICATION },
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
   },
-  alternates: { canonical: SITE_URL },
+  alternates: { canonical: SITE_URL, languages: { "vi-VN": SITE_URL } },
   openGraph: {
     type: "website",
     locale: "vi_VN",
@@ -70,6 +83,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/brand/apple-touch-icon.png", sizes: "180x180" }],
     shortcut: [{ url: "/brand/favicon.jpg", type: "image/jpeg" }],
   },
+  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({
@@ -80,14 +94,13 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <head>
-        <meta name="google-site-verification" content="5O_vcQp19XoYLMLTzewxW4q7vlNqFWG6-vCcqyC-Wy0" />
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="" />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
-        {/* Served from /media (public/css is blocked/404 on this Next setup) */}
         {/* eslint-disable-next-line @next/next/no-css-tags */}
         <link rel="stylesheet" href="/media/css/original.css" />
         <style>{`#header,#header .marquee{background-color:#1198dc!important;background:#1198dc!important}`}</style>
@@ -96,8 +109,11 @@ export default function RootLayout({
       </head>
       <body className={`${montserrat.variable} antialiased`}>
         <JsonLd data={[localBusinessJsonLd(), websiteJsonLd()]} />
+        <a className="skip-link" href="#noi-dung">
+          Đến nội dung chính
+        </a>
         <Header />
-        <main>{children}</main>
+        <main id="noi-dung">{children}</main>
         <Footer />
         <FloatingCta />
       </body>
