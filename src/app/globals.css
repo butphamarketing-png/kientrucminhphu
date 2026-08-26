@@ -409,6 +409,8 @@ img {
 .fix-toolbar ul li {
   text-align: center;
   width: 20%;
+  animation: toolbarBob 1.6s ease-in-out infinite;
+  will-change: transform;
 }
 
 .fix-toolbar ul li a {
@@ -422,6 +424,7 @@ img {
   height: 25px !important;
   width: auto;
   margin: 0 auto;
+  display: block;
 }
 
 .fix-toolbar ul li a span {
@@ -429,6 +432,25 @@ img {
   color: #fff;
   font-size: 13px;
   display: none;
+}
+
+@keyframes toolbarBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-7px);
+  }
+  55% {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fix-toolbar ul li {
+    animation: none !important;
+  }
 }
 
 /* Match original: toolbar + footer padding only on small phones */
