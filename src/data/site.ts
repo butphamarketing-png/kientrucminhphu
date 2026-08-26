@@ -359,27 +359,26 @@ export const houseDesigns = [
 export const news = [
   {
     title:
-      "MẪU NHÀ PHỐ HIỆN ĐẠI 2026: TỐI ƯU MẶT TIỀN HẸP – CÔNG NĂNG ĐẦY ĐỦ CHO GIA ĐÌNH ĐÔ THỊ",
+      "NHÀ PHỐ PHONG CÁCH SÁNG 2026: MẶT TIỀN TRẮNG – KHÔNG GIAN THOÁNG SÁNG CHO GIA ĐÌNH ĐÔ THỊ",
     href: "/tin-tuc/mau-nha-pho-hien-dai-2026",
-    image: m("upload/nha-pho/nha-pho-01-mat-tien.png"),
+    image: m("upload/nha-pho/nha-pho-sang-01-mat-tien.png"),
     date: "26/08/2026",
     excerpt:
-      "Nhà phố mặt tiền hẹp vẫn có thể đẹp và tiện nghi nếu được thiết kế đúng công năng. Minh Phú Building chia sẻ bộ mẫu nhà phố hiện đại 2026 cùng giải pháp tối ưu ánh sáng, thông gió và chi phí thi công tại TP.HCM.",
+      "Phong cách nhà phố sáng – tường trắng, kính lớn, nội thất tông sáng – giúp mặt tiền hẹp vẫn thoáng sáng và dễ chịu. Minh Phú Building giới thiệu bộ mẫu nhà phố phong cách sáng 2026 tối ưu ánh sáng tự nhiên và công năng tại TP.HCM.",
     body: [
-      "Trong điều kiện đô thị dày đặc như TP. Hồ Chí Minh, nhà phố vẫn là lựa chọn phổ biến của nhiều gia đình vì tận dụng tốt quỹ đất hẹp, dễ kết nối giao thông và phù hợp ngân sách đầu tư. Tuy nhiên, mặt tiền hạn chế dễ dẫn đến nhà tối, bí khí và bố trí công năng thiếu khoa học nếu không có phương án thiết kế bài bản.",
-      "Bộ mẫu nhà phố hiện đại 2026 của Minh Phú Building tập trung vào ba yếu tố: mặt đứng sạch sẽ – tối ưu ánh sáng tự nhiên – công năng rõ ràng cho gia đình 2–3 thế hệ. Mỗi phương án đều được tính toán theo hiện trạng thực tế: chiều ngang lô đất, hướng nhà, nhu cầu phòng ngủ và ngân sách thi công.",
-      "Về ngoại thất, xu hướng hiện đại ưu tiên khối hình học rõ ràng, vật liệu bền (sơn chống thấm, kính low-e, lam gỗ/nhôm), kết hợp ban công xanh để tạo điểm nhấn mà không làm tăng chi phí quá mức. Mặt tiền 4–5m vẫn có thể tạo cảm giác cao ráo, sang trọng khi xử lý tỷ lệ cửa sổ và khoảng lùi hợp lý.",
-      "Về nội thất, không gian tầng trệt thường bố trí gara/sân trước – phòng khách thông tầng – bếp ăn liên thông, giúp lưu thông gió và ánh sáng. Các tầng trên dành cho phòng ngủ, phòng làm việc; sân thượng trở thành nơi thư giãn, phơi đồ hoặc trồng cây, tăng giá trị sử dụng cho cả ngôi nhà.",
-      "Để kiểm soát chi phí, Minh Phú Building khuyến nghị gia chủ chốt rõ phạm vi: phần thô, hoàn thiện hay trọn gói. Báo giá được lập theo hạng mục – vật tư – tiến độ, hạn chế phát sinh. Quy trình gồm khảo sát, tư vấn concept, thiết kế chi tiết, dự toán và thi công đồng bộ.",
-      "Nếu bạn đang tìm mẫu nhà phố phù hợp mặt tiền hẹp hoặc muốn cải tạo nhà phố cũ thành không gian hiện đại, hãy liên hệ hotline để được tư vấn miễn phí theo hiện trạng thực tế.",
+      "Nhà phố phong cách sáng đang được nhiều gia chủ tại TP. Hồ Chí Minh lựa chọn vì tạo cảm giác rộng, sạch sẽ và dễ phối nội thất. Tường trắng, kính lớn, sàn gỗ sáng hoặc đá sáng giúp đón ánh sáng tự nhiên sâu vào nhà, khắc phục nhược điểm mặt tiền hẹp và chiều sâu dài.",
+      "Về ngoại thất, phong cách sáng ưu tiên khối hình học rõ, mặt dựng trắng – xám nhạt, kính low-e và chi tiết gỗ sáng. Ban công xanh, lan can mỏng giúp mặt tiền cao ráo mà không rối. Ánh sáng ban ngày phản chiếu tốt giúp ngôi nhà luôn tươi mới trên phố.",
+      "Về nội thất, phòng khách thông tầng – bếp ăn liên thông – phòng ngủ tông be/trắng là bộ ba không gian then chốt. Rèm voan, nội thất tối giản và ít màu đậm giúp ánh sáng lan đều. Sân thượng ban ngày trở thành nơi thư giãn, trồng cây, tăng trải nghiệm sống.",
+      "Khi thiết kế nhà phố sáng, Minh Phú Building chú trọng hướng nhà, kích thước cửa sổ, khoảng thông tầng và vật liệu phản quang vừa phải để tránh chói. Báo giá được lập rõ phần thô – hoàn thiện – trọn gói, phù hợp ngân sách từng gia đình.",
+      "Nếu bạn muốn nhà phố sáng thoáng, dễ ở và dễ bảo trì, hãy liên hệ hotline để được tư vấn concept theo hiện trạng lô đất thực tế.",
     ],
     gallery: [
-      m("upload/nha-pho/nha-pho-01-mat-tien.png"),
-      m("upload/nha-pho/nha-pho-02-phong-khach.png"),
-      m("upload/nha-pho/nha-pho-03-bep.png"),
-      m("upload/nha-pho/nha-pho-04-phong-ngu.png"),
-      m("upload/nha-pho/nha-pho-05-san-thuong.png"),
-      m("upload/nha-pho/nha-pho-06-ve-dem.png"),
+      m("upload/nha-pho/nha-pho-sang-01-mat-tien.png"),
+      m("upload/nha-pho/nha-pho-sang-02-phong-khach.png"),
+      m("upload/nha-pho/nha-pho-sang-03-bep.png"),
+      m("upload/nha-pho/nha-pho-sang-04-phong-ngu.png"),
+      m("upload/nha-pho/nha-pho-sang-05-san-thuong.png"),
+      m("upload/nha-pho/nha-pho-sang-06-tong-the.png"),
     ],
   },
   {
@@ -493,40 +492,40 @@ export const footerSupport = [
 
 const thumb = (file: string) => m(`thumbs/354x424x1/upload/news/${file}`);
 
-/** Bộ ảnh nhà phố mới (phối cảnh) */
+/** Bộ ảnh nhà phố phong cách sáng */
 export const townhouseGallery = [
   {
-    src: m("upload/nha-pho/nha-pho-01-mat-tien.png"),
-    alt: "Mặt tiền nhà phố hiện đại 3 tầng",
+    src: m("upload/nha-pho/nha-pho-sang-01-mat-tien.png"),
+    alt: "Mặt tiền nhà phố phong cách sáng – trắng hiện đại",
   },
   {
-    src: m("upload/nha-pho/nha-pho-02-phong-khach.png"),
-    alt: "Phòng khách thông tầng nhà phố",
+    src: m("upload/nha-pho/nha-pho-sang-02-phong-khach.png"),
+    alt: "Phòng khách sáng thoáng nhà phố",
   },
   {
-    src: m("upload/nha-pho/nha-pho-03-bep.png"),
-    alt: "Không gian bếp – bàn ăn nhà phố",
+    src: m("upload/nha-pho/nha-pho-sang-03-bep.png"),
+    alt: "Bếp trắng sáng nhà phố hiện đại",
   },
   {
-    src: m("upload/nha-pho/nha-pho-04-phong-ngu.png"),
-    alt: "Phòng ngủ master nhà phố",
+    src: m("upload/nha-pho/nha-pho-sang-04-phong-ngu.png"),
+    alt: "Phòng ngủ sáng tối giản nhà phố",
   },
   {
-    src: m("upload/nha-pho/nha-pho-05-san-thuong.png"),
-    alt: "Sân thượng thư giãn nhà phố",
+    src: m("upload/nha-pho/nha-pho-sang-05-san-thuong.png"),
+    alt: "Sân thượng ban ngày nhà phố sáng",
   },
   {
-    src: m("upload/nha-pho/nha-pho-06-ve-dem.png"),
-    alt: "Nhà phố hiện đại về đêm",
+    src: m("upload/nha-pho/nha-pho-sang-06-tong-the.png"),
+    alt: "Tổng thể nhà phố trắng sáng 3 tầng",
   },
 ];
 
 /** /thu-vien albums (from original) */
 export const galleryAlbums = [
   {
-    title: "NHÀ PHỐ MẪU 2026",
+    title: "NHÀ PHỐ PHONG CÁCH SÁNG",
     href: "/thu-vien/nha-pho-mau-2026",
-    image: m("upload/nha-pho/nha-pho-01-mat-tien.png"),
+    image: m("upload/nha-pho/nha-pho-sang-01-mat-tien.png"),
     images: townhouseGallery.map((g) => g.src),
   },
   { title: "NHÀ ỐNG", href: "/thu-vien/nha-ong", image: thumb("4-5593.png.webp") },
