@@ -26,6 +26,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -35,6 +36,7 @@ body {
   font-size: 14px;
   line-height: 1.7;
   margin: 0;
+  overflow-x: clip;
 }
 
 a {
@@ -380,7 +382,7 @@ img {
   margin-bottom: 2px;
 }
 
-/* Mobile bottom toolbar — hidden by default; original media shows ≤767px */
+/* Mobile bottom toolbar — hidden by default; show ≤767px */
 .fix-toolbar {
   display: none;
   background: var(--color-main);
@@ -394,7 +396,7 @@ img {
   right: 0;
   margin: 0 auto;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
-  z-index: 90;
+  z-index: 120;
 }
 
 .fix-toolbar ul {
@@ -431,31 +433,13 @@ img {
   display: none;
 }
 
-/* Match original: toolbar + footer padding only on small phones */
-@media (max-width: 767px) {
-  body {
-    padding-bottom: 62px;
-  }
-  .progress-wrap {
-    bottom: 80px;
-    right: 12px;
-  }
-  .fix-toolbar {
-    display: block !important;
-  }
-  .float-cta-right,
-  .btn-phone-float {
-    display: none !important;
-  }
-}
-
 .progress-wrap {
   position: fixed;
   right: 19px;
   bottom: 70px;
-  z-index: 100;
-  width: 50px;
-  height: 50px;
+  z-index: 110;
+  width: 44px;
+  height: 44px;
   border-radius: 50px;
   border: 2px solid #1198dc;
   background: #fff;
@@ -480,13 +464,13 @@ img {
   display: none !important;
 }
 
-/* Desktop social + pulse phone — right column */
+/* Desktop social + pulse phone — hidden on mobile by default */
 .float-cta-right {
+  display: none;
   position: fixed;
   right: 18px;
   bottom: 90px;
   z-index: 85;
-  display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 10px;
@@ -527,7 +511,6 @@ img {
   font-size: 22px;
 }
 
-/* Desktop pulse phone - right side like original iconphoneright */
 .btn-phone-float {
   position: relative;
   right: auto;
@@ -592,6 +575,52 @@ img {
   100% {
     transform: scale(1.85);
     opacity: 0;
+  }
+}
+
+/* Mobile ≤767: bottom bar only — hide desktop float cluster */
+@media (max-width: 767px) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  body {
+    padding-bottom: 62px;
+  }
+
+  .fix-toolbar {
+    display: block !important;
+  }
+
+  .float-cta-right,
+  .float-cta-right *,
+  .btn-phone-float,
+  .js-facebook-messenger-box,
+  .js-facebook-messenger-container,
+  .js-facebook-messenger-tooltip,
+  .btn-zalo {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  .progress-wrap {
+    bottom: 78px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Desktop / tablet landscape: show right float column */
+@media (min-width: 768px) {
+  .float-cta-right {
+    display: flex !important;
+  }
+
+  .fix-toolbar {
+    display: none !important;
   }
 }
 
@@ -668,10 +697,6 @@ img {
 }
 
 /* Patches so React markup matches original CSS behavior */
-.btn-phone-float {
-  display: flex;
-}
-
 .menu-mobile-width {
   width: 40px;
   flex-shrink: 0;
@@ -793,6 +818,10 @@ img {
   }
 }
 
+.benefit-nav {
+  display: none;
+}
+
 @media (max-width: 991px) {
   #menu {
     display: none !important;
@@ -805,11 +834,44 @@ img {
     overflow-x: auto;
     scroll-behavior: smooth;
     gap: 24px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .benefit-list::-webkit-scrollbar {
+    display: none;
   }
   .benefit-item {
     min-width: 70%;
     max-width: none !important;
     flex: 0 0 auto !important;
+  }
+  .benefit-nav {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--color-main);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+  }
+  .benefit-nav-prev {
+    left: 0;
+  }
+  .benefit-nav-next {
+    right: 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .benefit-nav {
+    display: none !important;
   }
 }
 

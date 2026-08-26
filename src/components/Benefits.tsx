@@ -38,7 +38,7 @@ export function Benefits() {
         <button
           type="button"
           aria-label="Trước"
-          className="lg:hidden absolute left-0 top-[40%] -translate-y-1/2 w-8 h-8 rounded bg-white/90 text-[var(--color-main)] grid place-items-center shadow"
+          className="benefit-nav benefit-nav-prev"
           onClick={() => scroller.current?.scrollBy({ left: -260, behavior: "smooth" })}
         >
           <IconChevronLeft size={18} />
@@ -46,7 +46,7 @@ export function Benefits() {
         <button
           type="button"
           aria-label="Sau"
-          className="lg:hidden absolute right-0 top-[40%] -translate-y-1/2 w-8 h-8 rounded bg-white/90 text-[var(--color-main)] grid place-items-center shadow"
+          className="benefit-nav benefit-nav-next"
           onClick={() => scroller.current?.scrollBy({ left: 260, behavior: "smooth" })}
         >
           <IconChevronRight size={18} />
