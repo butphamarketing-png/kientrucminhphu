@@ -361,7 +361,7 @@ export const news = [
     title:
       "NHÀ PHỐ PHONG CÁCH SÁNG 2026: MẶT TIỀN TRẮNG – KHÔNG GIAN THOÁNG SÁNG CHO GIA ĐÌNH ĐÔ THỊ",
     href: "/tin-tuc/mau-nha-pho-hien-dai-2026",
-    image: m("upload/nha-pho/nha-pho-sang-01-mat-tien.png"),
+    image: m("upload/nha-pho/fanpage/fp-nha-sang-01-mat-tien.png"),
     date: "26/08/2026",
     excerpt:
       "Phong cách nhà phố sáng – tường trắng, kính lớn, nội thất tông sáng – giúp mặt tiền hẹp vẫn thoáng sáng và dễ chịu. Minh Phú Building giới thiệu bộ mẫu nhà phố phong cách sáng 2026 tối ưu ánh sáng tự nhiên và công năng tại TP.HCM.",
@@ -373,12 +373,12 @@ export const news = [
       "Nếu bạn muốn nhà phố sáng thoáng, dễ ở và dễ bảo trì, hãy liên hệ hotline để được tư vấn concept theo hiện trạng lô đất thực tế.",
     ],
     gallery: [
-      m("upload/nha-pho/nha-pho-sang-01-mat-tien.png"),
-      m("upload/nha-pho/nha-pho-sang-02-phong-khach.png"),
-      m("upload/nha-pho/nha-pho-sang-03-bep.png"),
-      m("upload/nha-pho/nha-pho-sang-04-phong-ngu.png"),
-      m("upload/nha-pho/nha-pho-sang-05-san-thuong.png"),
-      m("upload/nha-pho/nha-pho-sang-06-tong-the.png"),
+      m("upload/nha-pho/fanpage/fp-nha-sang-01-mat-tien.png"),
+      m("upload/nha-pho/fanpage/fp-nha-sang-02-khach.png"),
+      m("upload/nha-pho/fanpage/fp-nha-sang-03-bep.png"),
+      m("upload/nha-pho/fanpage/fp-nha-sang-04-ngu.png"),
+      m("upload/nha-pho/fanpage/fp-nha-sang-05-san-thuong.png"),
+      m("upload/nha-pho/fanpage/fp-nha-sang-06-tong-the.png"),
     ],
   },
   {
@@ -492,31 +492,31 @@ export const footerSupport = [
 
 const thumb = (file: string) => m(`thumbs/354x424x1/upload/news/${file}`);
 
-/** Bộ ảnh nhà phố phong cách sáng */
+/** Bộ ảnh nhà phố phong cách sáng (web + fanpage 1:1) */
 export const townhouseGallery = [
   {
-    src: m("upload/nha-pho/nha-pho-sang-01-mat-tien.png"),
-    alt: "Mặt tiền nhà phố phong cách sáng – trắng hiện đại",
+    src: m("upload/nha-pho/fanpage/fp-nha-sang-01-mat-tien.png"),
+    alt: "Mặt tiền nhà phố phong cách sáng",
   },
   {
-    src: m("upload/nha-pho/nha-pho-sang-02-phong-khach.png"),
+    src: m("upload/nha-pho/fanpage/fp-nha-sang-02-khach.png"),
     alt: "Phòng khách sáng thoáng nhà phố",
   },
   {
-    src: m("upload/nha-pho/nha-pho-sang-03-bep.png"),
-    alt: "Bếp trắng sáng nhà phố hiện đại",
+    src: m("upload/nha-pho/fanpage/fp-nha-sang-03-bep.png"),
+    alt: "Bếp trắng sáng nhà phố",
   },
   {
-    src: m("upload/nha-pho/nha-pho-sang-04-phong-ngu.png"),
-    alt: "Phòng ngủ sáng tối giản nhà phố",
+    src: m("upload/nha-pho/fanpage/fp-nha-sang-04-ngu.png"),
+    alt: "Phòng ngủ sáng nhà phố",
   },
   {
-    src: m("upload/nha-pho/nha-pho-sang-05-san-thuong.png"),
-    alt: "Sân thượng ban ngày nhà phố sáng",
+    src: m("upload/nha-pho/fanpage/fp-nha-sang-05-san-thuong.png"),
+    alt: "Sân thượng ban ngày nhà phố",
   },
   {
-    src: m("upload/nha-pho/nha-pho-sang-06-tong-the.png"),
-    alt: "Tổng thể nhà phố trắng sáng 3 tầng",
+    src: m("upload/nha-pho/fanpage/fp-nha-sang-06-tong-the.png"),
+    alt: "Tổng thể nhà phố trắng sáng",
   },
 ];
 
@@ -525,7 +525,7 @@ export const galleryAlbums = [
   {
     title: "NHÀ PHỐ PHONG CÁCH SÁNG",
     href: "/thu-vien/nha-pho-mau-2026",
-    image: m("upload/nha-pho/nha-pho-sang-01-mat-tien.png"),
+    image: m("upload/nha-pho/fanpage/fp-nha-sang-01-mat-tien.png"),
     images: townhouseGallery.map((g) => g.src),
   },
   { title: "NHÀ ỐNG", href: "/thu-vien/nha-ong", image: thumb("4-5593.png.webp") },
