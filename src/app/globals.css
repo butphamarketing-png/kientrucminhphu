@@ -43,6 +43,22 @@ a {
   transition: color 0.3s ease, opacity 0.3s ease;
 }
 
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -80px;
+  z-index: 10000;
+  background: #1198dc;
+  color: #fff;
+  padding: 8px 14px;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -691,13 +707,16 @@ img {
   border: 0;
 }
 
-.breadCrumbs .breadcrumb {
+.breadCrumbs .breadcrumb,
+.breadCrumbs ol.breadcrumb {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
   align-items: center;
   gap: 4px;
   font-size: 13px;
+  margin: 0;
+  padding: 0;
 }
 
 .breadCrumbs .breadcrumb-item + .breadcrumb-item::before {
@@ -880,3 +899,174 @@ img {
 @media (min-width: 992px) {
   #mmenu, .mmenu-overlay { display: none !important; }
 }
+
+/* Pricing detail page */
+.pricing-detail-grid {
+  display: grid;
+  gap: 28px 48px;
+  align-items: start;
+}
+
+@media (min-width: 992px) {
+  .pricing-detail-grid {
+    grid-template-columns: 1.05fr 1fr;
+  }
+}
+
+.pricing-detail-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: linear-gradient(145deg, #e8f4fb 0%, #f4f8fb 55%, #eef3f7 100%);
+}
+
+.pricing-detail-media img {
+  object-fit: cover;
+}
+
+.pricing-detail-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pricing-detail-lead {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #444;
+  text-align: justify;
+}
+
+.pricing-detail-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.pricing-detail-list li {
+  position: relative;
+  padding-left: 28px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #333;
+}
+
+.pricing-detail-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #1198dc;
+  box-shadow: inset 0 0 0 3px #fff, 0 0 0 1px #1198dc;
+}
+
+.pricing-detail-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 0 4px;
+  border-top: 1px solid #e6eef3;
+}
+
+.pricing-detail-contact-label {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #6c757d;
+}
+
+.pricing-detail-hotline {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1198dc;
+  line-height: 1.3;
+}
+
+.pricing-detail-email {
+  font-size: 15px;
+  color: #444;
+}
+
+.pricing-detail-email:hover,
+.pricing-detail-hotline:hover {
+  color: #0e7ab3;
+}
+
+.pricing-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.pricing-detail-actions .btn-more {
+  margin: 0;
+  min-width: 180px;
+}
+
+.pricing-btn-primary {
+  background-color: #1198dc;
+  color: #fff !important;
+  border-color: #1198dc;
+}
+
+.pricing-btn-primary:hover {
+  background-color: #0e7ab3;
+  border-color: #0e7ab3;
+  color: #fff !important;
+}
+
+.pricing-related {
+  margin-top: 56px;
+  padding-top: 8px;
+}
+
+.pricing-related-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .pricing-related-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}
+
+.pricing-related-item {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.pricing-related-thumb {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #eee;
+  margin-bottom: 10px;
+}
+
+.pricing-related-name {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1.35;
+  color: #1c1c1c;
+}
+
+.pricing-related-item:hover .pricing-related-name {
+  color: #1198dc;
+}
+

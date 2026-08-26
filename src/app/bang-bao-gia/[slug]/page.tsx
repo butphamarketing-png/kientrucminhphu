@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
 import { pricingCards, site } from "@/data/site";
@@ -12,6 +13,8 @@ const items = pricingCards.map((p) => ({
   title: p.title,
   image: p.image,
   href: p.href,
+  summary: p.summary,
+  highlights: p.highlights,
 }));
 
 export async function generateStaticParams() {
@@ -24,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!item) return { title: "Báo giá" };
   return pageMeta({
     title: item.title,
-    description: `Báo giá ${item.title} tại ${site.shortName}. Liên hệ hotline ${site.phone} để nhận tư vấn chi tiết.`,
+    description: item.summary,
     path: item.href,
     image: item.image,
   });
@@ -35,40 +38,80 @@ export default async function BaoGiaDetailPage({ params }: Props) {
   const item = items.find((i) => i.slug === slug);
   if (!item) notFound();
 
+  const others = items.filter((i) => i.slug !== slug).slice(0, 4);
+
   return (
     <>
       <PageHero
         title={item.title}
         crumbs={[
           { label: "Bảng báo giá", href: "/bang-bao-gia" },
-          { label: item.title },
+          { label: item.title, href: item.href },
         ]}
+        canonicalPath={item.href}
       />
-      <section className="pb-12 md:pb-16 pt-4">
-        <div className="container-mp grid lg:grid-cols-2 gap-10 items-start">
-          <div className="relative aspect-[354/424] bg-[#eee] overflow-hidden btn-hover-img scale-img">
-            <Image src={item.image} alt={item.title} fill className="object-cover" sizes="50vw" />
+
+      <section className="pricing-detail pb-12 md:pb-16 pt-2">
+        <div className="container-mp">
+          <div className="pricing-detail-grid">
+            <div className="pricing-detail-media">
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 991px) 100vw, 48vw"
+                priority
+              />
+            </div>
+
+            <div className="pricing-detail-body">
+              <p className="pricing-detail-lead">{item.summary}</p>
+
+              <ul className="pricing-detail-list">
+                {item.highlights.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+
+              <div className="pricing-detail-contact">
+                <p className="pricing-detail-contact-label">Nhận báo giá chi tiết</p>
+                <a className="pricing-detail-hotline" href={`tel:${site.phoneRaw}`}>
+                  Hotline: {site.phone}
+                </a>
+                <a className="pricing-detail-email" href={`mailto:${site.email}`}>
+                  {site.email}
+                </a>
+              </div>
+
+              <div className="pricing-detail-actions">
+                <a className="btn-more pricing-btn-primary" href={`tel:${site.phoneRaw}`}>
+                  Gọi tư vấn ngay
+                </a>
+                <Link className="btn-more" href="/lien-he">
+                  Gửi yêu cầu báo giá
+                </Link>
+              </div>
+            </div>
           </div>
-          <div>
-            <h2 className="mt-0 text-[22px] font-bold uppercase text-[var(--color-main)]">
-              {item.title}
-            </h2>
-            <p className="text-[15px] leading-7 text-[#444]">
-              Liên hệ Minh Phú Building để nhận báo giá chi tiết theo hiện trạng và yêu cầu
-              của bạn. Đơn giá được lập minh bạch theo hạng mục, vật tư và phạm vi thi công.
-            </p>
-            <p className="text-[15px] leading-7">
-              Hotline:{" "}
-              <a className="text-[var(--color-main)] font-semibold" href={`tel:${site.phoneRaw}`}>
-                {site.phone}
-              </a>
-              <br />
-              Email:{" "}
-              <a className="text-[var(--color-main)] font-semibold" href={`mailto:${site.email}`}>
-                {site.email}
-              </a>
-            </p>
-          </div>
+
+          {others.length > 0 ? (
+            <div className="pricing-related">
+              <div className="title-main" style={{ marginBottom: 28 }}>
+                <h2>Bảng báo giá khác</h2>
+              </div>
+              <div className="pricing-related-grid">
+                {others.map((o) => (
+                  <Link key={o.href} href={o.href} className="pricing-related-item scale-img btn-hover-img">
+                    <div className="pricing-related-thumb">
+                      <Image src={o.image} alt={o.title} fill className="object-cover" sizes="25vw" />
+                    </div>
+                    <span className="pricing-related-name">{o.title}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ) : null}
         </div>
       </section>
     </>

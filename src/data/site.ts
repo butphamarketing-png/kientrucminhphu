@@ -504,27 +504,67 @@ export const pricingCards = [
   {
     title: "BÁO GIÁ TRỌN GÓI",
     href: "/bang-bao-gia/bao-gia-tron-goi",
-    image: thumb("logominhphu-1336.jpg.webp"),
+    image: m("thumbs/468x447x1/upload/news/image2026-01-28103708610-7789.png.webp"),
+    summary:
+      "Gói thi công nhà phố trọn gói từ móng đến hoàn thiện. Báo giá minh bạch theo hạng mục, vật tư và phạm vi thi công thực tế.",
+    highlights: [
+      "Khảo sát hiện trạng & tư vấn phương án miễn phí",
+      "Dự toán chi tiết theo hạng mục – vật tư",
+      "Thi công đồng bộ, kiểm soát tiến độ rõ ràng",
+      "Bảo hành & hỗ trợ sau bàn giao",
+    ],
   },
   {
     title: "SỬA CHỮA TRỌN GÓI",
     href: "/bang-bao-gia/sua-chua-tron-goi",
     image: thumb("chatgpt-image-085634-29-thg-1-2026-8827.png.webp"),
+    summary:
+      "Dịch vụ sửa chữa – cải tạo nhà phố trọn gói: nâng tầng, cải tạo công năng, hoàn thiện nội – ngoại thất theo ngân sách.",
+    highlights: [
+      "Đánh giá kết cấu & hiện trạng trước khi thi công",
+      "Phương án tối ưu chi phí – công năng",
+      "Thi công gọn gàng, hạn chế ảnh hưởng sinh hoạt",
+      "Cam kết tiến độ và chất lượng bàn giao",
+    ],
   },
   {
     title: "THIẾT KẾ NHÀ",
     href: "/bang-bao-gia/thiet-ke-nha",
     image: thumb("chatgpt-image-085623-29-thg-1-2026-1861.png.webp"),
+    summary:
+      "Thiết kế nhà phố, biệt thự phong cách hiện đại & tân cổ điển. Hồ sơ bản vẽ đầy đủ, dễ triển khai thi công.",
+    highlights: [
+      "Concept phù hợp nhu cầu & ngân sách",
+      "Bản vẽ kiến trúc – kết cấu – điện nước",
+      "Phối cảnh 3D trực quan",
+      "Hỗ trợ điều chỉnh trước khi ký thi công",
+    ],
   },
   {
     title: "BÁO GIÁ PHẦN THÔ",
     href: "/bang-bao-gia/bao-gia-phan-tho",
-    image: thumb("logominhphu-3093.jpg.webp"),
+    image: m("thumbs/468x447x1/upload/news/6193621581221115304311666815576124427485979009n-5934.jpg.webp"),
+    summary:
+      "Báo giá phần thô rõ ràng theo m² và hạng mục: móng, khung, sàn, tường, mái — giúp kiểm soát chi phí giai đoạn đầu.",
+    highlights: [
+      "Đơn giá phần thô theo cấp độ hoàn thiện",
+      "Liệt kê vật tư chính rõ ràng",
+      "Phù hợp nhà phố, biệt thự, nâng tầng",
+      "Dễ so sánh & quyết định đầu tư",
+    ],
   },
   {
     title: "KHUYẾN MẠI",
     href: "/bang-bao-gia/khuyen-mai",
     image: thumb("chatgpt-image-114017-3-thg-2-2026-2706.png.webp"),
+    summary:
+      "Ưu đãi thiết kế – thi công theo từng giai đoạn. Liên hệ hotline để nhận chương trình khuyến mại mới nhất.",
+    highlights: [
+      "Ưu đãi phí thiết kế khi ký thi công",
+      "Hỗ trợ khảo sát & tư vấn miễn phí",
+      "Quà tặng / hỗ trợ hoàn thiện theo gói",
+      "Áp dụng theo điều kiện từng thời điểm",
+    ],
   },
 ];
 
