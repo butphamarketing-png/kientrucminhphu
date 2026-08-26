@@ -127,8 +127,8 @@ export function FloatingCta() {
       {/* Mobile bottom toolbar ≤767px */}
       <div className="fix-toolbar">
         <ul>
-          {items.map((item) => (
-            <li key={item.id}>
+          {items.map((item, i) => (
+            <li key={item.id} style={{ animationDelay: `${i * 0.28}s` }}>
               <a
                 href={item.href}
                 target={item.external ? "_blank" : undefined}
