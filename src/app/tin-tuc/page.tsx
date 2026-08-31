@@ -49,7 +49,13 @@ export default async function TinTucPage({ searchParams }: Props) {
               className="news-item group rounded-lg border border-[#DCDCDC] bg-white p-2 pb-5 hover:border-[var(--color-main)] transition-colors"
             >
               <div className="relative aspect-[308/151] overflow-hidden rounded btn-hover-img scale-img">
-                <Image src={n.image} alt={n.title} fill className="object-cover" sizes="33vw" />
+                <Image
+                  src={n.image}
+                  alt={"imageAlt" in n && typeof n.imageAlt === "string" ? n.imageAlt : n.title}
+                  fill
+                  className="object-cover"
+                  sizes="33vw"
+                />
               </div>
               <p className="m-0 mt-3 px-1 text-[12px] text-[#999]">{n.date}</p>
               <h2 className="mt-2 mb-0 px-1 text-[15px] md:text-[16px] font-semibold uppercase leading-[1.3] text-split-2 group-hover:text-[var(--color-main)]">

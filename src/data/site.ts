@@ -1,3 +1,5 @@
+import { seoArticles, phongCachSangArticle } from "./seoArticles";
+
 export const site = {
   name: "CÔNG TY TNHH KIẾN TRÚC MINH PHÚ",
   shortName: "Kiến trúc Minh Phú",
@@ -357,75 +359,200 @@ export const houseDesigns = [
 ];
 
 export const news = [
+  ...seoArticles,
   {
     title:
-      "NHÀ PHỐ PHONG CÁCH SÁNG 2026: MẶT TIỀN TRẮNG – KHÔNG GIAN THOÁNG SÁNG CHO GIA ĐÌNH ĐÔ THỊ",
-    href: "/tin-tuc/mau-nha-pho-hien-dai-2026",
-    image: m("upload/nha-pho/fanpage/fp-nha-sang-01-mat-tien.png"),
-    date: "26/08/2026",
+      "Thiết kế nhà phố mặt tiền 5m: 7 giải pháp tối ưu công năng & ánh sáng 2026",
+    href: "/tin-tuc/thiet-ke-nha-pho-mat-tien-5m",
+    image: m("upload/mat-tien-5m/mt5m-01-thumbnail-mat-tien.png"),
+    imageAlt: "Thiết kế nhà phố mặt tiền 5m — mẫu mặt tiền hiện đại tại TP.HCM",
+    date: "27/08/2026",
+    keywords: [
+      "thiết kế nhà phố mặt tiền 5m",
+      "nhà phố mặt tiền hẹp",
+      "thiết kế nhà phố 5m",
+      "nhà phố 1 trệt 2 lầu mặt tiền 5m",
+      "tối ưu nhà phố hẹp",
+    ],
     excerpt:
-      "Phong cách nhà phố sáng – tường trắng, kính lớn, nội thất tông sáng – giúp mặt tiền hẹp vẫn thoáng sáng và dễ chịu. Minh Phú Building giới thiệu bộ mẫu nhà phố phong cách sáng 2026 tối ưu ánh sáng tự nhiên và công năng tại TP.HCM.",
+      "Thiết kế nhà phố mặt tiền 5m cần tối ưu thông tầng, mặt dựng và công năng. Minh Phú Building gợi ý 7 giải pháp sáng – rộng cho lô hẹp tại TP.HCM. Tư vấn miễn phí: 0912 166 079.",
     body: [
-      "Nhà phố phong cách sáng đang được nhiều gia chủ tại TP. Hồ Chí Minh lựa chọn vì tạo cảm giác rộng, sạch sẽ và dễ phối nội thất. Tường trắng, kính lớn, sàn gỗ sáng hoặc đá sáng giúp đón ánh sáng tự nhiên sâu vào nhà, khắc phục nhược điểm mặt tiền hẹp và chiều sâu dài.",
-      "Về ngoại thất, phong cách sáng ưu tiên khối hình học rõ, mặt dựng trắng – xám nhạt, kính low-e và chi tiết gỗ sáng. Ban công xanh, lan can mỏng giúp mặt tiền cao ráo mà không rối. Ánh sáng ban ngày phản chiếu tốt giúp ngôi nhà luôn tươi mới trên phố.",
-      "Về nội thất, phòng khách thông tầng – bếp ăn liên thông – phòng ngủ tông be/trắng là bộ ba không gian then chốt. Rèm voan, nội thất tối giản và ít màu đậm giúp ánh sáng lan đều. Sân thượng ban ngày trở thành nơi thư giãn, trồng cây, tăng trải nghiệm sống.",
-      "Khi thiết kế nhà phố sáng, Minh Phú Building chú trọng hướng nhà, kích thước cửa sổ, khoảng thông tầng và vật liệu phản quang vừa phải để tránh chói. Báo giá được lập rõ phần thô – hoàn thiện – trọn gói, phù hợp ngân sách từng gia đình.",
-      "Nếu bạn muốn nhà phố sáng thoáng, dễ ở và dễ bảo trì, hãy liên hệ hotline để được tư vấn concept theo hiện trạng lô đất thực tế.",
+      "Lô đất hẹp là thực tế phổ biến tại TP.HCM. Thiết kế nhà phố mặt tiền 5m nếu làm đúng sẽ vẫn sáng, thoáng và đủ phòng ngủ; làm sai dễ tối, nóng và “bí” theo chiều sâu. Bài viết này của Minh Phú Building tổng hợp nguyên tắc và 7 giải pháp thực tế để thiết kế nhà phố mặt tiền 5m đạt công năng – thẩm mỹ trong ngân sách hợp lý.",
+      "Nhiều gia chủ nghĩ mặt tiền hẹp đồng nghĩa với nhà chật. Thực tế, cảm giác rộng hay hẹp phụ thuộc cách tổ chức không gian hơn là con số mét ngang. Khi thiết kế nhà phố mặt tiền 5m, ưu tiên ánh sáng tự nhiên, giảm tường ngăn và chọn nội thất đúng tỷ lệ thường mang lại trải nghiệm ở tốt hơn nhà rộng nhưng bố trí rối.",
+      {
+        type: "h2",
+        text: "Thiết kế nhà phố mặt tiền 5m cần ưu tiên điều gì?",
+      },
+      "Với bề ngang khoảng 5m, mọi quyết định về cầu thang, thông tầng, kích thước cửa và bố trí bếp – WC đều ảnh hưởng trực tiếp trải nghiệm ở. Mục tiêu của thiết kế nhà phố mặt tiền 5m là: đưa ánh sáng sâu vào nhà, giảm hành lang chết, giữ chiều rộng thông thủy cho phòng chính, và tạo mặt tiền rõ khối nhìn từ phố.",
+      "Gia chủ nên chốt sớm số thành viên, số phòng ngủ, có để xe trong nhà hay không, và ngân sách hoàn thiện. Những thông tin này giúp kiến trúc sư chọn phương án 1 trệt 1 lầu, 1 trệt 2 lầu hoặc cao hơn mà không vượt quỹ đất và quy định xây dựng địa phương.",
+      "Ngoài ra, cần xác định hướng nhà, nhà liền kề hai bên có chắn sáng không, và chiều sâu lô đất. Lô sâu trên 16–18m đòi hỏi giếng trời hoặc ô lấy sáng giữa nhà mạnh hơn. Đây là bước “chẩn đoán” trước khi vẽ — tránh sửa lớn khi đã lên phối cảnh 3D.",
+      {
+        type: "h2",
+        text: "7 giải pháp tối ưu khi thiết kế nhà phố mặt tiền 5m",
+      },
+      "1) Đặt cầu thang sát tường biên và chọn dạng thẳng hoặc chữ U gọn để giữ khoảng giữa cho phòng khách – bếp. 2) Mở thông tầng gần mặt tiền hoặc giữa nhà để ánh sáng đổ xuống các tầng. 3) Dùng cửa kính lớn + ô lấy sáng trên cao thay vì tường đặc kín. 4) Liên thông khách – bếp – ăn ở tầng trệt để cảm giác rộng hơn bề ngang thực tế.",
+      "5) Hạn chế phòng quá nhỏ chia cắt bằng tường đặc; ưu tiên vách kính, tủ cao sát tường. 6) Sân thượng hoặc giếng trời phía sau giúp thông gió tự nhiên cho nhà sâu. 7) Mặt dựng thiết kế nhà phố mặt tiền 5m nên theo khối dọc rõ, màu sáng hoặc trung tính, chi tiết gỗ/kim loại vừa đủ — tránh phào chỉ dày làm mặt tiền thêm “nặng”.",
+      "Khi áp dụng đồng bộ 7 giải pháp trên, nhà 5m thường “mở” rõ ở tầng trệt và sáng hơn ở các phòng giữa. Minh Phú Building hay kiểm tra lại bằng mặt cắt đứng: nếu ánh sáng và gió chưa xuyên được, sẽ điều chỉnh vị trí thông tầng trước khi chốt hồ sơ thi công.",
+      {
+        type: "h2",
+        text: "Bố trí công năng mẫu cho nhà phố 5m",
+      },
+      "Phương án phổ biến: tầng trệt để xe + khách + bếp ăn; lầu 1 hai phòng ngủ hoặc một master; lầu 2 phòng thờ / phòng làm việc / phòng ngủ phụ; sân thượng giặt phơi và cây xanh. Khi thiết kế nhà phố mặt tiền 5m, WC nên đặt về phía tường kỹ thuật để đường ống ngắn, dễ bảo trì và không chiếm diện tích giữa nhà.",
+      "Nếu cần nhiều phòng ngủ, có thể thu gọn phòng khách theo chiều sâu và đẩy bếp về sau, miễn là vẫn giữ hành lang ánh sáng. Minh Phú Building thường mô phỏng 2–3 phương án mặt bằng trước khi chốt, để gia chủ thấy rõ chỗ nào rộng, chỗ nào cần đánh đổi.",
+      "Với gia đình trẻ ít thành viên, phương án 1 trệt 1 lầu + sân thượng thường đủ dùng và dễ kiểm soát chi phí. Gia đình đông người hoặc có nhu cầu cho thuê một tầng sẽ nghiêng về 1 trệt 2–3 lầu, nhưng phải chấp nhận cầu thang chiếm diện tích và cần thông tầng mạnh hơn.",
+      {
+        type: "h2",
+        text: "Ánh sáng, thông gió và vật liệu cho nhà hẹp",
+      },
+      "Nhà mặt tiền 5m dễ tối ở giữa và cuối nhà. Giải pháp đồng bộ: kính low-e mặt tiền, giếng trời, sơn tường sáng, sàn gỗ sáng hoặc đá sáng, gương khu vực điểm nhấn. Tránh nhồi nội thất tối màu và rèm dày kín ngày. Thiết kế nhà phố mặt tiền 5m đạt điểm cao về trải nghiệm khi luồng gió từ trước – sau và từ dưới – trên được tính từ giai đoạn concept.",
+      "Về kết cấu, nhà liền kề cần khảo sát tường chung, móng và khả năng thi công trong hẻm. Hồ sơ thiết kế đầy đủ (kiến trúc – kết cấu – điện nước) giúp thi công đúng bản vẽ và hạn chế phát sinh. Tham khảo thêm dịch vụ [thiết kế nhà phố](/dich-vu/thiet-ke-nha-pho) và [bảng giá thiết kế nhà](/bang-bao-gia/thiet-ke-nha).",
+      "Vật liệu hoàn thiện nên chọn tông sáng – trung tính, bề mặt dễ vệ sinh. Lan can mỏng, cửa sổ đúng tỷ lệ và hệ thống đèn âm trần hỗ trợ khi trời tối sớm. Tránh mặt tiền “đóng hộp” bằng tấm đặc kín — đó là lỗi hay gặp khiến nhà hẹp càng tối.",
+      {
+        type: "h2",
+        text: "Chi phí và quy trình thiết kế nhà phố mặt tiền 5m",
+      },
+      "Chi phí thiết kế nhà phố mặt tiền 5m phụ thuộc số tầng, mức độ chi tiết bản vẽ và yêu cầu phối cảnh 3D. Phí thiết kế thường chỉ là một phần nhỏ so với tổng mức đầu tư xây dựng, nhưng quyết định phần lớn công năng và khả năng kiểm soát [báo giá xây nhà phố 2026](/tin-tuc/bao-gia-xay-nha-pho-2026) về sau.",
+      "Quy trình tại Minh Phú Building: khảo sát hiện trạng → concept mặt bằng & mặt đứng → chỉnh sửa theo nhu cầu → hồ sơ kỹ thuật → bàn giao và hỗ trợ khi thi công. Nếu bạn muốn một đầu mối từ thiết kế đến xây dựng, xem thêm [thi công nhà phố trọn gói](/dich-vu/thi-cong-xay-dung) và album [nhà phố mẫu 2026](/thu-vien/nha-pho-mau-2026).",
+      "Gia chủ nên yêu cầu báo giá thiết kế ghi rõ sản phẩm bàn giao (mặt bằng, mặt đứng, mặt cắt, triển khai WC – bếp, phối cảnh). Hồ sơ càng rõ, dự toán xây dựng càng sát — giảm tranh luận phát sinh giữa thiết kế và nhà thầu.",
+      {
+        type: "h2",
+        text: "FAQ — thiết kế nhà phố mặt tiền 5m",
+      },
+      "Thiết kế nhà phố mặt tiền 5m có làm được 1 trệt 2 lầu không? Được, nếu chiều sâu và quy định xây dựng cho phép; cần tính kỹ cầu thang và thông tầng để không bí.",
+      "Nhà 5m có nên làm gara trong nhà? Có thể, nhưng sẽ chiếm chiều sâu tầng trệt. Nhiều gia chủ chọn để xe gọn phía trước và ưu tiên không gian khách – bếp liên thông.",
+      "Làm sao nhà hẹp vẫn sáng? Kết hợp cửa lớn, thông tầng, giếng trời và vật liệu phản quang vừa phải — đây là phần cốt lõi khi thiết kế nhà phố mặt tiền 5m.",
+      "Có cần xin phép xây dựng không? Có. Hồ sơ thiết kế chuẩn hỗ trợ thủ tục và thi công đúng pháp lý. Bạn nên nhờ đơn vị tư vấn theo địa chỉ lô đất cụ thể.",
+      "Thiết kế xong có thi công luôn được không? Có. Minh Phú Building đồng bộ bản vẽ với đội thi công để hạn chế lệch giữa phối cảnh và hiện trạng thực tế.",
+      {
+        type: "h2",
+        text: "Kết luận — nhận concept mặt tiền 5m phù hợp ngân sách",
+      },
+      "Thiết kế nhà phố mặt tiền 5m thành công khi ưu tiên ánh sáng, mặt bằng gọn và mặt tiền rõ khối thay vì chạy theo chi tiết trang trí. Mỗi mét ngang đều quý — hãy dùng cho công năng thật sự cần.",
+      "Nếu bạn đang có lô 5m tại TP.HCM và cần thiết kế nhà phố mặt tiền 5m (kèm dự toán thô – hoàn thiện), hãy gửi kích thước đất và số thành viên gia đình. Minh Phú Building tư vấn concept miễn phí ở bước đầu. Liên hệ qua [trang liên hệ](/lien-he) hoặc hotline để được hỗ trợ.",
+      "Bạn cũng có thể tham khảo xu hướng nhà hẹp đô thị qua các tài liệu quy hoạch – xây dựng công bố tại [Bộ Xây dựng](https://moc.gov.vn).",
     ],
     gallery: [
-      m("upload/nha-pho/fanpage/fp-nha-sang-01-mat-tien.png"),
-      m("upload/nha-pho/fanpage/fp-nha-sang-02-khach.png"),
-      m("upload/nha-pho/fanpage/fp-nha-sang-03-bep.png"),
-      m("upload/nha-pho/fanpage/fp-nha-sang-04-ngu.png"),
-      m("upload/nha-pho/fanpage/fp-nha-sang-05-san-thuong.png"),
-      m("upload/nha-pho/fanpage/fp-nha-sang-06-tong-the.png"),
+      {
+        src: m("upload/mat-tien-5m/mt5m-01-thumbnail-mat-tien.png"),
+        alt: "Thiết kế nhà phố mặt tiền 5m — thumbnail mặt tiền hiện đại",
+      },
+      {
+        src: m("upload/mat-tien-5m/mt5m-02-mat-dung.png"),
+        alt: "Mặt dựng nhà phố 5m tối ưu tỷ lệ đứng",
+      },
+      {
+        src: m("upload/mat-tien-5m/mt5m-03-phong-khach.png"),
+        alt: "Phòng khách thông tầng trong thiết kế nhà phố mặt tiền 5m",
+      },
+      {
+        src: m("upload/mat-tien-5m/mt5m-04-bep-an.png"),
+        alt: "Bếp ăn liên thông cho nhà phố mặt tiền hẹp 5m",
+      },
+      {
+        src: m("upload/mat-tien-5m/mt5m-05-thong-tang.png"),
+        alt: "Giếng trời và cầu thang lấy sáng nhà phố 5m",
+      },
+      {
+        src: m("upload/mat-tien-5m/mt5m-06-phong-ngu.png"),
+        alt: "Phòng ngủ tối ưu trong thiết kế nhà phố mặt tiền 5m",
+      },
     ],
   },
   {
     title:
-      "XU HƯỚNG SỬA CHỮA – CẢI TẠO NHÀ 2026: GIẢI PHÁP NÂNG CẤP KHÔNG GIAN SỐNG HIỆU QUẢ",
-    href: "/tin-tuc/xu-huong-sua-chua-cai-tao-nha-2026",
-    image: m("thumbs/308x151x1/upload/news/25-thu-phong-view-01-2741.jpg.webp"),
-    date: "05/02/2026",
+      "Báo giá xây nhà phố 2026: phần thô – hoàn thiện – trọn gói minh bạch tại TP.HCM",
+    href: "/tin-tuc/bao-gia-xay-nha-pho-2026",
+    image: m("upload/bao-gia/bao-gia-01-thumbnail-mat-tien.png"),
+    imageAlt: "Báo giá xây nhà phố 2026 — mặt tiền nhà phố hoàn thiện tại TP.HCM",
+    date: "26/08/2026",
+    keywords: [
+      "báo giá xây nhà phố 2026",
+      "báo giá phần thô nhà phố",
+      "báo giá hoàn thiện nhà phố",
+      "xây nhà phố trọn gói TP.HCM",
+      "đơn giá xây nhà phố",
+    ],
     excerpt:
-      "Những năm gần đây, thị trường sửa chữa và cải tạo nhà ở tại TP. Hồ Chí Minh ghi nhận sự tăng trưởng mạnh mẽ. Sự xuống cấp của nhà ở theo thời gian cùng với nhu cầu thay đổi công năng…",
+      "Báo giá xây nhà phố 2026 tại Minh Phú Building: phần thô, hoàn thiện và trọn gói minh bạch theo m². Nhận dự toán miễn phí theo hiện trạng — hotline 0912 166 079.",
+    body: [
+      "Trước khi ký hợp đồng, hầu hết gia chủ đều muốn nắm rõ ngân sách. Báo giá xây nhà phố 2026 giúp bạn hình dung chi phí phần thô, hoàn thiện và trọn gói theo m², đồng thời hiểu yếu tố nào làm thay đổi đơn giá. Bài viết dưới đây của Minh Phú Building tổng hợp khung tham khảo tại TP.HCM và cách nhận dự toán sát thực tế — không “giá ảo”, không bỏ sót hạng mục.",
+      {
+        type: "h2",
+        text: "Báo giá xây nhà phố 2026 gồm những hạng mục nào?",
+      },
+      "Một bản báo giá xây nhà phố 2026 đầy đủ thường tách rõ ba nhóm: phần thô (kết cấu – bao che), phần hoàn thiện (vật liệu mặt nhìn thấy) và các hạng mục phát sinh hoặc tùy chọn. Khi so sánh nhà thầu, hãy yêu cầu bảng tách hạng mục thay vì chỉ một con số tổng — đó là cách tránh lệch ngân sách giữa giai đoạn móng và giai đoạn sơn, gạch, trần.",
+      "Phần thô thường gồm móng, cột – dầm – sàn, tường bao, cầu thang bê tông, mái (bê tông hoặc mái tôn/khung), chống thấm sơ bộ, hệ thống ống chờ điện nước. Phần hoàn thiện gồm ốp lát, sơn nước, trần, cửa, thiết bị vệ sinh cơ bản, lan can, tay vịn và các chi tiết thẩm mỹ mặt tiền. Gói trọn gói gắn hai phần trên thành một dòng chảy thi công, do một đơn vị điều phối tiến độ và trách nhiệm bàn giao.",
+      {
+        type: "h2",
+        text: "Phân biệt báo giá phần thô, hoàn thiện và trọn gói",
+      },
+      "Báo giá phần thô phù hợp khi gia chủ muốn kiểm soát giai đoạn kết cấu trước, hoặc tự chọn nhà thầu hoàn thiện riêng. Đơn giá phần thô nhà phố tại TP.HCM năm 2026 thường dao động khoảng 3,8 – 5,5 triệu đồng/m² sàn xây dựng (tùy độ sâu móng, số tầng, địa chất và cấp độ chống thấm). Con số này chỉ mang tính tham khảo; khảo sát hiện trạng mới cho ra dự toán chính xác.",
+      "Báo giá hoàn thiện phụ thuộc mạnh vào vật liệu: gạch men hay granite, sơn thường hay sơn cao cấp, cửa nhôm kính hay gỗ công nghiệp. Khung tham khảo hoàn thiện nhà phố 2026 khoảng 3,5 – 7 triệu đồng/m² tùy cấp độ. Vì vậy, khi nhận báo giá xây nhà phố 2026, hãy ghi rõ thương hiệu / chủng loại vật tư chính — đây là chỗ dễ “đội giá” nếu hợp đồng mơ hồ.",
+      "Báo giá xây nhà phố trọn gói gộp thô + hoàn thiện + điều phối nhân lực. Khung tham khảo trọn gói phổ thông tại TP.HCM năm 2026 khoảng 7 – 12 triệu đồng/m² tùy vật tư và độ phức tạp mặt tiền. Gói trọn gói giúp giảm rủi ro lệch tiến độ giữa các đội thầu, phù hợp gia chủ bận việc hoặc muốn một đầu mối chịu trách nhiệm đến khi bàn giao.",
+      "Bạn có thể xem chi tiết từng gói trên trang [Bảng báo giá](/bang-bao-gia), gồm [báo giá phần thô](/bang-bao-gia/bao-gia-phan-tho) và [báo giá trọn gói](/bang-bao-gia/bao-gia-tron-goi).",
+      {
+        type: "h2",
+        text: "Yếu tố làm thay đổi báo giá xây nhà phố 2026",
+      },
+      "Cùng một diện tích sàn, hai căn nhà phố có thể lệch nhau hàng trăm triệu đồng. Các yếu tố thường gặp: kích thước mặt tiền (4m, 5m, 6m…), số tầng và có tầng hầm hay không, nền đất yếu cần cọc / đài móng đặc biệt, nhà liền kề phải gia cố tường chung, phong cách mặt tiền phức tạp (các chi tiết phào chỉ, đá ốp, kính lớn), và yêu cầu hoàn thiện cao cấp.",
+      "Ngoài ra, tiến độ thi công, điều kiện tiếp cận xe vật tư trong hẻm nhỏ, và biến động giá thép – xi măng – cát đá trong năm cũng ảnh hưởng. Vì thế báo giá xây nhà phố 2026 trên internet chỉ nên dùng để lập ngân sách sơ bộ. Dự toán chính thức cần khảo sát thực địa, đo đạc và thống nhất vật tư trước khi ký.",
+      {
+        type: "h2",
+        text: "Cách đọc báo giá để tránh phát sinh ngoài ý muốn",
+      },
+      "Khi nhận bảng dự toán, kiểm tra năm nhóm: (1) diện tích tính giá theo công thức nào, (2) hạng mục nào nằm trong gói / ngoài gói, (3) chủng loại vật tư chính kèm thương hiệu tham chiếu, (4) thời gian thi công và điều kiện nghiệm thu từng giai đoạn, (5) chính sách bảo hành. Một báo giá xây nhà phố 2026 “rẻ bất thường” thường cắt giảm chống thấm, thép, hoặc đẩy nhiều hạng mục sang phát sinh.",
+      "Nên yêu cầu tách rõ điện nước dân dụng, chống thấm mái – WC, cửa đi cửa sổ và lan can. Nếu bạn đang cân nhắc vừa thiết kế vừa thi công, tham khảo thêm dịch vụ [thiết kế nhà phố](/dich-vu/thiet-ke-nha-pho) và [thi công xây dựng](/dich-vu/thi-cong-xay-dung) để đồng bộ bản vẽ với dự toán.",
+      {
+        type: "h2",
+        text: "Quy trình nhận báo giá tại Minh Phú Building",
+      },
+      "Minh Phú Building lập báo giá xây nhà phố 2026 theo quy trình ngắn gọn: tiếp nhận nhu cầu (diện tích, số tầng, phong cách, ngân sách mong muốn) → khảo sát hiện trạng / xem bản vẽ → đề xuất cấp độ hoàn thiện phù hợp → gửi dự toán tách hạng mục → trao đổi chỉnh sửa → ký hợp đồng và triển khai. Gia chủ được tư vấn miễn phí ở bước đầu để loại phương án vượt ngân sách sớm.",
+      "Với nhà cải tạo hoặc nâng tầng, quy trình bổ sung đánh giá kết cấu hiện hữu trước khi chốt đơn giá. Trường hợp này thường không áp dụng “giá m² chung” mà tính theo khối lượng thực tế. Xem thêm hướng dẫn tại bài [cải tạo nhà phố cũ](/tin-tuc/cai-tao-nha-pho-cu) hoặc gói [sửa chữa trọn gói](/bang-bao-gia/sua-chua-tron-goi).",
+      {
+        type: "h2",
+        text: "FAQ — câu hỏi thường gặp về báo giá xây nhà phố 2026",
+      },
+      "Báo giá xây nhà phố 2026 trên mạng có chính xác không? Chỉ mang tính tham khảo. Đơn giá thật phụ thuộc địa chất, số tầng, vật tư và điều kiện thi công tại lô đất của bạn.",
+      "Nên chọn phần thô rồi tự hoàn thiện, hay làm trọn gói? Nếu bạn có kinh nghiệm chọn vật tư và giám sát, tách giai đoạn có thể tối ưu chi phí. Nếu muốn một đầu mối chịu trách nhiệm tiến độ và chất lượng đến bàn giao, trọn gói thường an tâm hơn.",
+      "Diện tích tính giá theo m² sàn xây dựng thế nào? Thông thường tính tổng diện tích các sàn sử dụng theo quy ước trong hợp đồng (có/không tính sân thượng, mái, diện tích thông tầng). Hãy yêu cầu ghi rõ công thức ngay trên báo giá.",
+      "Mất bao lâu để nhận dự toán? Sau khi có thông tin cơ bản và (nếu cần) khảo sát, Minh Phú Building thường gửi khung báo giá xây nhà phố 2026 trong thời gian nhanh để gia chủ so sánh và quyết định.",
+      "Có hỗ trợ thiết kế trước khi báo giá không? Có. Hồ sơ thiết kế rõ ràng giúp dự toán sát hơn. Tham khảo [bảng giá thiết kế nhà](/bang-bao-gia/thiet-ke-nha) và album [nhà phố mẫu 2026](/thu-vien/nha-pho-mau-2026).",
+      {
+        type: "h2",
+        text: "Kết luận — nhận dự toán sát thực tế ngay hôm nay",
+      },
+      "Tóm lại, báo giá xây nhà phố 2026 chỉ thực sự hữu ích khi được tách hạng mục, ghi rõ vật tư và gắn với hiện trạng công trình. Đừng quyết định chỉ vì một con số thấp nhất. Hãy đối chiếu phạm vi công việc, tiến độ và bảo hành trước khi ký.",
+      "Nếu bạn cần báo giá xây nhà phố 2026 cho căn nhà phố tại TP.HCM — phần thô, hoàn thiện hoặc trọn gói — hãy gửi diện tích, số tầng và phong cách mong muốn. Đội ngũ Minh Phú Building sẽ tư vấn cấp độ phù hợp ngân sách và gửi dự toán minh bạch. Liên hệ ngay qua [trang liên hệ](/lien-he) hoặc gọi hotline để được hỗ trợ.",
+      "Tham khảo thêm chuẩn xây dựng dân dụng tại [Bộ Xây dựng](https://moc.gov.vn) khi bạn muốn đối chiếu quy định kỹ thuật liên quan.",
+    ],
+    gallery: [
+      {
+        src: m("upload/bao-gia/bao-gia-01-thumbnail-mat-tien.png"),
+        alt: "Báo giá xây nhà phố 2026 — mặt tiền nhà phố mẫu",
+      },
+      {
+        src: m("upload/bao-gia/bao-gia-02-phan-tho.png"),
+        alt: "Báo giá phần thô nhà phố 2026 — giai đoạn kết cấu",
+      },
+      {
+        src: m("upload/bao-gia/bao-gia-03-hoan-thien.png"),
+        alt: "Báo giá hoàn thiện nhà phố 2026 — ốp lát và sơn nước",
+      },
+      {
+        src: m("upload/bao-gia/bao-gia-04-tron-goi.png"),
+        alt: "Báo giá xây nhà phố 2026 trọn gói — công trình bàn giao",
+      },
+      {
+        src: m("upload/bao-gia/bao-gia-05-noi-that.png"),
+        alt: "Nội thất nhà phố sau hoàn thiện theo báo giá xây nhà phố 2026",
+      },
+      {
+        src: m("upload/bao-gia/bao-gia-06-vat-tu-du-toan.png"),
+        alt: "Vật tư và bản vẽ dùng để lập báo giá xây nhà phố 2026",
+      },
+    ],
   },
-  {
-    title:
-      "DỊCH VỤ THI CÔNG SỬA CHỮA – CẢI TẠO NHÀ TRỌN GÓI UY TÍN TẠI TP. HỒ CHÍ MINH",
-    href: "/tin-tuc/dich-vu-sua-chua-cai-tao-tron-goi",
-    image: m("thumbs/308x151x1/upload/news/33-san-thuong-view-03-5459.jpg.webp"),
-    date: "05/02/2026",
-    excerpt:
-      "Trong bối cảnh đô thị TP. Hồ Chí Minh ngày càng phát triển nhanh chóng, nhu cầu thi công sửa chữa và cải tạo nhà ở đang trở thành xu hướng tất yếu của nhiều gia đình…",
-  },
-  {
-    title:
-      "DỊCH VỤ THI CÔNG XÂY DỰNG NHÀ PHỐ TRỌN GÓI – GIẢI PHÁP AN TÂM TỪ MÓNG ĐẾN HOÀN THIỆN TẠI MINH PHÚ BUILDING",
-    href: "/tin-tuc/thi-cong-xay-dung-nha-pho-tron-goi",
-    image: m("thumbs/308x151x1/upload/news/30-balcony-1278.jpg.webp"),
-    date: "03/02/2026",
-    excerpt:
-      "Xây dựng nhà phố là một quá trình quan trọng, đòi hỏi sự chuẩn bị kỹ lưỡng về thiết kế, tài chính và đơn vị thi công. Trong thực tế, nhiều gia chủ gặp khó khăn khi phải làm việc với nhiều nhà thầu…",
-  },
-  {
-    title:
-      "THIẾT KẾ NHÀ PHỐ PHONG CÁCH HIỆN ĐẠI & TÂN CỔ ĐIỂN – DẤU ẤN RIÊNG CỦA MINH PHÚ BUILDING",
-    href: "/tin-tuc/thiet-ke-nha-pho-hien-dai-tan-co-dien",
-    image: m("thumbs/308x151x1/upload/news/biethu2-9868.jpg.webp"),
-    date: "03/02/2026",
-    excerpt:
-      "Trong những năm gần đây, nhu cầu thiết kế nhà phố theo phong cách hiện đại và tân cổ điển ngày càng được nhiều gia chủ quan tâm. Minh Phú Building tự hào là đơn vị chuyên thiết kế nhà phố…",
-  },
-  {
-    title:
-      "HOÀN THIỆN NỘI – NGOẠI THẤT NHÀ PHỐ: TỐI ƯU KHÔNG GIAN SỐNG BỀN ĐẸP CÙNG MINH PHÚ BUILDING",
-    href: "/tin-tuc/hoan-thien-noi-ngoai-that-nha-pho",
-    image: m("thumbs/308x151x1/upload/news/07tret-02view07-5487.jpg.webp"),
-    date: "03/02/2026",
-    excerpt:
-      "Trong xây dựng nhà phố, hoàn thiện nội – ngoại thất là giai đoạn quyết định diện mạo, chất lượng và trải nghiệm sống của gia chủ…",
-  },
+  phongCachSangArticle,
   {
     title: "THÔNG BÁO LỊCH NGHỈ TẾT NGUYÊN ĐÁN 2026",
     href: "/tin-tuc/lich-nghi-tet-2026",
@@ -433,15 +560,6 @@ export const news = [
     date: "10/02/2026",
     excerpt:
       "CÔNG TY TNHH KIẾN TRÚC MINH PHÚ xin trân trọng thông báo đến Quý Khách Hàng, Quý Đối Tác về lịch nghỉ Tết Nguyên Đán 2026…",
-  },
-  {
-    title:
-      "CẢI TẠO – SỬA CHỮA – NÂNG TẦNG NHÀ PHỐ: GIẢI PHÁP TỐI ƯU KHÔNG GIAN SỐNG TẠI MINH PHÚ BUILDING",
-    href: "/tin-tuc/cai-tao-sua-chua-nang-tang-nha-pho",
-    image: m("thumbs/308x151x1/upload/news/28-thu-phong-view-04-5079.jpg.webp"),
-    date: "03/02/2026",
-    excerpt:
-      "Sau nhiều năm sử dụng, không ít nhà phố tại các khu đô thị rơi vào tình trạng xuống cấp, bố trí không gian không còn phù hợp…",
   },
 ];
 
