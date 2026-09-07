@@ -1,10 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { FloatingCta } from "@/components/FloatingCta";
 import { JsonLd } from "@/components/JsonLd";
+import { SiteChrome } from "@/components/SiteChrome";
 import { site } from "@/data/site";
 import {
   SITE_URL,
@@ -101,21 +99,13 @@ export default function RootLayout({
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
-        {/* eslint-disable-next-line @next/next/no-css-tags */}
-        <link rel="stylesheet" href="/media/css/original.css" />
         <style>{`#header,#header .marquee{background-color:#1198dc!important;background:#1198dc!important}`}</style>
         <link href="/brand/favicon.jpg" rel="icon" type="image/jpeg" sizes="512x512" />
         <link href="/brand/favicon.jpg" rel="shortcut icon" type="image/x-icon" />
       </head>
       <body className={`${montserrat.variable} antialiased`}>
         <JsonLd data={[localBusinessJsonLd(), websiteJsonLd()]} />
-        <a className="skip-link" href="#noi-dung">
-          Đến nội dung chính
-        </a>
-        <Header />
-        <main id="noi-dung">{children}</main>
-        <Footer />
-        <FloatingCta />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );
