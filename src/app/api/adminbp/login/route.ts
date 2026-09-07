@@ -2,17 +2,20 @@ import { NextResponse } from "next/server";
 import {
   ADMIN_COOKIE,
   createSessionToken,
-  verifyPassword,
+  verifyCredentials,
 } from "@/lib/cms/auth";
 
 export async function POST(request: Request) {
   const body = (await request.json().catch(() => null)) as {
+    email?: string;
+    username?: string;
     password?: string;
   } | null;
+  const email = (body?.email || body?.username || "").trim();
   const password = body?.password?.trim() || "";
-  if (!verifyPassword(password)) {
+  if (!verifyCredentials(email, password)) {
     return NextResponse.json(
-      { ok: false, error: "Mật khẩu không đúng." },
+      { ok: false, error: "Email hoặc mật khẩu không đúng." },
       { status: 401 },
     );
   }

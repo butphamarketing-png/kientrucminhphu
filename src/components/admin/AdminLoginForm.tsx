@@ -28,7 +28,7 @@ export function AdminLoginForm() {
       const res = await fetch("/api/adminbp/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password }),
+        body: JSON.stringify({ email, password }),
       });
       const data = await res.json();
       if (!res.ok || !data.ok) {

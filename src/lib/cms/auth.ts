@@ -12,8 +12,14 @@ function secret() {
   );
 }
 
+export function getAdminUser() {
+  return (
+    process.env.ADMINBP_USER || "admin@kientrucminhphu.com"
+  ).trim().toLowerCase();
+}
+
 export function getAdminPassword() {
-  return process.env.ADMINBP_PASSWORD || "MinhPhu@2026";
+  return process.env.ADMINBP_PASSWORD || "kientrucminhphu.com";
 }
 
 function sign(payload: string) {
@@ -48,16 +54,27 @@ export function verifySessionToken(token: string | undefined | null): boolean {
   return parts[0] === "adminbp";
 }
 
-export function verifyPassword(password: string) {
-  const expected = getAdminPassword();
-  const a = Buffer.from(password);
-  const b = Buffer.from(expected);
+function safeEqual(left: string, right: string) {
+  const a = Buffer.from(left);
+  const b = Buffer.from(right);
   if (a.length !== b.length) {
-    // still compare to avoid trivial timing leak on length-only
-    timingSafeEqual(createHash("sha256").update(password).digest(), createHash("sha256").update(expected).digest());
+    timingSafeEqual(
+      createHash("sha256").update(left).digest(),
+      createHash("sha256").update(right).digest(),
+    );
     return false;
   }
   return timingSafeEqual(a, b);
+}
+
+export function verifyPassword(password: string) {
+  return safeEqual(password, getAdminPassword());
+}
+
+export function verifyCredentials(email: string, password: string) {
+  const userOk = safeEqual(email.trim().toLowerCase(), getAdminUser());
+  const passOk = verifyPassword(password);
+  return userOk && passOk;
 }
 
 export async function isAdminAuthenticated() {
