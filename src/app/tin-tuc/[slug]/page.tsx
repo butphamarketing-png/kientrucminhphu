@@ -7,7 +7,7 @@ import { PageHero } from "@/components/PageHero";
 import { JsonLd } from "@/components/JsonLd";
 import { findPublicNewsBySlugAsync, getPublicNewsAsync } from "@/lib/cms/content";
 import { readCms } from "@/lib/cms/store";
-import { pageMeta, articleJsonLd, toIsoDate } from "@/lib/seo";
+import { cmsMeta, articleJsonLd, toIsoDate } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const item = await findPublicNewsBySlugAsync(slug);
   if (!item) return { title: "Tin tức" };
-  return pageMeta({
+  return cmsMeta({
     title: item.title,
     description: item.excerpt,
     path: item.href,
@@ -95,7 +95,7 @@ export default async function NewsDetailPage({ params }: Props) {
 
   return (
     <>
-      <JsonLd data={articleJsonLd(item)} />
+      <JsonLd data={articleJsonLd(item, settings)} />
       <PageHero
         title={item.title}
         showHeading={false}

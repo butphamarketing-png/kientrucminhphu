@@ -1,14 +1,16 @@
 import { PageHero } from "@/components/PageHero";
 import { ContentCardGrid } from "@/components/ContentCardGrid";
-import { pageMeta } from "@/lib/seo";
+import { cmsMeta } from "@/lib/seo";
 import { readCms } from "@/lib/cms/store";
 
-export const metadata = pageMeta({
-  title: "Kiến trúc",
-  description:
-    "Mẫu thiết kế kiến trúc nhà phố, biệt thự, nội thất đẹp do Kiến trúc Minh Phú thực hiện tại TP.HCM.",
-  path: "/kien-truc",
-});
+export function generateMetadata() {
+  return cmsMeta({
+    title: "Kiến trúc",
+    description:
+      "Mẫu thiết kế kiến trúc nhà phố, biệt thự, nội thất đẹp do Kiến trúc Minh Phú thực hiện tại TP.HCM.",
+    path: "/kien-truc",
+  });
+}
 
 export default async function KienTrucPage() {
   const { architectureList } = await readCms();

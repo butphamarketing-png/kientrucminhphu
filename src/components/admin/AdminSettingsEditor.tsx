@@ -1,6 +1,6 @@
 "use client";
 
-import { AdminShell, Field, SaveBar } from "@/components/admin/AdminUi";
+import { AdminShell, Field, ImageField, SaveBar } from "@/components/admin/AdminUi";
 import { useCmsEditor } from "@/components/admin/useCmsEditor";
 import { digitsPhone, nid } from "@/lib/cms/ids";
 import type { CmsFooterLink, CmsNavItem, SiteSettings } from "@/lib/cms/types";
@@ -25,6 +25,8 @@ const SETTING_FIELDS: { key: keyof SiteSettings; label: string; multiline?: bool
   { key: "messenger", label: "Link Messenger" },
   { key: "mapEmbed", label: "Google Map embed URL" },
   { key: "mapDirections", label: "Google Map chỉ đường" },
+  { key: "headerColor", label: "Màu header" },
+  { key: "seoDescription", label: "Mô tả SEO (để trống = tự ghép hotline)", multiline: true },
 ];
 
 export function AdminSettingsEditor() {
@@ -68,9 +70,26 @@ export function AdminSettingsEditor() {
               label={field.label}
               value={cms.settings[field.key]}
               onChange={(v) => patchSetting(field.key, v)}
-              span2={field.key === "address1" || field.key === "address2" || field.key.startsWith("map")}
+              type={field.key === "headerColor" ? "color" : "text"}
+              multiline={field.multiline}
+              span2={
+                field.multiline ||
+                field.key === "address1" ||
+                field.key === "address2" ||
+                field.key.startsWith("map")
+              }
             />
           ))}
+          <ImageField
+            label="Logo menu"
+            value={cms.settings.logo}
+            onChange={(logo) => patchSetting("logo", logo)}
+          />
+          <ImageField
+            label="Favicon"
+            value={cms.settings.favicon}
+            onChange={(favicon) => patchSetting("favicon", favicon)}
+          />
         </div>
 
         <section className="adminbp-cardlist">

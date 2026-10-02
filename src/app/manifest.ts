@@ -1,15 +1,17 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/data/site";
+import { readCms } from "@/lib/cms/store";
+import { safeHex, siteDescription } from "@/lib/seo";
 
-export default function manifest(): MetadataRoute.Manifest {
+export default async function manifest(): Promise<MetadataRoute.Manifest> {
+  const { settings } = await readCms();
   return {
-    name: site.name,
-    short_name: site.shortName,
-    description: site.tagline,
+    name: settings.name,
+    short_name: settings.shortName,
+    description: siteDescription(settings) || settings.tagline,
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",
-    theme_color: "#1198dc",
+    theme_color: safeHex(settings.headerColor),
     lang: "vi",
     icons: [
       { src: "/brand/favicon-192.png", sizes: "192x192", type: "image/png" },

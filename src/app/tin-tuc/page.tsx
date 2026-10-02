@@ -3,13 +3,13 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { getPublicNewsAsync } from "@/lib/cms/content";
-import { pageMeta } from "@/lib/seo";
+import { cmsMeta } from "@/lib/seo";
 
 type Props = { searchParams: Promise<{ q?: string }> };
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
   const { q } = await searchParams;
-  const base = pageMeta({
+  const base = await cmsMeta({
     title: "Tin tức",
     description:
       "Tin tức xu hướng thiết kế, thi công và cải tạo nhà phố tại TP.HCM từ Kiến trúc Minh Phú.",

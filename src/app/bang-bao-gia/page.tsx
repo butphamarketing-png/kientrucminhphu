@@ -1,14 +1,16 @@
 import { PageHero } from "@/components/PageHero";
 import { ContentCardGrid } from "@/components/ContentCardGrid";
-import { pageMeta } from "@/lib/seo";
+import { cmsMeta } from "@/lib/seo";
 import { readCms } from "@/lib/cms/store";
 
-export const metadata = pageMeta({
-  title: "Bảng báo giá",
-  description:
-    "Bảng báo giá thiết kế nhà, thi công trọn gói, phần thô và sửa chữa cải tạo tại Kiến trúc Minh Phú.",
-  path: "/bang-bao-gia",
-});
+export function generateMetadata() {
+  return cmsMeta({
+    title: "Bảng báo giá",
+    description:
+      "Bảng báo giá thiết kế nhà, thi công trọn gói, phần thô và sửa chữa cải tạo tại Kiến trúc Minh Phú.",
+    path: "/bang-bao-gia",
+  });
+}
 
 export default async function BaoGiaPage() {
   const { pricingCards } = await readCms();

@@ -1,15 +1,18 @@
 import { PageHero } from "@/components/PageHero";
 import { ContactForm } from "@/components/ContactForm";
 import { IconMail, IconMapPin, IconPhone } from "@/components/Icons";
-import { site } from "@/data/site";
 import { pageMeta } from "@/lib/seo";
 import { readCms } from "@/lib/cms/store";
 
-export const metadata = pageMeta({
-  title: "Liên hệ",
-  description: `Liên hệ ${site.shortName}: hotline ${site.phone}, email ${site.email}. Văn phòng ${site.address1}.`,
-  path: "/lien-he",
-});
+export async function generateMetadata() {
+  const { settings } = await readCms();
+  return pageMeta({
+    title: "Liên hệ",
+    description: `Liên hệ ${settings.shortName}: hotline ${settings.phone}, email ${settings.email}. Văn phòng ${settings.address1}.`,
+    path: "/lien-he",
+    settings,
+  });
+}
 
 export default async function LienHePage() {
   const { settings: site } = await readCms();

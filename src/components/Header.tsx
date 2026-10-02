@@ -54,8 +54,8 @@ export function Header({
           <div className="logo-menu">
             <Link href="/">
               <Image
-                src="/brand/logo-menu-lg.png.webp"
-                alt="Kiến trúc Minh Phú - Trang chủ"
+                src={settings.logo || "/brand/logo-menu-lg.png.webp"}
+                alt={`${settings.shortName} - Trang chủ`}
                 width={58}
                 height={60}
                 priority
@@ -135,8 +135,8 @@ export function Header({
           <div className="logo-menu-mobile">
             <Link href="/">
               <Image
-                src="/brand/logo-menu-lg.png.webp"
-                alt="Kiến trúc Minh Phú - Trang chủ"
+                src={settings.logo || "/brand/logo-menu-lg.png.webp"}
+                alt={`${settings.shortName} - Trang chủ`}
                 width={58}
                 height={60}
                 priority
@@ -185,7 +185,7 @@ export function Header({
       />
       <nav id="mmenu" className={open ? "open" : ""} aria-hidden={!open}>
         <div className="mmenu-head">
-          <Image src="/brand/logo-menu-lg.png.webp" alt="Kiến trúc Minh Phú" width={48} height={48} />
+          <Image src={settings.logo || "/brand/logo-menu-lg.png.webp"} alt={settings.shortName} width={48} height={48} />
           <button type="button" className="mmenu-close" onClick={() => setOpen(false)} aria-label="Đóng">
             <i className="fa fa-times" aria-hidden />
           </button>

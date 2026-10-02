@@ -3,7 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
 import { JsonLd } from "@/components/JsonLd";
-import { pageMeta, absUrl } from "@/lib/seo";
+import { cmsMeta, absUrl } from "@/lib/seo";
 import { readCms } from "@/lib/cms/store";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = cms.projects.find((p) => p.href.endsWith(`/${slug}`));
   if (!item) return { title: "Công trình" };
   const desc = `Công trình ${item.title} — chủ đầu tư ${item.owner}, ${item.location}. Thiết kế thi công bởi ${cms.settings.shortName}.`;
-  return pageMeta({
+  return cmsMeta({
     title: item.title,
     description: desc,
     path: item.href,

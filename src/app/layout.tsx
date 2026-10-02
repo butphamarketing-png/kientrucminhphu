@@ -3,16 +3,16 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteChrome } from "@/components/SiteChrome";
-import { site } from "@/data/site";
 import { readCms } from "@/lib/cms/store";
 import {
   SITE_URL,
   DEFAULT_OG_IMAGE,
-  defaultDescription,
   absUrl,
   localBusinessJsonLd,
   websiteJsonLd,
   GOOGLE_SITE_VERIFICATION,
+  safeHex,
+  siteDescription,
 } from "@/lib/seo";
 
 const montserrat = Montserrat({
@@ -22,68 +22,77 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-export const viewport: Viewport = {
-  themeColor: "#1198dc",
-  width: "device-width",
-  initialScale: 1,
-};
+export async function generateViewport(): Promise<Viewport> {
+  const { settings } = await readCms();
+  return {
+    themeColor: safeHex(settings.headerColor),
+    width: "device-width",
+    initialScale: 1,
+  };
+}
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: {
-    default: `${site.name} | Thiết kế thi công nhà phố TP.HCM`,
-    template: `%s | ${site.shortName}`,
-  },
-  description: defaultDescription,
-  applicationName: site.shortName,
-  category: "architecture",
-  keywords: [
-    "kiến trúc Minh Phú",
-    "thiết kế nhà phố TP.HCM",
-    "thi công nhà phố trọn gói",
-    "cải tạo nhà Hồ Chí Minh",
-    "xây nhà trọn gói",
-    "Minh Phú Building",
-    "thiết kế thi công nội thất",
-  ],
-  authors: [{ name: site.name, url: SITE_URL }],
-  creator: site.name,
-  publisher: site.name,
-  formatDetection: { telephone: true, email: true, address: true },
-  verification: { google: GOOGLE_SITE_VERIFICATION },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
-  },
-  alternates: { canonical: SITE_URL, languages: { "vi-VN": SITE_URL } },
-  openGraph: {
-    type: "website",
-    locale: "vi_VN",
-    url: SITE_URL,
-    siteName: site.name,
-    title: `${site.name} | Thiết kế thi công nhà phố TP.HCM`,
-    description: defaultDescription,
-    images: [{ url: absUrl(DEFAULT_OG_IMAGE), width: 1200, height: 630, alt: site.shortName }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${site.name} | Thiết kế thi công nhà phố TP.HCM`,
-    description: defaultDescription,
-    images: [absUrl(DEFAULT_OG_IMAGE)],
-  },
-  icons: {
-    icon: [
-      { url: "/brand/favicon.jpg", type: "image/jpeg", sizes: "512x512" },
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/brand/favicon-32.png", sizes: "32x32", type: "image/png" },
-      { url: "/brand/favicon-192.png", sizes: "192x192", type: "image/png" },
+export async function generateMetadata(): Promise<Metadata> {
+  const { settings } = await readCms();
+  const description = siteDescription(settings);
+  const title = `${settings.name} | Thiết kế thi công nhà phố TP.HCM`;
+  const favicon = settings.favicon || "/brand/favicon.jpg";
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: {
+      default: title,
+      template: `%s | ${settings.shortName}`,
+    },
+    description,
+    applicationName: settings.shortName,
+    category: "architecture",
+    keywords: [
+      "kiến trúc Minh Phú",
+      "thiết kế nhà phố TP.HCM",
+      "thi công nhà phố trọn gói",
+      "cải tạo nhà Hồ Chí Minh",
+      "xây nhà trọn gói",
+      "Minh Phú Building",
+      "thiết kế thi công nội thất",
     ],
-    apple: [{ url: "/brand/apple-touch-icon.png", sizes: "180x180" }],
-    shortcut: [{ url: "/brand/favicon.jpg", type: "image/jpeg" }],
-  },
-  manifest: "/manifest.webmanifest",
-};
+    authors: [{ name: settings.name, url: SITE_URL }],
+    creator: settings.name,
+    publisher: settings.name,
+    formatDetection: { telephone: true, email: true, address: true },
+    verification: { google: GOOGLE_SITE_VERIFICATION },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+    },
+    alternates: { canonical: SITE_URL, languages: { "vi-VN": SITE_URL } },
+    openGraph: {
+      type: "website",
+      locale: "vi_VN",
+      url: SITE_URL,
+      siteName: settings.name,
+      title,
+      description,
+      images: [{ url: absUrl(DEFAULT_OG_IMAGE), width: 1200, height: 630, alt: settings.shortName }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [absUrl(DEFAULT_OG_IMAGE)],
+    },
+    icons: {
+      icon: [
+        { url: favicon },
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/brand/favicon-32.png", sizes: "32x32", type: "image/png" },
+        { url: "/brand/favicon-192.png", sizes: "192x192", type: "image/png" },
+      ],
+      apple: [{ url: "/brand/apple-touch-icon.png", sizes: "180x180" }],
+      shortcut: [{ url: favicon }],
+    },
+    manifest: "/manifest.webmanifest",
+  };
+}
 
 export const dynamic = "force-dynamic";
 
@@ -93,6 +102,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const cms = await readCms();
+  const headerColor = safeHex(cms.settings.headerColor);
+  const offers = [...cms.servicesDetail, ...cms.serviceList].map((item) => ({
+    title: item.title,
+    summary: item.summary,
+    href: item.href,
+  }));
   return (
     <html lang="vi">
       <head>
@@ -103,12 +118,12 @@ export default async function RootLayout({
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
-        <style>{`#header,#header .marquee{background-color:#1198dc!important;background:#1198dc!important}`}</style>
+        <style>{`#header,#header .marquee{background-color:${headerColor}!important;background:${headerColor}!important}`}</style>
         <link href="/brand/favicon.jpg" rel="icon" type="image/jpeg" sizes="512x512" />
         <link href="/brand/favicon.jpg" rel="shortcut icon" type="image/jpeg" />
       </head>
       <body className={`${montserrat.variable} antialiased`}>
-        <JsonLd data={[localBusinessJsonLd(), websiteJsonLd()]} />
+        <JsonLd data={[localBusinessJsonLd(cms.settings, offers), websiteJsonLd(cms.settings)]} />
         <SiteChrome
           settings={cms.settings}
           navItems={cms.nav}

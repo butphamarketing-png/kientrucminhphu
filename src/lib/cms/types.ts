@@ -18,6 +18,11 @@ export type SiteSettings = {
   messenger: string;
   mapEmbed: string;
   mapDirections: string;
+  logo: string;
+  headerColor: string;
+  favicon: string;
+  /** Khi có nội dung, dùng làm mô tả SEO mặc định. Để trống thì ghép từ tên và hotline. */
+  seoDescription: string;
 };
 
 export type BodyBlock = string | { type: "h2"; text: string };

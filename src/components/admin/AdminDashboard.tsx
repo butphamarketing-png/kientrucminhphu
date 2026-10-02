@@ -16,6 +16,7 @@ const LINKS = [
   { href: "/adminbp/thu-vien", label: "Thư viện", desc: "Album ảnh" },
   { href: "/adminbp/kien-truc", label: "Kiến trúc", desc: "Mẫu thiết kế" },
   { href: "/adminbp/kho-anh", label: "Kho ảnh R2", desc: "Upload Cloudflare" },
+  { href: "/adminbp/lien-he", label: "Liên hệ khách", desc: "Form gửi từ website" },
 ];
 
 export function AdminDashboard() {

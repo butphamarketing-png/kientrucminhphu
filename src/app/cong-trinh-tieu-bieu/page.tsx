@@ -1,15 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
-import { pageMeta } from "@/lib/seo";
+import { cmsMeta } from "@/lib/seo";
 import { readCms } from "@/lib/cms/store";
 
-export const metadata = pageMeta({
-  title: "Công trình tiêu biểu",
-  description:
-    "Danh mục công trình tiêu biểu của Kiến trúc Minh Phú: nhà phố, biệt thự, cải tạo tại TP.HCM và các tỉnh thành.",
-  path: "/cong-trinh-tieu-bieu",
-});
+export function generateMetadata() {
+  return cmsMeta({
+    title: "Công trình tiêu biểu",
+    description:
+      "Danh mục công trình tiêu biểu của Kiến trúc Minh Phú: nhà phố, biệt thự, cải tạo tại TP.HCM và các tỉnh thành.",
+    path: "/cong-trinh-tieu-bieu",
+  });
+}
 
 export default async function CongTrinhPage() {
   const { projects } = await readCms();

@@ -25,7 +25,7 @@ export function AdminPagesEditor() {
   return (
     <AdminShell
       title="Trang nội dung"
-      hint="Sứ mệnh, tuyển dụng, chính sách. Dùng ## tiêu đề, - danh sách, **in đậm**."
+      hint="Sứ mệnh, tuyển dụng, chính sách. Đường dẫn mới sẽ thành trang trên website. Dùng ## tiêu đề, - danh sách, **in đậm**."
     >
       <div className="adminbp-form">
         <div className="adminbp-item-actions">

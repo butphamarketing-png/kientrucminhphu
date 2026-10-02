@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
-import { pageMeta } from "@/lib/seo";
+import { cmsMeta } from "@/lib/seo";
 import { readCms } from "@/lib/cms/store";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cms = await readCms();
   const item = toItems(cms.pricingCards).find((i) => i.slug === slug);
   if (!item) return { title: "Báo giá" };
-  return pageMeta({
+  return cmsMeta({
     title: item.title,
     description: item.summary,
     path: item.href,

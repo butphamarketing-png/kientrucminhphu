@@ -80,9 +80,16 @@ function staticToCmsShape(item: (typeof staticNews)[number]): CmsNewsArticle {
   };
 }
 
-/** All news for admin listing (static + cms), cms overrides win by href */
+function byDate(a: { date: string }, b: { date: string }) {
+  const da = a.date.split("/").reverse().join("");
+  const db = b.date.split("/").reverse().join("");
+  return db.localeCompare(da);
+}
+
+/** All news for admin listing. Once seeded, R2 is the only list. */
 export async function listAllNewsForAdmin(): Promise<CmsNewsArticle[]> {
   const cms = await readCms();
+  if (cms.news.length > 0) return [...cms.news].sort(byDate);
   const byHref = new Map<string, CmsNewsArticle>();
 
   for (const item of staticNews) {
@@ -97,14 +104,27 @@ export async function listAllNewsForAdmin(): Promise<CmsNewsArticle[]> {
     byHref.set(item.href, { ...item, source: "cms" });
   }
 
-  return Array.from(byHref.values()).sort((a, b) => {
-    const da = a.date.split("/").reverse().join("");
-    const db = b.date.split("/").reverse().join("");
-    return db.localeCompare(da);
-  });
+  return Array.from(byHref.values()).sort(byDate);
 }
 
 function publicNewsFrom(cms: CmsStore): PublicNewsItem[] {
+  if (cms.news.length > 0) {
+    return cms.news
+      .filter((item) => item.published)
+      .map((item) => ({
+        title: item.title,
+        href: item.href,
+        image: item.image,
+        imageAlt: item.imageAlt,
+        date: item.date,
+        keywords: item.keywords,
+        excerpt: item.excerpt,
+        body: item.body,
+        gallery: item.gallery,
+      }))
+      .sort(byDate);
+  }
+
   const hidden = new Set(cms.hiddenNewsHrefs);
   const byHref = new Map<string, PublicNewsItem>();
 

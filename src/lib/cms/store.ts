@@ -1,8 +1,10 @@
 import fs from "fs";
 import path from "path";
+import { cache } from "react";
 import { revalidatePath } from "next/cache";
 import type { CmsStore } from "./types";
 import { buildDefaultCms } from "./defaults";
+import { newsArticlesFromStatic } from "./news-seed";
 import { getJson, isR2Configured, putJson } from "./r2";
 
 const CMS_PATH = path.join(process.cwd(), "data", "cms.json");
@@ -68,22 +70,34 @@ function writeCmsLocal(store: CmsStore) {
   }
 }
 
-export async function readCms(): Promise<CmsStore> {
+async function ensureNews(store: CmsStore): Promise<CmsStore> {
+  if (store.news.length > 0) return store;
+  const news = newsArticlesFromStatic();
+  if (!news.length) return store;
+  const next: CmsStore = { ...store, news, updatedAt: new Date().toISOString() };
+  writeCmsLocal(next);
+  if (isR2Configured()) await putJson(CMS_OBJECT_KEY, next);
+  return next;
+}
+
+async function readCmsUncached(): Promise<CmsStore> {
   if (isR2Configured()) {
     try {
       const remote = await getJson<CmsStore>(CMS_OBJECT_KEY);
       if (remote && typeof remote === "object" && remote.settings) {
-        return mergeCms(remote);
+        return ensureNews(mergeCms(remote));
       }
-      const seeded = readCmsLocal();
+      const seeded = await ensureNews(readCmsLocal());
       await putJson(CMS_OBJECT_KEY, seeded);
       return seeded;
     } catch (error) {
       console.error("readCms r2", error);
     }
   }
-  return readCmsLocal();
+  return ensureNews(readCmsLocal());
 }
+
+export const readCms = cache(readCmsUncached);
 
 function bustPublicCache() {
   try {

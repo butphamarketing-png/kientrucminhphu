@@ -3,7 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
 import { CmsBody } from "@/components/CmsBody";
-import { pageMeta } from "@/lib/seo";
+import { cmsMeta } from "@/lib/seo";
 import { readCms } from "@/lib/cms/store";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const item = await findItem(slug);
   if (!item) return { title: "Kiến trúc" };
-  return pageMeta({
+  return cmsMeta({
     title: item.title,
     description: `Mẫu thiết kế ${item.title} — kiến trúc nhà phố, biệt thự tại Kiến trúc Minh Phú.`,
     path: `/kien-truc/${slug}`,

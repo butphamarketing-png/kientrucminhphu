@@ -15,6 +15,7 @@ const NAV = [
   { href: "/adminbp/thu-vien", label: "Thư viện ảnh", icon: "fa-images" },
   { href: "/adminbp/kien-truc", label: "Kiến trúc", icon: "fa-drafting-compass" },
   { href: "/adminbp/kho-anh", label: "Kho ảnh R2", icon: "fa-cloud-upload-alt" },
+  { href: "/adminbp/lien-he", label: "Liên hệ khách", icon: "fa-envelope" },
 ];
 
 export function AdminSidebar() {

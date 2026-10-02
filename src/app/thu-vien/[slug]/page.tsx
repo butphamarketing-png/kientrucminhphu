@@ -3,7 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
 import { townhouseGallery } from "@/data/site";
-import { pageMeta } from "@/lib/seo";
+import { cmsMeta } from "@/lib/seo";
 import { readCms } from "@/lib/cms/store";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { galleryAlbums } = await readCms();
   const item = galleryAlbums.find((a) => a.href.endsWith(`/${slug}`));
   if (!item) return { title: "Thư viện" };
-  return pageMeta({
+  return cmsMeta({
     title: item.title,
     description: `Album hình ảnh ${item.title} — thư viện công trình Kiến trúc Minh Phú.`,
     path: item.href,

@@ -1,0 +1,5 @@
+node_modules
+.next
+data/cms.json
+scripts
+*.log

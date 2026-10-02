@@ -1,15 +1,17 @@
 import Image from "next/image";
 import { PageHero } from "@/components/PageHero";
 import { CmsBody } from "@/components/CmsBody";
-import { pageMeta } from "@/lib/seo";
+import { cmsMeta } from "@/lib/seo";
 import { readCms } from "@/lib/cms/store";
 
-export const metadata = pageMeta({
-  title: "Giới thiệu",
-  description:
-    "Giới thiệu Công ty TNHH Kiến trúc Minh Phú — đơn vị thiết kế, thi công và cải tạo nhà phố tại TP.HCM với quy trình bài bản, báo giá minh bạch.",
-  path: "/gioi-thieu",
-});
+export function generateMetadata() {
+  return cmsMeta({
+    title: "Giới thiệu",
+    description:
+      "Giới thiệu Công ty TNHH Kiến trúc Minh Phú — đơn vị thiết kế, thi công và cải tạo nhà phố tại TP.HCM với quy trình bài bản, báo giá minh bạch.",
+    path: "/gioi-thieu",
+  });
+}
 
 export default async function GioiThieuPage() {
   const { intro, settings: site } = await readCms();

@@ -13,6 +13,7 @@ export async function cmsPageMeta(
     title: page?.title || fallback.title,
     description: page?.description || fallback.description,
     path,
+    settings: cms.settings,
   });
 }
 

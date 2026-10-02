@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
 import { JsonLd } from "@/components/JsonLd";
 import { CmsBody } from "@/components/CmsBody";
-import { pageMeta, serviceJsonLd } from "@/lib/seo";
+import { cmsMeta, serviceJsonLd } from "@/lib/seo";
 import { readCms } from "@/lib/cms/store";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { items } = await allServices();
   const item = items.find((s) => s.slug === slug);
   if (!item) return { title: "Dịch vụ" };
-  return pageMeta({
+  return cmsMeta({
     title: item.title,
     description: item.summary,
     path: `/dich-vu/${slug}`,

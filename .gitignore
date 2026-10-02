@@ -37,6 +37,11 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local CMS cache; production content lives on R2
+data/cms.json
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.vercel

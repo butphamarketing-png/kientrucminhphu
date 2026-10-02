@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { servicesDetail, site } from "@/data/site";
+import { site } from "@/data/site";
+import { readCms } from "@/lib/cms/store";
+import type { SiteSettings } from "@/lib/cms/types";
 
 export const SITE_URL = "https://kientrucminhphu.com";
 export const DEFAULT_OG_IMAGE = "/brand/banner-contact.png";
@@ -8,6 +10,18 @@ export const PHONE_E164 = `+84${site.phoneRaw.replace(/^0/, "")}`;
 
 export const defaultDescription =
   "Công ty TNHH Kiến trúc Minh Phú chuyên thiết kế, thi công và cải tạo nhà phố tại TP.HCM. Báo giá minh bạch, đúng tiến độ. Hotline 0912 166 079.";
+
+export function siteDescription(settings: Pick<SiteSettings, "shortName" | "phone" | "seoDescription">) {
+  const custom = settings.seoDescription?.trim();
+  if (custom) return custom;
+  return `${settings.shortName} chuyên thiết kế, thi công và cải tạo nhà phố tại TP.HCM. Báo giá minh bạch, đúng tiến độ. Hotline ${settings.phone}.`;
+}
+
+export function safeHex(value: string | undefined, fallback = "#1198dc") {
+  return /^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/.test(value || "")
+    ? (value as string)
+    : fallback;
+}
 
 export function absUrl(path = "/") {
   if (path.startsWith("http://") || path.startsWith("https://")) return path;
@@ -31,6 +45,7 @@ export function pageMeta({
   publishedTime,
   keywords,
   noIndex,
+  settings,
 }: {
   title: string;
   description: string;
@@ -40,13 +55,16 @@ export function pageMeta({
   publishedTime?: string;
   keywords?: string[];
   noIndex?: boolean;
+  settings?: SiteSettings;
 }): Metadata {
   const url = absUrl(path);
   const ogImage = absUrl(image || DEFAULT_OG_IMAGE);
+  const brandName = settings?.name || site.name;
+  const shortName = settings?.shortName || site.shortName;
   const fullTitle =
     path === "/"
-      ? `${site.name} | Thiết kế thi công nhà phố TP.HCM`
-      : `${title} | ${site.shortName}`;
+      ? `${brandName} | Thiết kế thi công nhà phố TP.HCM`
+      : `${title} | ${shortName}`;
   const desc = description.length > 160 ? `${description.slice(0, 157)}...` : description;
 
   return {
@@ -61,7 +79,7 @@ export function pageMeta({
       title: fullTitle,
       description: desc,
       url,
-      siteName: site.name,
+      siteName: brandName,
       locale: "vi_VN",
       type,
       images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
@@ -92,24 +110,36 @@ export function breadcrumbJsonLd(crumbs: { name: string; path?: string }[]) {
   };
 }
 
-export function localBusinessJsonLd() {
+export async function cmsMeta(
+  input: Omit<Parameters<typeof pageMeta>[0], "settings">,
+) {
+  const { settings } = await readCms();
+  return pageMeta({ ...input, settings });
+}
+
+export function localBusinessJsonLd(
+  settings: SiteSettings = site,
+  services: { title: string; summary?: string; href: string }[] = [],
+) {
+  const phone = settings.phoneRaw || site.phoneRaw;
+  const phoneE164 = `+84${phone.replace(/^0/, "")}`;
   return {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "ProfessionalService"],
     "@id": `${SITE_URL}/#business`,
-    name: site.name,
-    alternateName: ["Kiến trúc Minh Phú", "Minh Phú Building"],
+    name: settings.name,
+    alternateName: [settings.shortName, "Minh Phú Building"],
     url: SITE_URL,
-    logo: absUrl("/brand/logo-site.png"),
-    image: [absUrl(DEFAULT_OG_IMAGE), absUrl("/brand/logo-site.png")],
-    telephone: PHONE_E164,
-    email: site.email,
-    description: defaultDescription,
-    slogan: site.tagline,
+    logo: absUrl(settings.logo || "/brand/logo-site.png"),
+    image: [absUrl(DEFAULT_OG_IMAGE), absUrl(settings.logo || "/brand/logo-site.png")],
+    telephone: phoneE164,
+    email: settings.email,
+    description: siteDescription(settings),
+    slogan: settings.tagline,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "71/4A Nguyễn Duy Cung",
-      addressLocality: "Phường An Hội Tây",
+      streetAddress: settings.address1,
+      addressLocality: "Hồ Chí Minh",
       addressRegion: "Hồ Chí Minh",
       postalCode: "700000",
       addressCountry: "VN",
@@ -120,7 +150,7 @@ export function localBusinessJsonLd() {
       longitude: 106.6404,
     },
     hasMap: "https://maps.google.com/?q=71/4A+Nguyen+Duy+Cung+Ho+Chi+Minh",
-    sameAs: [site.facebook, site.zalo, site.messenger],
+    sameAs: [settings.facebook, settings.zalo, settings.messenger].filter(Boolean),
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
@@ -139,7 +169,7 @@ export function localBusinessJsonLd() {
     contactPoint: [
       {
         "@type": "ContactPoint",
-        telephone: PHONE_E164,
+        telephone: phoneE164,
         contactType: "customer service",
         areaServed: "VN",
         availableLanguage: ["Vietnamese"],
@@ -148,25 +178,25 @@ export function localBusinessJsonLd() {
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Dịch vụ Kiến trúc Minh Phú",
-      itemListElement: servicesDetail.map((s) => ({
+      itemListElement: services.map((s) => ({
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
           name: s.title,
-          description: s.summary,
-          url: absUrl(`/dich-vu/${s.slug}`),
+          description: s.summary || "",
+          url: absUrl(s.href),
         },
       })),
     },
   };
 }
 
-export function websiteJsonLd() {
+export function websiteJsonLd(settings: SiteSettings = site) {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${SITE_URL}/#website`,
-    name: site.shortName,
+    name: settings.shortName,
     url: SITE_URL,
     inLanguage: "vi-VN",
     publisher: { "@id": `${SITE_URL}/#business` },
@@ -178,7 +208,7 @@ export function websiteJsonLd() {
   };
 }
 
-export function faqJsonLd() {
+export function faqJsonLd(settings: SiteSettings = site) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -196,7 +226,7 @@ export function faqJsonLd() {
         name: "Làm sao để nhận báo giá thiết kế thi công?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Liên hệ hotline ${site.phone}, Zalo ${site.phoneRaw} hoặc gửi form tại trang Liên hệ. Báo giá được lập theo hiện trạng, hạng mục và vật tư, minh bạch trước khi ký hợp đồng.`,
+          text: `Liên hệ hotline ${settings.phone}, Zalo ${settings.phoneRaw} hoặc gửi form tại trang Liên hệ. Báo giá được lập theo hiện trạng, hạng mục và vật tư, minh bạch trước khi ký hợp đồng.`,
         },
       },
       {
@@ -204,7 +234,7 @@ export function faqJsonLd() {
         name: "Văn phòng Kiến trúc Minh Phú ở đâu?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Văn phòng chính: ${site.address1}. Văn phòng họp: ${site.address2}.`,
+          text: `Văn phòng chính: ${settings.address1}. Văn phòng họp: ${settings.address2}.`,
         },
       },
     ],
@@ -225,13 +255,16 @@ export function serviceJsonLd(item: { title: string; summary: string; image: str
   };
 }
 
-export function articleJsonLd(item: {
-  title: string;
-  excerpt: string;
-  image: string;
-  href: string;
-  date: string;
-}) {
+export function articleJsonLd(
+  item: {
+    title: string;
+    excerpt: string;
+    image: string;
+    href: string;
+    date: string;
+  },
+  settings?: SiteSettings,
+) {
   const iso = toIsoDate(item.date);
   return {
     "@context": "https://schema.org",
@@ -245,7 +278,7 @@ export function articleJsonLd(item: {
     author: { "@id": `${SITE_URL}/#business` },
     publisher: {
       "@type": "Organization",
-      name: site.name,
+      name: settings?.name || site.name,
       logo: { "@type": "ImageObject", url: absUrl("/brand/logo-site.png") },
     },
     mainEntityOfPage: absUrl(item.href),

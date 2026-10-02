@@ -23,6 +23,10 @@ export const site = {
     "https://maps.google.com/maps?q=71/4A%20Nguy%E1%BB%85n%20Duy%20Cung%20H%E1%BB%93%20Ch%C3%AD%20Minh&t=&z=15&ie=UTF8&iwloc=&output=embed",
   mapDirections:
     "https://www.google.com/maps/dir/?api=1&origin=&destination=71/4A%20Nguy%E1%BB%85n%20Duy%20Cung,%20P.%20An%20H%E1%BB%99i%20T%C3%A2y,%20H%E1%BB%93%20Ch%C3%AD%20Minh",
+  logo: "/brand/logo-menu-lg.png.webp",
+  headerColor: "#1198dc",
+  favicon: "/brand/favicon.jpg",
+  seoDescription: "",
 };
 
 export const nav = [
