@@ -1,12 +1,12 @@
-import { SimpleContentPage } from "@/components/SimpleContentPage";
-import { pageMeta } from "@/lib/seo";
+import { CmsStaticPage, cmsPageMeta } from "@/components/CmsStaticPage";
 
-export const metadata = pageMeta({
-  title: "Chính sách trả hàng",
-  description: "Chính sách trả hàng và hỗ trợ khách hàng của Kiến trúc Minh Phú.",
-  path: "/chinh-sach-tra-hang",
-});
+export async function generateMetadata() {
+  return cmsPageMeta("/chinh-sach-tra-hang", {
+    title: "Chính sách trả hàng",
+    description: "Chính sách trả hàng và hỗ trợ khách hàng của Kiến trúc Minh Phú.",
+  });
+}
 
-export default function Page() {
-  return <SimpleContentPage title="Chính sách trả hàng" path="/chinh-sach-tra-hang" />;
+export default async function Page() {
+  return <CmsStaticPage path="/chinh-sach-tra-hang" fallbackTitle="Chính sách trả hàng" />;
 }

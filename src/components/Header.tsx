@@ -4,8 +4,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { nav, site } from "@/data/site";
+import type { SiteSettings } from "@/lib/cms/types";
 
-export function Header() {
+type NavLink = { id?: string; label: string; href: string; children?: NavLink[] };
+
+export function Header({
+  settings = site,
+  navItems = nav,
+}: {
+  settings?: SiteSettings;
+  navItems?: NavLink[];
+}) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openSub, setOpenSub] = useState<string | null>(null);
@@ -34,7 +43,7 @@ export function Header() {
         <div className="center">
           <div className="marquee">
             <div className="marquee-text">
-              {site.greeting}&nbsp;&nbsp;&nbsp;&nbsp;{site.greeting}
+              {settings.greeting}&nbsp;&nbsp;&nbsp;&nbsp;{settings.greeting}
             </div>
           </div>
         </div>
@@ -59,16 +68,16 @@ export function Header() {
                 <i className="fa fa-home" aria-hidden />
               </Link>
             </li>
-            {nav.map((item) => (
-              <li key={item.href}>
+            {navItems.map((item) => (
+              <li key={item.id || item.href}>
                 <Link href={item.href} className="transition" title={item.label}>
                   {item.label}{" "}
-                  {item.children ? <i className="fas fa-sort-down" aria-hidden /> : null}
+                  {item.children?.length ? <i className="fas fa-sort-down" aria-hidden /> : null}
                 </Link>
-                {item.children ? (
+                {item.children?.length ? (
                   <ul>
                     {item.children.map((child) => (
-                      <li key={child.href}>
+                      <li key={child.id || child.href}>
                         <Link href={child.href} className="transition" title={child.label}>
                           {child.label}
                         </Link>
@@ -187,13 +196,13 @@ export function Header() {
               Trang chủ
             </Link>
           </li>
-          {nav.map((item) => (
-            <li key={item.href}>
+          {navItems.map((item) => (
+            <li key={item.id || item.href}>
               <div className="mmenu-row">
                 <Link href={item.href} onClick={() => setOpen(false)}>
                   {item.label}
                 </Link>
-                {item.children ? (
+                {item.children?.length ? (
                   <button
                     type="button"
                     className="mmenu-toggle"
@@ -208,10 +217,10 @@ export function Header() {
                   </button>
                 ) : null}
               </div>
-              {item.children && openSub === item.href ? (
+              {item.children?.length && openSub === item.href ? (
                 <ul className="mmenu-sub">
                   {item.children.map((child) => (
-                    <li key={child.href}>
+                    <li key={child.id || child.href}>
                       <Link href={child.href} onClick={() => setOpen(false)}>
                         {child.label}
                       </Link>

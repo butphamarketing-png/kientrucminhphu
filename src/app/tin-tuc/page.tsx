@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
-import { news } from "@/data/site";
+import { getPublicNewsAsync } from "@/lib/cms/content";
 import { pageMeta } from "@/lib/seo";
 
 type Props = { searchParams: Promise<{ q?: string }> };
@@ -24,6 +24,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 export default async function TinTucPage({ searchParams }: Props) {
   const { q } = await searchParams;
   const query = q?.trim() ?? "";
+  const news = await getPublicNewsAsync();
   const list = query
     ? news.filter(
         (n) =>

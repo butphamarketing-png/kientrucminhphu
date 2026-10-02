@@ -1,8 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
-import { footerSupport, site } from "@/data/site";
+import { footerSupport as defaultFooter, site } from "@/data/site";
+import type { CmsFooterLink, SiteSettings } from "@/lib/cms/types";
 
-export function Footer() {
+const DEFAULT_MAP =
+  "https://maps.google.com/maps?q=71/4A%20Nguy%E1%BB%85n%20Duy%20Cung%20H%E1%BB%93%20Ch%C3%AD%20Minh&t=&z=15&ie=UTF8&iwloc=&output=embed";
+
+export function Footer({
+  settings = site,
+  footerSupport = defaultFooter,
+}: {
+  settings?: SiteSettings;
+  footerSupport?: { id?: string; label: string; href: string }[] | CmsFooterLink[];
+}) {
   return (
     <footer id="footer">
       <div className="footer-top">
@@ -12,36 +22,36 @@ export function Footer() {
               <Link href="/">
                 <Image
                   src="/brand/logo-menu-lg.png.webp"
-                  alt={`${site.shortName} - Trang chủ`}
+                  alt={`${settings.shortName} - Trang chủ`}
                   width={93}
                   height={96}
                 />
               </Link>
             </div>
-            <p className="footer-tit">{site.name}</p>
+            <p className="footer-tit">{settings.name}</p>
             <address className="footer-content" style={{ fontStyle: "normal" }}>
               <p>
-                <strong>{site.address1Label}:</strong> {site.address1}
+                <strong>{settings.address1Label}:</strong> {settings.address1}
               </p>
               <p>
-                <strong>{site.address2Label}:</strong> {site.address2}
+                <strong>{settings.address2Label}:</strong> {settings.address2}
               </p>
               <p>
                 Email:{" "}
-                <a href={`mailto:${site.email}`}>{site.email}</a>
+                <a href={`mailto:${settings.email}`}>{settings.email}</a>
               </p>
               <p>
                 Hotline:{" "}
-                <a href={`tel:${site.phoneRaw}`}>{site.phone}</a>
+                <a href={`tel:${settings.phoneRaw}`}>{settings.phone}</a>
               </p>
               <p>
                 Website:{" "}
                 <a
-                  href={`https://${site.website}`}
+                  href={`https://${settings.website}`}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {site.website}
+                  {settings.website}
                 </a>
               </p>
             </address>
@@ -51,7 +61,7 @@ export function Footer() {
             <p className="footer-tit">Hỗ trợ khách hàng</p>
             <ul className="footer-list">
               {footerSupport.map((item) => (
-                <li key={item.href}>
+                <li key={"id" in item && item.id ? item.id : item.href}>
                   <Link href={item.href} className="text-decoration-none">
                     {item.label}
                   </Link>
@@ -65,7 +75,7 @@ export function Footer() {
             <ul className="mxh footer-mxh">
               <li>
                 <a
-                  href={site.facebook}
+                  href={settings.facebook}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Facebook"
@@ -80,7 +90,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href={site.zalo}
+                  href={settings.zalo}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Zalo"
@@ -101,7 +111,7 @@ export function Footer() {
             <div className="footer-map">
               <iframe
                 title="Google map Minh Phú"
-                src="https://maps.google.com/maps?q=71/4A%20Nguy%E1%BB%85n%20Duy%20Cung%20H%E1%BB%93%20Ch%C3%AD%20Minh&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src={settings.mapEmbed || DEFAULT_MAP}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
@@ -113,7 +123,17 @@ export function Footer() {
       <div className="footer-bottom">
         <div className="center">
           <p className="copyright">
-            Copyright © {new Date().getFullYear()} {site.name}. All rights reserved
+            Copyright © {new Date().getFullYear()} {settings.name}. All rights reserved
+          </p>
+          <p className="footer-credit">
+            Website được thiết kế và vận hành bởi{" "}
+            <a
+              href="https://butphamarketing.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Bứt Phá Marketing
+            </a>
           </p>
         </div>
       </div>

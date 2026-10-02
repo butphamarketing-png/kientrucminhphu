@@ -3,27 +3,31 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
-import { pricingCards, site } from "@/data/site";
 import { pageMeta } from "@/lib/seo";
+import { readCms } from "@/lib/cms/store";
 
 type Props = { params: Promise<{ slug: string }> };
 
-const items = pricingCards.map((p) => ({
-  slug: p.href.replace("/bang-bao-gia/", ""),
-  title: p.title,
-  image: p.image,
-  href: p.href,
-  summary: p.summary,
-  highlights: p.highlights,
-}));
+function toItems(cards: Awaited<ReturnType<typeof readCms>>["pricingCards"]) {
+  return cards.map((p) => ({
+    slug: p.href.replace("/bang-bao-gia/", ""),
+    title: p.title,
+    image: p.image,
+    href: p.href,
+    summary: p.summary,
+    highlights: p.highlights,
+  }));
+}
 
 export async function generateStaticParams() {
-  return items.map((i) => ({ slug: i.slug }));
+  const cms = await readCms();
+  return toItems(cms.pricingCards).map((i) => ({ slug: i.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const item = items.find((i) => i.slug === slug);
+  const cms = await readCms();
+  const item = toItems(cms.pricingCards).find((i) => i.slug === slug);
   if (!item) return { title: "Báo giá" };
   return pageMeta({
     title: item.title,
@@ -35,9 +39,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BaoGiaDetailPage({ params }: Props) {
   const { slug } = await params;
+  const cms = await readCms();
+  const items = toItems(cms.pricingCards);
   const item = items.find((i) => i.slug === slug);
   if (!item) notFound();
-
+  const { settings } = cms;
   const others = items.filter((i) => i.slug !== slug).slice(0, 4);
 
   return (
@@ -76,16 +82,16 @@ export default async function BaoGiaDetailPage({ params }: Props) {
 
               <div className="pricing-detail-contact">
                 <p className="pricing-detail-contact-label">Nhận báo giá chi tiết</p>
-                <a className="pricing-detail-hotline" href={`tel:${site.phoneRaw}`}>
-                  Hotline: {site.phone}
+                <a className="pricing-detail-hotline" href={`tel:${settings.phoneRaw}`}>
+                  Hotline: {settings.phone}
                 </a>
-                <a className="pricing-detail-email" href={`mailto:${site.email}`}>
-                  {site.email}
+                <a className="pricing-detail-email" href={`mailto:${settings.email}`}>
+                  {settings.email}
                 </a>
               </div>
 
               <div className="pricing-detail-actions">
-                <a className="btn-more pricing-btn-primary" href={`tel:${site.phoneRaw}`}>
+                <a className="btn-more pricing-btn-primary" href={`tel:${settings.phoneRaw}`}>
                   Gọi tư vấn ngay
                 </a>
                 <Link className="btn-more" href="/lien-he">

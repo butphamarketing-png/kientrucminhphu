@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { intro } from "@/data/site";
+import { intro as defaultIntro } from "@/data/site";
+import type { CmsIntro } from "@/lib/cms/types";
 
-export function Intro() {
+export function Intro({ intro = defaultIntro }: { intro?: CmsIntro | typeof defaultIntro }) {
   return (
     <section id="intro">
       <div className="center d-flex flex-wrap justify-content-between align-items-center">
@@ -11,7 +12,7 @@ export function Intro() {
           <h1 className="intro-title">{intro.title}</h1>
           <div className="intro-desc">
             {intro.paragraphs.map((p, i) => (
-              <span key={p.slice(0, 32)}>
+              <span key={`${p.slice(0, 32)}-${i}`}>
                 {i > 0 ? <br /> : null}
                 {p}
               </span>

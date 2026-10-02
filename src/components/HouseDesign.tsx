@@ -3,9 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { houseDesigns, houseTabs } from "@/data/site";
+import { houseDesigns as defaultHouses, houseTabs } from "@/data/site";
+import type { CmsHouseDesign } from "@/lib/cms/types";
 
-export function HouseDesign() {
+export function HouseDesign({
+  houseDesigns = defaultHouses,
+}: {
+  houseDesigns?: CmsHouseDesign[] | typeof defaultHouses;
+}) {
   const [tab, setTab] = useState("all");
   const items = useMemo(
     () => houseDesigns.filter((h) => h.tabs.includes(tab)),

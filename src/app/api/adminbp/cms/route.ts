@@ -7,7 +7,7 @@ export async function GET() {
   if (!(await isAdminAuthenticated())) {
     return NextResponse.json({ ok: false, error: "Unauthorized" }, { status: 401 });
   }
-  return NextResponse.json({ ok: true, data: readCms() });
+  return NextResponse.json({ ok: true, data: await readCms() });
 }
 
 export async function PUT(request: Request) {
@@ -18,7 +18,7 @@ export async function PUT(request: Request) {
   if (!body || typeof body !== "object") {
     return NextResponse.json({ ok: false, error: "Payload không hợp lệ" }, { status: 400 });
   }
-  const next = updateCms(body);
+  const next = await updateCms(body);
   return NextResponse.json({ ok: true, data: next });
 }
 
@@ -30,6 +30,6 @@ export async function POST(request: Request) {
   if (!body || typeof body !== "object") {
     return NextResponse.json({ ok: false, error: "Payload không hợp lệ" }, { status: 400 });
   }
-  const next = writeCms(body);
+  const next = await writeCms(body);
   return NextResponse.json({ ok: true, data: next });
 }

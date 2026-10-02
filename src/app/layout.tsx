@@ -4,6 +4,7 @@ import "./globals.css";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteChrome } from "@/components/SiteChrome";
 import { site } from "@/data/site";
+import { readCms } from "@/lib/cms/store";
 import {
   SITE_URL,
   DEFAULT_OG_IMAGE,
@@ -84,11 +85,14 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
 };
 
-export default function RootLayout({
+export const dynamic = "force-dynamic";
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cms = await readCms();
   return (
     <html lang="vi">
       <head>
@@ -101,11 +105,17 @@ export default function RootLayout({
         />
         <style>{`#header,#header .marquee{background-color:#1198dc!important;background:#1198dc!important}`}</style>
         <link href="/brand/favicon.jpg" rel="icon" type="image/jpeg" sizes="512x512" />
-        <link href="/brand/favicon.jpg" rel="shortcut icon" type="image/x-icon" />
+        <link href="/brand/favicon.jpg" rel="shortcut icon" type="image/jpeg" />
       </head>
       <body className={`${montserrat.variable} antialiased`}>
         <JsonLd data={[localBusinessJsonLd(), websiteJsonLd()]} />
-        <SiteChrome>{children}</SiteChrome>
+        <SiteChrome
+          settings={cms.settings}
+          navItems={cms.nav}
+          footerSupport={cms.footerSupport}
+        >
+          {children}
+        </SiteChrome>
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 import { PageHero } from "@/components/PageHero";
 import { ContentCardGrid } from "@/components/ContentCardGrid";
-import { pricingCards } from "@/data/site";
 import { pageMeta } from "@/lib/seo";
+import { readCms } from "@/lib/cms/store";
 
 export const metadata = pageMeta({
   title: "Bảng báo giá",
@@ -10,7 +10,8 @@ export const metadata = pageMeta({
   path: "/bang-bao-gia",
 });
 
-export default function BaoGiaPage() {
+export default async function BaoGiaPage() {
+  const { pricingCards } = await readCms();
   return (
     <>
       <PageHero title="Bảng báo giá" canonicalPath="/bang-bao-gia" />

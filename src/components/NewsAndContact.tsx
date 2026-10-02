@@ -4,9 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useRef, useState } from "react";
 import { IconChevronLeft, IconChevronRight } from "@/components/Icons";
-import { news } from "@/data/site";
+import { news as defaultNews } from "@/data/site";
 
-export function NewsAndContact() {
+type NewsCard = { title: string; href: string; image: string; excerpt: string };
+
+export function NewsAndContact({
+  news = defaultNews,
+}: {
+  news?: NewsCard[];
+}) {
   const [sent, setSent] = useState(false);
   const scroller = useRef<HTMLDivElement>(null);
 

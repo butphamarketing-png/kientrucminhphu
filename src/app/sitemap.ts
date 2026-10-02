@@ -1,14 +1,6 @@
 import type { MetadataRoute } from "next";
-import {
-  architectureList,
-  galleryAlbums,
-  houseDesigns,
-  news,
-  pricingCards,
-  projects,
-  serviceList,
-  servicesDetail,
-} from "@/data/site";
+import { getPublicNews } from "@/lib/cms/content";
+import { readCms } from "@/lib/cms/store";
 import { SITE_URL } from "@/lib/seo";
 
 const staticPaths = [
@@ -28,17 +20,20 @@ const staticPaths = [
   "/chinh-sach-bao-hanh",
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const cms = await readCms();
+  const news = getPublicNews(cms);
   const paths = new Set(staticPaths);
 
-  projects.forEach((p) => paths.add(p.href));
+  cms.projects.forEach((p) => paths.add(p.href));
   news.forEach((n) => paths.add(n.href));
-  galleryAlbums.forEach((a) => paths.add(a.href));
-  pricingCards.forEach((p) => paths.add(p.href));
-  architectureList.forEach((a) => paths.add(a.href));
-  houseDesigns.forEach((h) => paths.add(h.href));
-  serviceList.forEach((s) => paths.add(s.href));
-  servicesDetail.forEach((s) => paths.add(`/dich-vu/${s.slug}`));
+  cms.galleryAlbums.forEach((a) => paths.add(a.href));
+  cms.pricingCards.forEach((p) => paths.add(p.href));
+  cms.architectureList.forEach((a) => paths.add(a.href));
+  cms.houseDesigns.forEach((h) => paths.add(h.href));
+  cms.serviceList.forEach((s) => paths.add(s.href));
+  cms.servicesDetail.forEach((s) => paths.add(s.href));
+  cms.pages.forEach((p) => paths.add(p.path));
 
   return [...paths].map((path) => ({
     url: `${SITE_URL}${path === "/" ? "" : path}`,

@@ -1,5 +1,6 @@
 import { news as staticNews } from "@/data/site";
-import { readCms } from "./store";
+import { slugifyTitle } from "./ids";
+import { readCms, readCmsLocal } from "./store";
 import type {
   BodyBlock,
   CmsNewsArticle,
@@ -27,39 +28,39 @@ function slugOf(href: string) {
 }
 
 export function getSiteSettings(): SiteSettings {
-  return readCms().settings;
+  return readCmsLocal().settings;
 }
 
 export function getCmsSnapshot(): CmsStore {
-  return readCms();
+  return readCmsLocal();
 }
 
 export function getIntro() {
-  return readCms().intro;
+  return readCmsLocal().intro;
 }
 
 export function getSlides() {
-  return readCms().slides;
+  return readCmsLocal().slides;
 }
 
 export function getBenefits() {
-  return readCms().benefits;
+  return readCmsLocal().benefits;
 }
 
 export function getProjects(): CmsProject[] {
-  return readCms().projects;
+  return readCmsLocal().projects;
 }
 
 export function getPricingCards(): CmsPricingCard[] {
-  return readCms().pricingCards;
+  return readCmsLocal().pricingCards;
 }
 
 export function getServiceList() {
-  return readCms().serviceList;
+  return readCmsLocal().serviceList;
 }
 
 export function getFields() {
-  return readCms().fields;
+  return readCmsLocal().fields;
 }
 
 function staticToCmsShape(item: (typeof staticNews)[number]): CmsNewsArticle {
@@ -80,8 +81,8 @@ function staticToCmsShape(item: (typeof staticNews)[number]): CmsNewsArticle {
 }
 
 /** All news for admin listing (static + cms), cms overrides win by href */
-export function listAllNewsForAdmin(): CmsNewsArticle[] {
-  const cms = readCms();
+export async function listAllNewsForAdmin(): Promise<CmsNewsArticle[]> {
+  const cms = await readCms();
   const byHref = new Map<string, CmsNewsArticle>();
 
   for (const item of staticNews) {
@@ -103,9 +104,7 @@ export function listAllNewsForAdmin(): CmsNewsArticle[] {
   });
 }
 
-/** Public news feed: static (minus hidden) + published cms, overrides by href */
-export function getPublicNews(): PublicNewsItem[] {
-  const cms = readCms();
+function publicNewsFrom(cms: CmsStore): PublicNewsItem[] {
   const hidden = new Set(cms.hiddenNewsHrefs);
   const byHref = new Map<string, PublicNewsItem>();
 
@@ -145,19 +144,21 @@ export function getPublicNews(): PublicNewsItem[] {
   return Array.from(byHref.values());
 }
 
-export function findPublicNewsBySlug(slug: string) {
-  return getPublicNews().find((n) => n.href.endsWith(`/${slug}`) || slugOf(n.href) === slug);
+/** Public news feed: static (minus hidden) + published cms, overrides by href */
+export function getPublicNews(cms?: CmsStore): PublicNewsItem[] {
+  return publicNewsFrom(cms ?? readCmsLocal());
 }
 
-export function slugifyTitle(text: string) {
-  return text
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/đ/g, "d")
-    .replace(/Đ/g, "D")
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, "")
-    .trim()
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-");
+export async function getPublicNewsAsync() {
+  return publicNewsFrom(await readCms());
 }
+
+export function findPublicNewsBySlug(slug: string, cms?: CmsStore) {
+  return getPublicNews(cms).find((n) => n.href.endsWith(`/${slug}`) || slugOf(n.href) === slug);
+}
+
+export async function findPublicNewsBySlugAsync(slug: string) {
+  return findPublicNewsBySlug(slug, await readCms());
+}
+
+export { slugifyTitle };

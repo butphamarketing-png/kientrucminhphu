@@ -5,7 +5,8 @@ import { Fragment } from "react";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
 import { JsonLd } from "@/components/JsonLd";
-import { news, site } from "@/data/site";
+import { findPublicNewsBySlugAsync, getPublicNewsAsync } from "@/lib/cms/content";
+import { readCms } from "@/lib/cms/store";
 import { pageMeta, articleJsonLd, toIsoDate } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -51,12 +52,13 @@ function normalizeGallery(gallery: GalleryItem[], fallbackTitle: string) {
 }
 
 export async function generateStaticParams() {
+  const news = await getPublicNewsAsync();
   return news.map((n) => ({ slug: n.href.replace("/tin-tuc/", "") }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const item = news.find((n) => n.href.endsWith(`/${slug}`));
+  const item = await findPublicNewsBySlugAsync(slug);
   if (!item) return { title: "Tin tức" };
   return pageMeta({
     title: item.title,
@@ -71,15 +73,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function NewsDetailPage({ params }: Props) {
   const { slug } = await params;
-  const item = news.find((n) => n.href.endsWith(`/${slug}`));
+  const item = await findPublicNewsBySlugAsync(slug);
   if (!item) notFound();
+  const { settings } = await readCms();
 
   const rawBody: BodyBlock[] =
     "body" in item && Array.isArray(item.body) && item.body.length > 0
       ? (item.body as BodyBlock[])
       : [
           item.excerpt,
-          `${site.shortName} chia sẻ thông tin hữu ích về thiết kế, thi công và cải tạo nhà phố tại TP.HCM. Nếu bạn đang tìm đơn vị đồng hành từ khảo sát, thiết kế đến thi công hoàn thiện, hãy liên hệ hotline để được tư vấn phương án phù hợp hiện trạng thực tế.`,
+          `${settings.shortName} chia sẻ thông tin hữu ích về thiết kế, thi công và cải tạo nhà phố tại TP.HCM. Nếu bạn đang tìm đơn vị đồng hành từ khảo sát, thiết kế đến thi công hoàn thiện, hãy liên hệ hotline để được tư vấn phương án phù hợp hiện trạng thực tế.`,
         ];
 
   const gallery = normalizeGallery(
@@ -136,8 +139,8 @@ export default async function NewsDetailPage({ params }: Props) {
             })}
             <p className="m-0">
               Hotline tư vấn:{" "}
-              <a className="text-[var(--color-main)] font-semibold" href={`tel:${site.phoneRaw}`}>
-                {site.phone}
+              <a className="text-[var(--color-main)] font-semibold" href={`tel:${settings.phoneRaw}`}>
+                {settings.phone}
               </a>
               {" · "}
               <Link className="text-[var(--color-main)] font-semibold" href="/lien-he">

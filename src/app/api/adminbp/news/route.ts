@@ -9,7 +9,7 @@ export async function GET() {
   if (!(await isAdminAuthenticated())) {
     return NextResponse.json({ ok: false, error: "Unauthorized" }, { status: 401 });
   }
-  return NextResponse.json({ ok: true, data: listAllNewsForAdmin() });
+  return NextResponse.json({ ok: true, data: await listAllNewsForAdmin() });
 }
 
 export async function POST(request: Request) {
@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "Thiếu tiêu đề" }, { status: 400 });
   }
 
-  const cms = readCms();
+  const cms = await readCms();
   const slug =
     body.href?.replace(/^\/tin-tuc\//, "").replace(/^\//, "") ||
     slugifyTitle(body.title);
@@ -56,7 +56,7 @@ export async function POST(request: Request) {
   // If was hidden static, unhide when publishing cms copy
   cms.hiddenNewsHrefs = cms.hiddenNewsHrefs.filter((h) => h !== href);
 
-  writeCms(cms);
+  await writeCms(cms);
   return NextResponse.json({ ok: true, data: article });
 }
 
@@ -71,7 +71,7 @@ export async function DELETE(request: Request) {
     return NextResponse.json({ ok: false, error: "Thiếu href" }, { status: 400 });
   }
 
-  const cms = readCms();
+  const cms = await readCms();
   const isStatic = staticNews.some((n) => n.href === href);
 
   cms.news = cms.news.filter((n) => n.href !== href);
@@ -80,6 +80,6 @@ export async function DELETE(request: Request) {
     if (!cms.hiddenNewsHrefs.includes(href)) cms.hiddenNewsHrefs.push(href);
   }
 
-  writeCms(cms);
+  await writeCms(cms);
   return NextResponse.json({ ok: true });
 }

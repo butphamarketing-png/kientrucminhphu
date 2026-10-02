@@ -11,6 +11,10 @@ const NAV = [
   { href: "/adminbp/cong-trinh", label: "Công trình", icon: "fa-building" },
   { href: "/adminbp/bao-gia", label: "Bảng báo giá", icon: "fa-tags" },
   { href: "/adminbp/dich-vu", label: "Dịch vụ", icon: "fa-briefcase" },
+  { href: "/adminbp/trang", label: "Trang nội dung", icon: "fa-file-alt" },
+  { href: "/adminbp/thu-vien", label: "Thư viện ảnh", icon: "fa-images" },
+  { href: "/adminbp/kien-truc", label: "Kiến trúc", icon: "fa-drafting-compass" },
+  { href: "/adminbp/kho-anh", label: "Kho ảnh R2", icon: "fa-cloud-upload-alt" },
 ];
 
 export function AdminSidebar() {

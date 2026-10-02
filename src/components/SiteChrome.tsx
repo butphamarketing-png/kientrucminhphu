@@ -4,8 +4,19 @@ import { usePathname } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingCta } from "@/components/FloatingCta";
+import type { CmsFooterLink, CmsNavItem, SiteSettings } from "@/lib/cms/types";
 
-export function SiteChrome({ children }: { children: React.ReactNode }) {
+export function SiteChrome({
+  children,
+  settings,
+  navItems,
+  footerSupport,
+}: {
+  children: React.ReactNode;
+  settings: SiteSettings;
+  navItems: CmsNavItem[];
+  footerSupport: CmsFooterLink[];
+}) {
   const pathname = usePathname();
   const isAdmin = pathname?.startsWith("/adminbp");
 
@@ -20,10 +31,10 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
       <a className="skip-link" href="#noi-dung">
         Đến nội dung chính
       </a>
-      <Header />
+      <Header settings={settings} navItems={navItems} />
       <main id="noi-dung">{children}</main>
-      <Footer />
-      <FloatingCta />
+      <Footer settings={settings} footerSupport={footerSupport} />
+      <FloatingCta settings={settings} />
     </>
   );
 }

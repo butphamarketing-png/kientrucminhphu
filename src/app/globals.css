@@ -835,6 +835,24 @@ img {
   line-height: 25px;
 }
 
+.footer-credit {
+  margin: 4px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: 0.95;
+}
+
+.footer-credit a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer-credit a:hover {
+  color: #ff0;
+}
+
 .control-style {
   width: 32px;
   height: 32px;

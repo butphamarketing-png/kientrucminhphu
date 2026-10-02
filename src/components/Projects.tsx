@@ -1,8 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { projects } from "@/data/site";
+import { projects as defaultProjects } from "@/data/site";
+import type { CmsProject } from "@/lib/cms/types";
 
-export function Projects() {
+export function Projects({
+  projects = defaultProjects,
+}: {
+  projects?: CmsProject[] | typeof defaultProjects;
+}) {
   return (
     <section id="contruction">
       <div className="center">

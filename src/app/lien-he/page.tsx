@@ -3,6 +3,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { IconMail, IconMapPin, IconPhone } from "@/components/Icons";
 import { site } from "@/data/site";
 import { pageMeta } from "@/lib/seo";
+import { readCms } from "@/lib/cms/store";
 
 export const metadata = pageMeta({
   title: "Liên hệ",
@@ -10,7 +11,8 @@ export const metadata = pageMeta({
   path: "/lien-he",
 });
 
-export default function LienHePage() {
+export default async function LienHePage() {
+  const { settings: site } = await readCms();
   return (
     <>
       <PageHero title="Liên hệ" canonicalPath="/lien-he" />
@@ -60,7 +62,7 @@ export default function LienHePage() {
             <div className="mt-8 aspect-[16/10] rounded-xl overflow-hidden bg-[#dde5ec]">
               <iframe
                 title="Google map Văn phòng Kiến trúc Minh Phú"
-                src="https://maps.google.com/maps?q=71/4A%20Nguy%E1%BB%85n%20Duy%20Cung,%20An%20H%E1%BB%99i%20T%C3%A2y,%20H%E1%BB%93%20Ch%C3%AD%20Minh&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src={site.mapEmbed}
                 className="w-full h-full border-0"
                 loading="lazy"
               />

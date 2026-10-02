@@ -1,8 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { fields } from "@/data/site";
+import { fields as defaultFields } from "@/data/site";
+import type { CmsServiceItem } from "@/lib/cms/types";
 
-export function Fields() {
+export function Fields({
+  fields = defaultFields,
+}: {
+  fields?: CmsServiceItem[] | typeof defaultFields;
+}) {
   return (
     <section id="field">
       <div className="center">

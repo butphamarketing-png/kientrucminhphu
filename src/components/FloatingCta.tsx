@@ -3,47 +3,12 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { site } from "@/data/site";
+import type { SiteSettings } from "@/lib/cms/types";
 
-const mapUrl =
+const DEFAULT_DIRECTIONS =
   "https://www.google.com/maps/dir/?api=1&origin=&destination=71/4A%20Nguy%E1%BB%85n%20Duy%20Cung,%20P.%20An%20H%E1%BB%99i%20T%C3%A2y,%20H%E1%BB%93%20Ch%C3%AD%20Minh";
 
-const items = [
-  {
-    id: "goidien",
-    href: `tel:${site.phoneRaw}`,
-    label: "Gọi điện",
-    icon: "/media/assets/images/fp-phone.png",
-  },
-  {
-    id: "sms",
-    href: `sms:${site.phoneRaw}`,
-    label: "Nhắn tin",
-    icon: "/media/assets/images/fp-sms.png",
-  },
-  {
-    id: "chiduong",
-    href: mapUrl,
-    label: "Chỉ Đường",
-    icon: "/media/assets/images/fp-chiduong.png",
-    external: true,
-  },
-  {
-    id: "chatzalo",
-    href: site.zalo,
-    label: "Chat zalo",
-    icon: "/media/assets/images/fp-zalo.png",
-    external: true,
-  },
-  {
-    id: "chatfb",
-    href: site.messenger,
-    label: "Chat facebook",
-    icon: "/media/assets/images/fp-mess.png",
-    external: true,
-  },
-];
-
-export function FloatingCta() {
+export function FloatingCta({ settings = site }: { settings?: SiteSettings }) {
   const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
@@ -52,6 +17,42 @@ export function FloatingCta() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const items = [
+    {
+      id: "goidien",
+      href: `tel:${settings.phoneRaw}`,
+      label: "Gọi điện",
+      icon: "/media/assets/images/fp-phone.png",
+    },
+    {
+      id: "sms",
+      href: `sms:${settings.phoneRaw}`,
+      label: "Nhắn tin",
+      icon: "/media/assets/images/fp-sms.png",
+    },
+    {
+      id: "chiduong",
+      href: settings.mapDirections || DEFAULT_DIRECTIONS,
+      label: "Chỉ Đường",
+      icon: "/media/assets/images/fp-chiduong.png",
+      external: true,
+    },
+    {
+      id: "chatzalo",
+      href: settings.zalo,
+      label: "Chat zalo",
+      icon: "/media/assets/images/fp-zalo.png",
+      external: true,
+    },
+    {
+      id: "chatfb",
+      href: settings.messenger,
+      label: "Chat facebook",
+      icon: "/media/assets/images/fp-mess.png",
+      external: true,
+    },
+  ];
 
   return (
     <>
@@ -62,11 +63,10 @@ export function FloatingCta() {
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       />
 
-      {/* Desktop: Zalo / Messenger / Facebook + pulse phone — right side */}
       <div className="float-cta-right">
         <a
           className="float-social-btn float-social-zalo float-bob"
-          href={site.zalo}
+          href={settings.zalo}
           target="_blank"
           rel="noreferrer"
           aria-label="Chat Zalo"
@@ -81,7 +81,7 @@ export function FloatingCta() {
         </a>
         <a
           className="float-social-btn float-social-mess float-bob"
-          href={site.messenger}
+          href={settings.messenger}
           target="_blank"
           rel="noreferrer"
           aria-label="Chat Messenger"
@@ -96,7 +96,7 @@ export function FloatingCta() {
         </a>
         <a
           className="float-social-btn float-social-fb float-bob"
-          href={site.facebook}
+          href={settings.facebook}
           target="_blank"
           rel="noreferrer"
           aria-label="Facebook"
@@ -110,10 +110,10 @@ export function FloatingCta() {
           </span>
         </a>
         <a
-          href={`tel:${site.phoneRaw}`}
+          href={`tel:${settings.phoneRaw}`}
           className="btn-phone-float float-bob"
-          data-phone={site.phone}
-          aria-label={`Gọi ${site.phone}`}
+          data-phone={settings.phone}
+          aria-label={`Gọi ${settings.phone}`}
           style={{ animationDelay: "1.05s" }}
         >
           <span className="btn-phone-pulse" />
@@ -124,7 +124,6 @@ export function FloatingCta() {
         </a>
       </div>
 
-      {/* Mobile bottom toolbar ≤767px */}
       <div className="fix-toolbar">
         <ul>
           {items.map((item, i) => (

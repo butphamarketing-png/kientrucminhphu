@@ -1,9 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { benefits } from "@/data/site";
+import { benefits as defaultBenefits } from "@/data/site";
+import type { CmsBenefit } from "@/lib/cms/types";
 
-export function Benefits() {
+export function Benefits({
+  benefits = defaultBenefits,
+}: {
+  benefits?: CmsBenefit[] | typeof defaultBenefits;
+}) {
   return (
     <section id="benefit">
       <div className="center">

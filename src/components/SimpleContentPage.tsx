@@ -1,14 +1,17 @@
 import { PageHero } from "@/components/PageHero";
-import { site } from "@/data/site";
+import { site as defaultSite } from "@/data/site";
+import type { SiteSettings } from "@/lib/cms/types";
 
 export function SimpleContentPage({
   title,
   path,
   children,
+  settings = defaultSite,
 }: {
   title: string;
   path?: string;
   children?: React.ReactNode;
+  settings?: SiteSettings;
 }) {
   return (
     <>
@@ -18,9 +21,9 @@ export function SimpleContentPage({
           {children ?? (
             <>
               <p>
-                Nội dung đang được cập nhật bởi {site.shortName}. Vui lòng liên hệ hotline{" "}
-                <a className="text-[var(--color-main)] font-semibold" href={`tel:${site.phoneRaw}`}>
-                  {site.phone}
+                Nội dung đang được cập nhật bởi {settings.shortName}. Vui lòng liên hệ hotline{" "}
+                <a className="text-[var(--color-main)] font-semibold" href={`tel:${settings.phoneRaw}`}>
+                  {settings.phone}
                 </a>{" "}
                 để được tư vấn chi tiết.
               </p>

@@ -19,6 +19,10 @@ export const site = {
   zalo: "https://zalo.me/0912166079",
   facebook: "https://www.facebook.com/congtyxaydungtrongoi",
   messenger: "https://m.me/congtyxaydungtrongoi",
+  mapEmbed:
+    "https://maps.google.com/maps?q=71/4A%20Nguy%E1%BB%85n%20Duy%20Cung%20H%E1%BB%93%20Ch%C3%AD%20Minh&t=&z=15&ie=UTF8&iwloc=&output=embed",
+  mapDirections:
+    "https://www.google.com/maps/dir/?api=1&origin=&destination=71/4A%20Nguy%E1%BB%85n%20Duy%20Cung,%20P.%20An%20H%E1%BB%99i%20T%C3%A2y,%20H%E1%BB%93%20Ch%C3%AD%20Minh",
 };
 
 export const nav = [
@@ -359,6 +363,108 @@ export const houseDesigns = [
 ];
 
 export const news = [
+  {
+    title: "Xây nhà chỉ với 1 tỷ 3: phương án nhà phố thực tế 2026 tại TP.HCM",
+    href: "/tin-tuc/xay-nha-chi-voi-1-ty-3",
+    image: m("upload/nha-pho/nha-pho-01-mat-tien.png"),
+    imageAlt: "Xây nhà chỉ với 1 tỷ 3 — mẫu nhà phố gọn, công năng đủ dùng tại TP.HCM",
+    date: "13/09/2026",
+    keywords: [
+      "xây nhà chỉ với 1 tỷ 3",
+      "xây nhà 1 tỷ 3",
+      "xây nhà phố 1.3 tỷ",
+      "ngân sách xây nhà 1 tỷ 3",
+      "xây nhà trọn gói 1 tỷ 3",
+      "xây nhà phố giá rẻ TP.HCM",
+    ],
+    excerpt:
+      "Xây nhà chỉ với 1 tỷ 3 vẫn làm được nhà phố ở được nếu chốt đúng số tầng, cấp hoàn thiện và dự phòng phát sinh. Minh Phú Building phân tích phương án thực tế 2026. Tư vấn miễn phí: 0912 166 079.",
+    body: [
+      "Nhiều gia chủ hỏi thẳng: xây nhà chỉ với 1 tỷ 3 thì được nhà thế nào? Câu trả lời ngắn là có — nếu 1 tỷ 3 là ngân sách thi công (chưa gồm tiền đất), và bạn chấp nhận nhà phố gọn, hoàn thiện phổ thông, mặt tiền tối giản. Bài viết này của Minh Phú Building nói rõ phạm vi làm được, hạng mục không nên cắt, và cách đọc dự toán để xây nhà chỉ với 1 tỷ 3 không bị “rẻ đầu – đội cuối”.",
+      "Một tỷ ba không mua được biệt thự, cũng khó làm nhà 1 trệt 3–4 lầu hoàn thiện cao cấp tại TP.HCM. Nhưng với lô đất đã có, xây nhà chỉ với 1 tỷ 3 hoàn toàn có thể cho ra căn 1 trệt 1 lầu hoặc 1 trệt 2 lầu vừa ở, sáng và bền — miễn là thiết kế đúng công năng thay vì chạy theo chi tiết trang trí.",
+      {
+        type: "h2",
+        text: "1 tỷ 3 xây nhà gồm những gì — và không gồm những gì?",
+      },
+      "Khi nói xây nhà chỉ với 1 tỷ 3, hãy chốt ngay: con số này thường là phần xây dựng. Tiền đất, lệ phí giấy phép, nội thất gỗ theo thiết kế riêng, điều hòa, smart home, rèm, giường tủ thường nằm ngoài gói. Nếu gộp hết vào 1 tỷ 3, phần xây sẽ bị cắt — rủi ro lớn nhất là chống thấm, thép và bê tông.",
+      "Nên tách ngân sách thành 3 khối: (1) phần thô – kết cấu, (2) hoàn thiện cơ bản (ốp lát, sơn, cửa, vệ sinh), (3) nội thất mềm. Xây nhà chỉ với 1 tỷ 3 nên ưu tiên khối 1 và 2 đủ chuẩn, rồi chừa nội thất gỗ làm giai đoạn 2. Ở được trước, đẹp dần sau — đó là cách giữ nhà an toàn trong ngân sách hẹp.",
+      "Dự phòng 10–15% (khoảng 130–200 triệu) là bắt buộc. Vậy phần “chắc chắn xây được” thường quanh 1,1–1,17 tỷ. Ai quảng cáo xây nhà chỉ với 1 tỷ 3 trọn gói “không phát sinh” mà không nêu cấp vật tư, gần như chắc chắn sẽ cắt hạng mục hoặc đội giá khi thi công.",
+      {
+        type: "h2",
+        text: "Với 1 tỷ 3, nhà phố quy mô nào là thực tế?",
+      },
+      "Đơn giá tham khảo 2026 (thay đổi theo hẻm, nền đất, số tầng): phần thô khoảng 5–7 triệu/m² sàn; trọn gói phổ thông khoảng 7,5–10 triệu/m². Lấy mốc trọn gói ~8,5 triệu/m², xây nhà chỉ với 1 tỷ 3 (đã trừ dự phòng) tương ứng khoảng 130–150 m² sàn — ví dụ nhà phố 4×12m, 1 trệt 2 lầu, hoặc 5×16m, 1 trệt 1 lầu + sân thượng vừa phải.",
+      "Phương án A — 1 trệt 1 lầu, mặt tiền 4–5m: tầng trệt khách – bếp – để xe máy; lầu 2 phòng ngủ + WC; sân thượng giặt phơi. Đây là kịch bản “chắc cửa” khi xây nhà chỉ với 1 tỷ 3, dễ kiểm soát chống thấm và hoàn thiện.",
+      "Phương án B — 1 trệt 2 lầu, mặt tiền 4m, chiều sâu 12–14m: thêm một tầng phòng ngủ hoặc phòng thờ/làm việc. Làm được nếu mặt tiền tối giản, hạn chế đá ốp, kính lớn và phào chỉ. Phương án này sát trần ngân sách — phải khóa vật tư trước khi khởi công.",
+      "Phương án C — phần thô 1 trệt 2 lầu, hoàn thiện sau: nếu muốn khung nhà lớn hơn, có thể dùng 1 tỷ 3 cho phần thô + chống thấm + điện nước chờ, rồi hoàn thiện từng tầng. Cách này hợp gia chủ cần ở sớm tầng 1 nhưng chưa đủ tiền hoàn thiện hết. Cần hợp đồng ghi rõ mốc dừng, tránh nhà “treo” mất an toàn.",
+      "Không nên kỳ vọng xây nhà chỉ với 1 tỷ 3 cho biệt thự, nhà vườn rộng, hoặc nhà phố mặt tiền 6–8m hoàn thiện cao cấp. Sai kỳ vọng dẫn tới cắt kết cấu — cái giá phải trả sau 2–5 năm rất đắt.",
+      {
+        type: "h2",
+        text: "Hạng mục giữ và hạng mục có thể tối giản",
+      },
+      "Không cắt: khảo sát nền, móng đúng địa chất, thép – bê tông đúng mác, chống thấm mái – WC – ban công, thoát nước, hệ thống điện an toàn. Đây là xương sống khi xây nhà chỉ với 1 tỷ 3. Tiết kiệm nhầm chỗ này là lỗ.",
+      "Có thể tối giản: mặt dựng ốp đá toàn bộ, lam nhôm dày, trần thạch cao nhiều cấp, đèn trang trí, tủ bếp gỗ tự nhiên, thiết bị vệ sinh hàng hiệu. Sơn ngoại thất tốt + khối hình học rõ thường đẹp hơn mặt tiền “đắp” nhiều vật liệu đắt.",
+      "Thiết kế giúp tiết kiệm thật: cầu thang gọn, hạn chế phòng quá nhỏ, liên thông khách – bếp, giếng trời hoặc ô lấy sáng thay vì điều hòa nhiều phòng. Một hồ sơ kiến trúc – kết cấu – điện nước đủ bộ còn rẻ hơn sửa sai khi đã đổ sàn. Tham khảo [thiết kế nhà phố](/dich-vu/thiet-ke-nha-pho) và [bảng giá thiết kế nhà](/bang-bao-gia/thiet-ke-nha).",
+      "Nhà trong hẻm nhỏ: chi phí vận chuyển vật tư và ngày công sẽ cao hơn nhà mặt đường. Khi lập dự toán xây nhà chỉ với 1 tỷ 3, phải ghi rõ điều kiện tiếp cận xe — nếu không, 1 tỷ 3 trên giấy sẽ không đủ trên hiện trường.",
+      {
+        type: "h2",
+        text: "Gợi ý phân bổ ngân sách 1 tỷ 3",
+      },
+      "Một khung phân bổ thực tế (có thể chỉnh theo lô đất): khoảng 55–65% cho phần thô và kết cấu; 25–35% hoàn thiện phổ thông; 8–12% phát sinh – chống thấm bổ sung – hoàn thiện mặt tiền vừa đủ; phần còn lại cho giấy phép, giám sát và dự phòng. Không để nội thất gỗ nuốt quá 15% khi mục tiêu là xây nhà chỉ với 1 tỷ 3 để ở được.",
+      "Ví dụ minh họa (không phải báo giá chốt): nhà 4×12m, 1 trệt 1 lầu + sân thượng ~100–110 m² sàn, trọn gói phổ thông có thể nằm trong tầm 1 tỷ 3 nếu nền ổn, hẻm xe vào được, mặt tiền sơn – gạch đơn giản. Muốn thêm một tầng, phải giảm cấp hoàn thiện hoặc chấp nhận hoàn thiện sau.",
+      "Đối chiếu thêm [báo giá xây nhà phố 2026](/tin-tuc/bao-gia-xay-nha-pho-2026), [báo giá nhà phố phần thô](/tin-tuc/bao-gia-nha-pho-phan-tho) và [báo giá trọn gói](/bang-bao-gia/bao-gia-tron-goi) trước khi ký. Xây nhà chỉ với 1 tỷ 3 chỉ an toàn khi bảng giá tách m², vật tư tham chiếu và hạng mục loại trừ.",
+      {
+        type: "h2",
+        text: "Quy trình để 1 tỷ 3 không bị đội",
+      },
+      "Bước 1 — Chốt nhu cầu: số người ở, số phòng ngủ, để xe, có ông bà ở cùng không. Bước 2 — Khảo sát lô đất: hướng, hẻm, nhà liền kề, nền. Bước 3 — Concept mặt bằng 1–2 phương án vừa túi tiền. Bước 4 — Dự toán tách thô / hoàn thiện. Bước 5 — Khóa mẫu gạch, sơn, cửa. Bước 6 — Hợp đồng theo giai đoạn nghiệm thu. Bước 7 — Thi công và bàn giao checklist.",
+      "Gia chủ nên yêu cầu lịch theo tuần, ảnh tiến độ và biên bản móng – đổ sàn – chống thấm. Thanh toán gắn nghiệm thu giúp xây nhà chỉ với 1 tỷ 3 không bị rút vốn sai lúc. Nếu muốn một đầu mối, xem [thi công nhà phố trọn gói](/tin-tuc/thi-cong-nha-pho-tron-goi) và dịch vụ [thi công xây dựng](/dich-vu/thi-cong-xay-dung).",
+      "Checklist trước khởi công còn nằm ở bài [kinh nghiệm xây nhà phố lần đầu](/tin-tuc/kinh-nghiem-xay-nha-pho). Đọc xong, bạn sẽ biết 1 tỷ 3 nên “mua” kết cấu và chống thấm trước, chứ không phải mặt tiền cho đẹp ảnh.",
+      {
+        type: "h2",
+        text: "FAQ — xây nhà chỉ với 1 tỷ 3",
+      },
+      "Xây nhà chỉ với 1 tỷ 3 có gồm tiền đất không? Không. 1 tỷ 3 trong bài này là ngân sách thi công trên đất đã có.",
+      "Làm được mấy tầng? Phổ biến là 1 trệt 1 lầu; 1 trệt 2 lầu chỉ nên làm khi diện tích sàn vừa và hoàn thiện phổ thông.",
+      "Có làm trọn gói được không? Được ở cấp phổ thông, nhà gọn, mặt tiền tối giản. Phải ghi rõ vật tư và hạng mục ngoài gói.",
+      "Nhà trong hẻm nhỏ có đủ 1 tỷ 3 không? Có thể thiếu vì vận chuyển và nhân công. Cần khảo sát hiện trạng trước khi chốt giá.",
+      "Có nên tự mua vật tư để tiết kiệm? Chỉ nên khi bạn có thời gian và hiểu chủng loại. Tự mua lệch quy cách dễ phát sinh nhân công — phản tác dụng khi xây nhà chỉ với 1 tỷ 3.",
+      "Xin phép xây dựng có tốn thêm không? Có, lệ phí và thời gian làm hồ sơ nên tính riêng. Hồ sơ thiết kế chuẩn hỗ trợ thủ tục theo quy định; tham khảo thêm hướng dẫn kỹ thuật tại [Bộ Xây dựng](https://moc.gov.vn).",
+      {
+        type: "h2",
+        text: "Kết luận — nhận tư vấn phương án đúng 1 tỷ 3",
+      },
+      "Xây nhà chỉ với 1 tỷ 3 là khả thi khi kỳ vọng đúng: nhà phố gọn, hoàn thiện đủ ở, kết cấu và chống thấm không cắt. Sai lầm lớn nhất là nhìn nhà mẫu cao cấp rồi ép giá xuống 1 tỷ 3.",
+      "Nếu bạn đang có lô đất và ngân sách khoảng 1,3 tỷ, hãy gửi kích thước đất, số tầng mong muốn và ảnh hiện trạng. Minh Phú Building sẽ nói thẳng phương án nào làm được, phương án nào nên để giai đoạn 2. Liên hệ qua [trang liên hệ](/lien-he) hoặc hotline 0912 166 079.",
+      "Muốn xem hình khối nhà phố thực tế, ghé [thư viện nhà phố](/thu-vien/nha-pho) và [công trình tiêu biểu](/cong-trinh-tieu-bieu) để đối chiếu phong cách vừa túi tiền trước khi chốt thiết kế.",
+    ],
+    gallery: [
+      {
+        src: m("upload/nha-pho/nha-pho-01-mat-tien.png"),
+        alt: "Xây nhà chỉ với 1 tỷ 3 — mặt tiền nhà phố gọn, tối giản",
+      },
+      {
+        src: m("upload/nha-pho/nha-pho-02-phong-khach.png"),
+        alt: "Phòng khách liên thông — tối ưu công năng khi xây nhà 1 tỷ 3",
+      },
+      {
+        src: m("upload/nha-pho/nha-pho-03-bep.png"),
+        alt: "Bếp gọn cho nhà phố ngân sách 1 tỷ 3",
+      },
+      {
+        src: m("upload/nha-pho/nha-pho-04-phong-ngu.png"),
+        alt: "Phòng ngủ đủ dùng khi xây nhà chỉ với 1 tỷ 3",
+      },
+      {
+        src: m("upload/nha-pho/nha-pho-05-san-thuong.png"),
+        alt: "Sân thượng giặt phơi — hạng mục nên giữ trong gói 1 tỷ 3",
+      },
+      {
+        src: m("upload/tron-goi/tg-02-thi-cong.png"),
+        alt: "Thi công phần thô — không cắt khi xây nhà 1 tỷ 3",
+      },
+    ],
+  },
   ...seoArticles,
   {
     title:

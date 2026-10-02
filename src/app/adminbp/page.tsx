@@ -1,4 +1,5 @@
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
+import { AdminDashboard } from "@/components/admin/AdminDashboard";
 
 export const metadata = {
   title: { absolute: "CMS Website · Kiến Trúc Minh Phú" },
@@ -10,8 +11,7 @@ export default function AdminHomePage() {
     <div className="adminbp-shell">
       <AdminSidebar />
       <main className="adminbp-main">
-        <h1>CMS Website</h1>
-        <p>Quản lý nội dung website Kiến Trúc Minh Phú.</p>
+        <AdminDashboard />
       </main>
     </div>
   );

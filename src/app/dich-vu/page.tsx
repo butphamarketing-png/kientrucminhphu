@@ -1,7 +1,7 @@
 import { PageHero } from "@/components/PageHero";
 import { ContentCardGrid } from "@/components/ContentCardGrid";
-import { serviceList } from "@/data/site";
 import { pageMeta } from "@/lib/seo";
+import { readCms } from "@/lib/cms/store";
 
 export const metadata = pageMeta({
   title: "Dịch vụ",
@@ -10,7 +10,8 @@ export const metadata = pageMeta({
   path: "/dich-vu",
 });
 
-export default function DichVuPage() {
+export default async function DichVuPage() {
+  const { serviceList } = await readCms();
   return (
     <>
       <PageHero title="Dịch vụ" canonicalPath="/dich-vu" />

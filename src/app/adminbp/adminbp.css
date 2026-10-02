@@ -715,6 +715,370 @@ body:has(.adminbp-root) main#noi-dung {
   color: #8b9cb3;
 }
 
+.adminbp-dash h1 {
+  margin: 0 0 8px;
+  font-size: 1.6rem;
+}
+
+.adminbp-status-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 28px 0;
+}
+
+.adminbp-status-card {
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: #1a2332;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.adminbp-status-card small {
+  color: #8b9cb3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.adminbp-status-card strong {
+  font-size: 18px;
+}
+
+.adminbp-status-card span {
+  color: #8b9cb3;
+  font-size: 13px;
+}
+
+.adminbp-status-card.is-ok {
+  border-color: rgba(16, 185, 129, 0.45);
+}
+
+.adminbp-status-card.is-ok strong {
+  color: #34d399;
+}
+
+.adminbp-upload {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px;
+  border-radius: 14px;
+  background: #1a2332;
+  border: 1px dashed rgba(124, 58, 237, 0.45);
+}
+
+.adminbp-upload h2 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.adminbp-upload-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  height: 42px;
+  padding: 0 16px;
+  border-radius: 10px;
+  background: #7c3aed;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.adminbp-upload-btn input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.adminbp-dash-msg {
+  margin: 14px 0 0 !important;
+  color: #c4b5fd !important;
+}
+
+.adminbp-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+}
+
+.adminbp-media-grid img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #243044;
+}
+
+.adminbp-media-grid small {
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+  color: #8b9cb3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 800px) {
+  .adminbp-status-grid,
+  .adminbp-upload {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.adminbp-page-head {
+  margin-bottom: 24px;
+}
+
+.adminbp-page-head h1 {
+  margin: 0 0 8px;
+  font-size: 1.6rem;
+}
+
+.adminbp-page-head p {
+  margin: 0;
+  color: #8b9cb3;
+}
+
+.adminbp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-bottom: 80px;
+}
+
+.adminbp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.adminbp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.adminbp-field.span-2 {
+  grid-column: 1 / -1;
+}
+
+.adminbp-field span {
+  font-size: 12px;
+  font-weight: 700;
+  color: #8b9cb3;
+}
+
+.adminbp-field input,
+.adminbp-field textarea,
+.adminbp-field select {
+  width: 100%;
+  min-height: 42px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #1a2332;
+  color: #e8edf5;
+  padding: 8px 12px;
+  font: inherit;
+  font-size: 14px;
+}
+
+.adminbp-field textarea {
+  min-height: 96px;
+  height: auto !important;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.adminbp-image-field {
+  display: grid;
+  gap: 8px;
+}
+
+.adminbp-image-field img {
+  width: 100%;
+  max-height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #243044;
+}
+
+.adminbp-image-empty {
+  height: 88px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #243044;
+  color: #8b9cb3;
+  font-size: 13px;
+}
+
+.adminbp-cardlist header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 8px 0 12px;
+}
+
+.adminbp-cardlist h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.adminbp-cardlist header button,
+.adminbp-item-actions button,
+.adminbp-ghost {
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #243044;
+  color: #e8edf5;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.adminbp-cardlist header button {
+  background: #7c3aed;
+  border-color: #7c3aed;
+}
+
+.adminbp-cards {
+  display: grid;
+  gap: 12px;
+}
+
+.adminbp-item {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 14px;
+  background: #1a2332;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.adminbp-item-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.adminbp-item-actions button.danger {
+  color: #fca5a5;
+  border-color: rgba(248, 113, 113, 0.35);
+}
+
+.adminbp-savebar {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0 8px;
+  background: linear-gradient(transparent, #0f1419 28%);
+}
+
+.adminbp-save {
+  min-width: 140px;
+  height: 42px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 10px;
+  background: #7c3aed;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.adminbp-save:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.adminbp-savebar span {
+  color: #c4b5fd;
+  font-size: 13px;
+}
+
+.adminbp-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.adminbp-news-row {
+  display: grid;
+  grid-template-columns: 88px 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.adminbp-news-row img {
+  width: 88px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #243044;
+}
+
+.adminbp-news-row strong {
+  display: block;
+  font-size: 14px;
+}
+
+.adminbp-news-row small {
+  color: #8b9cb3;
+}
+
+.adminbp-shortcuts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 24px 0 8px;
+}
+
+.adminbp-shortcuts a {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  border-radius: 14px;
+  background: #1a2332;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e8edf5;
+  text-decoration: none;
+}
+
+.adminbp-shortcuts a:hover {
+  border-color: rgba(124, 58, 237, 0.55);
+}
+
+.adminbp-shortcuts small {
+  color: #8b9cb3;
+}
+
 @media (max-width: 800px) {
   .adminbp-shell {
     flex-direction: column;
@@ -722,5 +1086,10 @@ body:has(.adminbp-root) main#noi-dung {
 
   .adminbp-sidebar {
     width: 100%;
+  }
+
+  .adminbp-grid,
+  .adminbp-news-row {
+    grid-template-columns: 1fr;
   }
 }

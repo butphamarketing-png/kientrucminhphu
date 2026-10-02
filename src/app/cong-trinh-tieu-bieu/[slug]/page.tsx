@@ -3,12 +3,13 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
 import { JsonLd } from "@/components/JsonLd";
-import { projects, site } from "@/data/site";
 import { pageMeta, absUrl } from "@/lib/seo";
+import { readCms } from "@/lib/cms/store";
 
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
+  const { projects } = await readCms();
   return projects.map((p) => ({
     slug: p.href.replace("/cong-trinh-tieu-bieu/", ""),
   }));
@@ -16,9 +17,10 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const item = projects.find((p) => p.href.endsWith(`/${slug}`));
+  const cms = await readCms();
+  const item = cms.projects.find((p) => p.href.endsWith(`/${slug}`));
   if (!item) return { title: "Công trình" };
-  const desc = `Công trình ${item.title} — chủ đầu tư ${item.owner}, ${item.location}. Thiết kế thi công bởi ${site.shortName}.`;
+  const desc = `Công trình ${item.title} — chủ đầu tư ${item.owner}, ${item.location}. Thiết kế thi công bởi ${cms.settings.shortName}.`;
   return pageMeta({
     title: item.title,
     description: desc,
@@ -29,10 +31,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProjectDetailPage({ params }: Props) {
   const { slug } = await params;
-  const item = projects.find((p) => p.href.endsWith(`/${slug}`));
+  const cms = await readCms();
+  const item = cms.projects.find((p) => p.href.endsWith(`/${slug}`));
   if (!item) notFound();
+  const { settings } = cms;
 
-  const desc = `Công trình ${item.title} do ${site.shortName} thiết kế và thi công tại ${item.location}.`;
+  const desc = `Công trình ${item.title} do ${settings.shortName} thiết kế và thi công tại ${item.location}.`;
 
   return (
     <>
@@ -44,7 +48,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           description: desc,
           image: absUrl(item.image),
           url: absUrl(item.href),
-          creator: { "@type": "Organization", name: site.name },
+          creator: { "@type": "Organization", name: settings.name },
         }}
       />
       <PageHero
@@ -65,10 +69,8 @@ export default async function ProjectDetailPage({ params }: Props) {
             {item.scale ? ` · ${item.scale}` : ""}
           </p>
           <p className="text-[15px] leading-7 text-[#444] text-justify">
-            Công trình được Minh Phú Building thiết kế và thi công với định hướng tối ưu
-            công năng, thẩm mỹ và chi phí đầu tư. Từ khảo sát hiện trạng đến bàn giao, mọi
-            hạng mục đều được kiểm soát kỹ thuật và tiến độ rõ ràng để mang lại không gian
-            sống bền vững cho gia chủ.
+            {item.description ||
+              "Công trình được Minh Phú Building thiết kế và thi công với định hướng tối ưu công năng, thẩm mỹ và chi phí đầu tư. Từ khảo sát hiện trạng đến bàn giao, mọi hạng mục đều được kiểm soát kỹ thuật và tiến độ rõ ràng để mang lại không gian sống bền vững cho gia chủ."}
           </p>
         </div>
       </section>

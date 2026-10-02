@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
-import { projects } from "@/data/site";
 import { pageMeta } from "@/lib/seo";
+import { readCms } from "@/lib/cms/store";
 
 export const metadata = pageMeta({
   title: "Công trình tiêu biểu",
@@ -11,7 +11,8 @@ export const metadata = pageMeta({
   path: "/cong-trinh-tieu-bieu",
 });
 
-export default function CongTrinhPage() {
+export default async function CongTrinhPage() {
+  const { projects } = await readCms();
   return (
     <>
       <PageHero title="Công trình tiêu biểu" canonicalPath="/cong-trinh-tieu-bieu" />

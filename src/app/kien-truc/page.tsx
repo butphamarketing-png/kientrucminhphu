@@ -1,7 +1,7 @@
 import { PageHero } from "@/components/PageHero";
 import { ContentCardGrid } from "@/components/ContentCardGrid";
-import { architectureList } from "@/data/site";
 import { pageMeta } from "@/lib/seo";
+import { readCms } from "@/lib/cms/store";
 
 export const metadata = pageMeta({
   title: "Kiến trúc",
@@ -10,7 +10,8 @@ export const metadata = pageMeta({
   path: "/kien-truc",
 });
 
-export default function KienTrucPage() {
+export default async function KienTrucPage() {
+  const { architectureList } = await readCms();
   return (
     <>
       <PageHero title="Kiến trúc" canonicalPath="/kien-truc" />

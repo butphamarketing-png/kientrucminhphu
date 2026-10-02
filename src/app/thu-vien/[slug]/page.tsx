@@ -2,26 +2,21 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
-import { galleryAlbums, projects, townhouseGallery } from "@/data/site";
+import { townhouseGallery } from "@/data/site";
 import { pageMeta } from "@/lib/seo";
+import { readCms } from "@/lib/cms/store";
 
 type Props = { params: Promise<{ slug: string }> };
 
-const albums = galleryAlbums.map((a) => ({
-  slug: a.href.replace("/thu-vien/", ""),
-  title: a.title,
-  image: a.image,
-  href: a.href,
-  images: "images" in a && Array.isArray(a.images) ? a.images : undefined,
-}));
-
 export async function generateStaticParams() {
-  return albums.map((a) => ({ slug: a.slug }));
+  const { galleryAlbums } = await readCms();
+  return galleryAlbums.map((a) => ({ slug: a.href.replace("/thu-vien/", "") }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const item = albums.find((a) => a.slug === slug);
+  const { galleryAlbums } = await readCms();
+  const item = galleryAlbums.find((a) => a.href.endsWith(`/${slug}`));
   if (!item) return { title: "Thư viện" };
   return pageMeta({
     title: item.title,
@@ -33,7 +28,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ThuVienAlbumPage({ params }: Props) {
   const { slug } = await params;
-  const item = albums.find((a) => a.slug === slug);
+  const cms = await readCms();
+  const item = cms.galleryAlbums.find((a) => a.href.endsWith(`/${slug}`));
   if (!item) notFound();
 
   const photos =
@@ -44,7 +40,7 @@ export default async function ThuVienAlbumPage({ params }: Props) {
         }))
       : [
           { src: item.image, alt: item.title },
-          ...projects.slice(0, 7).map((p, i) => ({
+          ...cms.projects.slice(0, 7).map((p, i) => ({
             src: p.image,
             alt: `${item.title} ${i + 2}`,
           })),

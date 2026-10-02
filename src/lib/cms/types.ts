@@ -16,6 +16,8 @@ export type SiteSettings = {
   zalo: string;
   facebook: string;
   messenger: string;
+  mapEmbed: string;
+  mapDirections: string;
 };
 
 export type BodyBlock = string | { type: "h2"; text: string };
@@ -45,6 +47,7 @@ export type CmsProject = {
   owner: string;
   location: string;
   scale: string;
+  description: string;
 };
 
 export type CmsPricingCard = {
@@ -61,6 +64,8 @@ export type CmsServiceItem = {
   title: string;
   href: string;
   image: string;
+  summary?: string;
+  body?: string;
 };
 
 export type CmsBenefit = {
@@ -81,6 +86,51 @@ export type CmsIntro = {
   image: string;
   href: string;
   paragraphs: string[];
+  extra: string;
+};
+
+export type CmsNavChild = {
+  id: string;
+  label: string;
+  href: string;
+};
+
+export type CmsNavItem = {
+  id: string;
+  label: string;
+  href: string;
+  children?: CmsNavChild[];
+};
+
+export type CmsFooterLink = {
+  id: string;
+  label: string;
+  href: string;
+};
+
+export type CmsGalleryAlbum = {
+  id: string;
+  title: string;
+  href: string;
+  image: string;
+  images: string[];
+};
+
+export type CmsHouseDesign = {
+  id: string;
+  title: string;
+  href: string;
+  image: string;
+  tabs: string[];
+  summary?: string;
+};
+
+export type CmsContentPage = {
+  id: string;
+  path: string;
+  title: string;
+  description: string;
+  body: string;
 };
 
 export type CmsStore = {
@@ -94,6 +144,13 @@ export type CmsStore = {
   pricingCards: CmsPricingCard[];
   serviceList: CmsServiceItem[];
   fields: CmsServiceItem[];
+  galleryAlbums: CmsGalleryAlbum[];
+  houseDesigns: CmsHouseDesign[];
+  architectureList: CmsServiceItem[];
+  nav: CmsNavItem[];
+  footerSupport: CmsFooterLink[];
+  servicesDetail: CmsServiceItem[];
+  pages: CmsContentPage[];
   /** Articles created/edited in admin (override static by href) */
   news: CmsNewsArticle[];
   /** Static article hrefs hidden from public site */
