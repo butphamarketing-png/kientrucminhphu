@@ -5,7 +5,7 @@ function slugOf(href: string) {
   return href.replace(/\/tin-tuc\//, "").replace(/^\//, "") || "bai-viet";
 }
 
-/** Copy articles that still live in code into the CMS shape, once. */
+/** Copy code articles into the CMS shape. Missing ones are appended; hidden ones stay hidden. */
 export function newsArticlesFromStatic(): CmsNewsArticle[] {
   return staticNews.flatMap((raw) => {
     const item = raw as {

@@ -71,10 +71,17 @@ function writeCmsLocal(store: CmsStore) {
 }
 
 async function ensureNews(store: CmsStore): Promise<CmsStore> {
-  if (store.news.length > 0) return store;
-  const news = newsArticlesFromStatic();
-  if (!news.length) return store;
-  const next: CmsStore = { ...store, news, updatedAt: new Date().toISOString() };
+  const seeded = newsArticlesFromStatic();
+  if (!seeded.length) return store;
+  const hidden = new Set(store.hiddenNewsHrefs);
+  const have = new Set(store.news.map((item) => item.href));
+  const missing = seeded.filter((item) => !have.has(item.href) && !hidden.has(item.href));
+  if (!missing.length) return store;
+  const next: CmsStore = {
+    ...store,
+    news: [...missing, ...store.news],
+    updatedAt: new Date().toISOString(),
+  };
   writeCmsLocal(next);
   if (isR2Configured()) await putJson(CMS_OBJECT_KEY, next);
   return next;
