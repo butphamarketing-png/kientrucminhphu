@@ -3,6 +3,9 @@ import { getPublicNews } from "@/lib/cms/content";
 import { readCms } from "@/lib/cms/store";
 import { SITE_URL } from "@/lib/seo";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 const staticPaths = [
   "/",
   "/gioi-thieu",

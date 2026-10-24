@@ -1,3 +1,4 @@
+import { seoArticlesBatch6 } from "./seoArticlesBatch6";
 import { seoArticlesBatch5 } from "./seoArticlesBatch5";
 import { seoArticlesBatch4 } from "./seoArticlesBatch4";
 import { seoArticlesBatch3 } from "./seoArticlesBatch3";
@@ -7,6 +8,7 @@ import { seoArticlesGenerated } from "./seoArticlesGenerated";
 const m = (path: string) => `/media/${path}`;
 
 export const seoArticles = [
+  ...seoArticlesBatch6,
   ...seoArticlesBatch5,
   ...seoArticlesGenerated,
   ...seoArticlesBatch4,
