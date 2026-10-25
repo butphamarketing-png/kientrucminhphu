@@ -70,9 +70,9 @@ export default async function TinTucPage({ searchParams }: Props) {
   const page = requested;
   const start = (page - 1) * PAGE_SIZE;
   const list = filtered.slice(start, start + PAGE_SIZE);
-  const window = [1, pages, page - 1, page, page + 1].filter(
-    (value, index, all) => value >= 1 && value <= pages && all.indexOf(value) === index,
-  );
+  const window = [1, pages, page - 1, page, page + 1]
+    .filter((value, index, all) => value >= 1 && value <= pages && all.indexOf(value) === index)
+    .sort((a, b) => a - b);
 
   return (
     <>
