@@ -5,9 +5,9 @@ import { Fragment } from "react";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
 import { JsonLd } from "@/components/JsonLd";
-import { findPublicNewsBySlugAsync, getPublicNewsAsync } from "@/lib/cms/content";
+import { findPublicNewsBySlugAsync, getPublicNewsAsync, relatedNews } from "@/lib/cms/content";
 import { readCms } from "@/lib/cms/store";
-import { cmsMeta, articleJsonLd, toIsoDate } from "@/lib/seo";
+import { cmsMeta, articleJsonLd, faqJsonLdFromBlocks, toIsoDate } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -92,10 +92,13 @@ export default async function NewsDetailPage({ params }: Props) {
 
   const imageAlt =
     "imageAlt" in item && typeof item.imageAlt === "string" ? item.imageAlt : item.title;
+  const related = relatedNews(await getPublicNewsAsync(), item.href);
+  const faq = faqJsonLdFromBlocks(rawBody);
+  const schema = faq ? [articleJsonLd(item, settings), faq] : articleJsonLd(item, settings);
 
   return (
     <>
-      <JsonLd data={articleJsonLd(item, settings)} />
+      <JsonLd data={schema} />
       <PageHero
         title={item.title}
         showHeading={false}
@@ -171,6 +174,34 @@ export default async function NewsDetailPage({ params }: Props) {
                 ))}
               </div>
             </div>
+          ) : null}
+
+          {related.length > 0 ? (
+            <aside className="mt-12 border-t border-[#DCDCDC] pt-8">
+              <h2 className="mt-0 mb-5 text-[18px] font-bold uppercase text-[var(--color-main)]">
+                Bài viết liên quan
+              </h2>
+              <ul className="m-0 grid gap-4 p-0 list-none sm:grid-cols-3">
+                {related.map((post) => (
+                  <li key={post.href}>
+                    <Link href={post.href} className="group block">
+                      <span className="relative block aspect-[308/151] overflow-hidden rounded bg-[#eee]">
+                        <Image
+                          src={post.image}
+                          alt={post.imageAlt || post.title}
+                          fill
+                          className="object-cover"
+                          sizes="33vw"
+                        />
+                      </span>
+                      <span className="mt-2 block text-[14px] font-semibold leading-snug text-[#222] group-hover:text-[var(--color-main)]">
+                        {post.title}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </aside>
           ) : null}
         </div>
       </article>

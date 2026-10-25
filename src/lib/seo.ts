@@ -3,7 +3,7 @@ import { site } from "@/data/site";
 import { readCms } from "@/lib/cms/store";
 import type { SiteSettings } from "@/lib/cms/types";
 
-export const SITE_URL = "https://kientrucminhphu.com";
+export const SITE_URL = "https://www.kientrucminhphu.com";
 export const DEFAULT_OG_IMAGE = "/brand/banner-contact.png";
 export const GOOGLE_SITE_VERIFICATION = "5O_vcQp19XoYLMLTzewxW4q7vlNqFWG6-vCcqyC-Wy0";
 export const PHONE_E164 = `+84${site.phoneRaw.replace(/^0/, "")}`;
@@ -252,6 +252,35 @@ export function serviceJsonLd(item: { title: string; summary: string; image: str
     provider: { "@id": `${SITE_URL}/#business` },
     areaServed: { "@type": "City", name: "Hồ Chí Minh" },
     serviceType: item.title,
+  };
+}
+
+/** Pull "Câu hỏi? Trả lời." lines that follow a FAQ heading. */
+export function faqJsonLdFromBlocks(blocks: Array<string | { type?: string; text?: string }>) {
+  const faqs: { q: string; a: string }[] = [];
+  let inFaq = false;
+  for (const block of blocks) {
+    if (typeof block === "object" && block?.type === "h2") {
+      inFaq = /câu hỏi/i.test(block.text || "");
+      continue;
+    }
+    if (!inFaq || typeof block !== "string") continue;
+    const splitAt = block.indexOf("?");
+    if (splitAt < 12) continue;
+    const question = block.slice(0, splitAt + 1).trim();
+    const answer = block.slice(splitAt + 1).trim();
+    if (question.length < 12 || answer.length < 20) continue;
+    faqs.push({ q: question, a: answer });
+  }
+  if (faqs.length < 2) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
   };
 }
 

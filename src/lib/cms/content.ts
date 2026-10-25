@@ -181,4 +181,40 @@ export async function findPublicNewsBySlugAsync(slug: string) {
   return findPublicNewsBySlug(slug, await readCms());
 }
 
+const RELATED_KEYWORD_NOISE = /minh phú|minh phu|tp\.?\s*hcm|nhà phố tp/i;
+
+/** Prefer articles that share a real keyword, then fill from the date order. */
+export function relatedNews(all: PublicNewsItem[], currentHref: string, limit = 3) {
+  const current = all.find((item) => item.href === currentHref);
+  const others = all.filter((item) => item.href !== currentHref);
+  if (!current) return others.slice(0, limit);
+  const mine = new Set(
+    (current.keywords || []).map((keyword) => keyword.toLowerCase()).filter((keyword) => !RELATED_KEYWORD_NOISE.test(keyword)),
+  );
+  const ranked = others
+    .map((item) => {
+      const score = (item.keywords || []).reduce(
+        (sum, keyword) => sum + (mine.has(keyword.toLowerCase()) ? 1 : 0),
+        0,
+      );
+      return { item, score };
+    })
+    .sort((a, b) => b.score - a.score);
+  const picked: PublicNewsItem[] = [];
+  for (const row of ranked) {
+    if (picked.length >= limit) break;
+    if (row.score <= 0 && picked.length > 0) break;
+    if (row.score <= 0 && picked.length === 0) break;
+    picked.push(row.item);
+  }
+  if (picked.length >= limit) return picked;
+  const seen = new Set(picked.map((item) => item.href));
+  for (const item of others) {
+    if (picked.length >= limit) break;
+    if (seen.has(item.href)) continue;
+    picked.push(item);
+  }
+  return picked;
+}
+
 export { slugifyTitle };

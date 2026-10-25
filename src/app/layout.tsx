@@ -64,7 +64,6 @@ export async function generateMetadata(): Promise<Metadata> {
       follow: true,
       googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
     },
-    alternates: { canonical: SITE_URL, languages: { "vi-VN": SITE_URL } },
     openGraph: {
       type: "website",
       locale: "vi_VN",
